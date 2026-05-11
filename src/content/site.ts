@@ -1,9 +1,11 @@
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const siteConfig = {
   name: "Charlie Cook",
-  title: "Charlie Cook | Full-Stack Software Engineer Portfolio",
+  title: "Charlie Cook | Software Developer Portfolio",
   description:
-    "A full-stack software engineer portfolio showcasing web development, software projects, commercial experience, and technical case studies.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    "UK Computer Science student and software developer portfolio featuring backend projects, commercial web experience, SEO work, and technical case studies.",
+  url: siteUrl.replace(/\/$/, ""),
   navItems: [
     {
       label: "Home",
@@ -21,13 +23,22 @@ export const siteConfig = {
       label: "About",
       href: "/about",
     },
+    /*
+    Enable once at least 2 useful posts are ready.
     {
       label: "Blog",
       href: "/blog",
     },
+    */
     {
       label: "Contact",
       href: "/contact",
     },
   ],
+  cvHref: "/cv",
+  links: {
+    github: "",
+    linkedin: "",
+    email: "",
+  },
 };

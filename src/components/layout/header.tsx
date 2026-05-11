@@ -1,26 +1,36 @@
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/content/site";
 
 export function Header() {
   return (
-    <header className="border-b border-border bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/" className="font-semibold tracking-tight">
+        <Link
+          href="/"
+          className="font-semibold tracking-tight text-foreground transition hover:text-primary"
+        >
           {siteConfig.name}
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          {siteConfig.navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-6 md:flex">
+          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+            {siteConfig.navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <Button asChild size="sm">
+            <Link href={siteConfig.cvHref}>Download CV</Link>
+          </Button>
+        </div>
       </div>
     </header>
   );
