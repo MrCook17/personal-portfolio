@@ -19,6 +19,12 @@ export const homeLinks = {
   goApiRepo: "https://github.com/MrCook17/URL-Health-Checker-API",
   tieDyePage:
     "https://www.cromartiehobbycraft.co.uk/AdditionalDepartments/Header-Content/Tie-Dye-Techniques",
+
+  goApiCaseStudy: "/projects/go-website-health-check-api",
+  tieDyeCaseStudy: "/projects/cromartie-tie-dye-page-rebuild",
+  internalRecordsCaseStudy:
+    "/projects/internal-records-management-desktop-application",
+  analyticsCaseStudy: "/projects/analytics-tracking-drop-investigation",
 };
 
 export type TrustIndicator = {
@@ -74,7 +80,7 @@ export const featuredProjects: FeaturedProject[] = [
     proof:
       "Shows REST API design, goroutines, timeout handling, tests, benchmarks, Postman evidence, and GitHub documentation.",
     techStack: ["Go", "REST API", "JSON", "Postman", "Testing", "Benchmarks"],
-    primaryHref: homeLinks.projects,
+    primaryHref: homeLinks.goApiCaseStudy,
     primaryLabel: "View project details",
     secondaryHref: homeLinks.goApiRepo,
     secondaryLabel: "GitHub",
@@ -89,7 +95,7 @@ export const featuredProjects: FeaturedProject[] = [
     proof:
       "Shows commercial web work, keyword research, ecommerce content planning, UX improvements, and practical CMS constraints.",
     techStack: ["HTML", "CSS", "CMS", "SEO", "Ubersuggest", "Content"],
-    primaryHref: homeLinks.projects,
+    primaryHref: homeLinks.tieDyeCaseStudy,
     primaryLabel: "View project details",
     secondaryHref: homeLinks.tieDyePage,
     secondaryLabel: "Live page",
@@ -104,7 +110,7 @@ export const featuredProjects: FeaturedProject[] = [
     proof:
       "Shows commercial software engineering, existing codebase work, database-backed features, and real staff workflow support.",
     techStack: ["C#", "WinForms", "SQL", "Debugging", "Business Software"],
-    primaryHref: homeLinks.projects,
+    primaryHref: homeLinks.internalRecordsCaseStudy,
     primaryLabel: "View project details",
   },
   {
@@ -116,7 +122,7 @@ export const featuredProjects: FeaturedProject[] = [
     proof:
       "Shows problem-solving, technical investigation, data comparison, business awareness, and clear escalation.",
     techStack: ["GA4", "Search Console", "Analytics", "Debugging", "SEO"],
-    primaryHref: homeLinks.projects,
+    primaryHref: homeLinks.analyticsCaseStudy,
     primaryLabel: "View project details",
   },
 ];

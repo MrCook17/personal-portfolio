@@ -1,0 +1,135 @@
+## Overview
+
+The Google Analytics Tracking Drop Investigation is a commercial debugging and analytics case study. It focuses on investigating a sudden drop in analytics data and working out whether the issue reflected real website performance or a tracking problem.
+
+This is a useful portfolio case study because it shows practical problem-solving, careful data comparison, and communication rather than just code output.
+
+## What happened
+
+Google Analytics data appeared to drop sharply. This made the website performance data unreliable and created uncertainty around whether the business had experienced a real traffic drop.
+
+A sudden analytics drop can mean several different things:
+
+- Real organic traffic has fallen.
+- The website has had downtime.
+- Tracking has stopped firing.
+- Cookie consent behaviour has changed.
+- Analytics configuration has changed.
+- Google Search Console and Google Analytics are showing different parts of the picture.
+
+The important part was not to assume the first explanation was correct.
+
+## Why it mattered
+
+Analytics data supports decisions about SEO, website changes, content work, and commercial performance. If tracking is unreliable, it becomes harder to understand whether website improvements are working.
+
+A false traffic drop could lead to unnecessary panic or incorrect SEO conclusions. A real traffic drop would need a different response. The investigation needed to separate these possibilities.
+
+## Initial hypotheses
+
+The main hypotheses were:
+
+1. Organic search traffic had genuinely dropped.
+2. The site had a technical or availability issue.
+3. Google Analytics tracking was not recording users correctly.
+4. Cookie consent behaviour was preventing Analytics from firing.
+5. Google Search Console and GA4 were showing different information because they measure different things.
+6. A recent configuration or website change had affected tracking.
+
+## Data sources checked
+
+The investigation compared multiple sources rather than relying on one report.
+
+The main sources were:
+
+- Google Analytics 4.
+- Google Search Console.
+- Website availability context.
+- Recent website/CMS changes.
+- Cookie consent or tracking behaviour.
+- General SEO and traffic patterns.
+
+This helped narrow down whether the drop looked like a real user decline or a measurement issue.
+
+## GA4 vs Search Console comparison
+
+GA4 and Search Console do not measure the same thing.
+
+GA4 depends on analytics tracking firing in the browser. Search Console records search visibility and clicks from Google Search.
+
+If GA4 drops sharply but Search Console does not show the same type of drop, that can suggest a tracking or consent issue rather than a true collapse in organic search visibility.
+
+This comparison was important because it prevented the investigation from jumping to the wrong conclusion.
+
+## Investigation timeline
+
+The investigation followed a basic debugging process:
+
+1. Notice the traffic drop in GA4.
+2. Check whether the drop looked sudden or gradual.
+3. Compare against Search Console data.
+4. Consider whether the site had downtime or indexing issues.
+5. Review whether tracking or consent behaviour could explain the difference.
+6. Summarise the likely cause.
+7. Escalate the findings for further action.
+
+## Likely cause
+
+The likely cause was related to tracking or cookie consent behaviour rather than a straightforward SEO collapse.
+
+The exact public case study should avoid exposing private analytics screenshots or sensitive internal data, but the reasoning can still be explained safely: the pattern did not behave like a normal organic performance decline, and comparing data sources pointed toward measurement/tracking issues.
+
+## Communication and escalation
+
+The issue was escalated because unreliable analytics affects business understanding.
+
+The key communication points were:
+
+- The drop should not immediately be treated as a confirmed traffic collapse.
+- Multiple data sources needed to be compared.
+- GA4 and Search Console were telling different parts of the story.
+- Tracking/cookie consent behaviour was a likely area to investigate.
+- Further technical review was needed if tracking had changed.
+
+## Outcome
+
+The main outcome was a clearer understanding of the issue and a more careful interpretation of the analytics data.
+
+The value of the case study is the process:
+
+- Notice an unusual data pattern.
+- Avoid assumptions.
+- Compare sources.
+- Identify likely causes.
+- Communicate clearly.
+- Escalate appropriately.
+
+## What I learned
+
+This investigation taught me that analytics debugging is partly technical and partly judgement-based.
+
+It is not enough to look at one graph and assume it reflects real user behaviour. Analytics data depends on tracking, browser behaviour, consent settings, implementation details, and the difference between tools.
+
+I also learned that issues affecting business reporting should be escalated early, especially when the data is being used to make decisions.
+
+## What I would do differently next time
+
+Next time, I would:
+
+- Document the timeline earlier.
+- Record exactly when the drop started.
+- Compare GA4 and Search Console immediately.
+- Check tracking and consent behaviour sooner.
+- Escalate earlier if the data affects business reporting.
+- Create a simple incident note so the investigation is easier to follow later.
+
+## Safe visual evidence to add before launch
+
+Use anonymised or recreated visuals only:
+
+- Simplified timeline diagram.
+- Redrawn GA4 vs Search Console comparison.
+- Written explanation of hypotheses.
+- No private GA4 screenshots.
+- No private Search Console screenshots.
+- No confidential traffic numbers unless approved.

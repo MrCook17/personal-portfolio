@@ -1,0 +1,189 @@
+## Overview
+
+The Go Website Health Check REST API is a backend project that checks whether one or more website URLs are reachable and returns structured JSON results. It was built as an individual university project and is the strongest backend/API case study in this portfolio.
+
+The project acts like a small monitoring-style backend service rather than a simple CRUD app. A user can submit URLs, the API checks them, records the response result, stores the completed job in memory, and allows previous checks to be retrieved.
+
+## Problem
+
+Checking websites manually is slow and inconsistent. If several URLs need checking, each one has to be opened individually, waited on, interpreted, and recorded.
+
+The goal was to create a backend API that could:
+
+- Accept multiple URLs in one request.
+- Validate user-submitted input.
+- Check websites automatically.
+- Handle slow or failing websites safely.
+- Return useful JSON results.
+- Store completed jobs for later retrieval.
+- Demonstrate testing, benchmarking, and concurrency.
+
+## API goals
+
+The API was designed to be practical, testable, and easy to demonstrate. The main goals were:
+
+- Keep the API focused around clear REST endpoints.
+- Use Go’s standard library where possible.
+- Return predictable JSON responses.
+- Make URL checks concurrent because website requests are network-bound.
+- Apply timeouts so slow sites do not block the whole job.
+- Store completed results in memory for a simple portfolio-ready backend service.
+- Add tests, benchmarks, and race detector evidence.
+
+## Endpoint table
+
+| Method | Endpoint       | Purpose                                          |
+| ------ | -------------- | ------------------------------------------------ |
+| GET    | `/health`      | Confirms the API is running.                     |
+| POST   | `/checks`      | Creates and runs a new website health check job. |
+| GET    | `/checks`      | Lists completed check jobs.                      |
+| GET    | `/checks/{id}` | Retrieves a specific completed check job.        |
+| GET    | `/stats`       | Returns aggregate statistics from stored checks. |
+
+## Example request
+
+```json
+{
+  "urls": [
+    "https://example.com",
+    "https://www.google.com",
+    "https://invalid-example.local"
+  ]
+}
+```
+
+## Example response shape
+
+```json
+{
+  "id": "check_123",
+  "createdAt": "2026-05-20T12:00:00Z",
+  "results": [
+    {
+      "url": "https://example.com",
+      "success": true,
+      "statusCode": 200,
+      "responseTimeMs": 142,
+      "error": ""
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "successes": 2,
+    "failures": 1,
+    "timeouts": 0
+  }
+}
+```
+
+## Architecture
+
+The project uses a small backend architecture:
+
+1. HTTP handlers receive requests.
+2. Request bodies are decoded from JSON.
+3. URLs are validated before being checked.
+4. The checker runs outbound HTTP requests.
+5. Concurrent checks are coordinated with goroutines and sync primitives.
+6. Results are collected and returned as JSON.
+7. Completed jobs are stored in an in-memory map.
+8. Stats are calculated from stored results.
+
+This kept the project focused while still showing real backend concerns: routing, validation, JSON handling, concurrency, storage, and testing.
+
+## Data and storage approach
+
+The project uses in-memory map-based storage rather than a database. This was a deliberate scope decision.
+
+A database would make sense for a production monitoring tool, but for this project the goal was to prove backend API design, concurrency, validation, testing, and documentation without overbuilding the storage layer.
+
+The in-memory store is protected with a mutex so shared data is not read and written unsafely when requests are handled concurrently.
+
+## Concurrency design
+
+The biggest technical part of the project was checking multiple URLs concurrently.
+
+Each submitted URL can be checked independently, so the project uses goroutines to start checks at the same time. A `sync.WaitGroup` waits until all checks finish before the API returns the final response.
+
+The key benefit is that slow network-bound work does not have to happen one URL at a time. If one website is slow, other checks can still complete in parallel.
+
+The implementation also needed to keep the JSON response predictable. The submitted URL order should remain understandable, and results need to be collected safely.
+
+## Timeout handling
+
+Timeout handling was important because external websites can be slow, unreachable, or unreliable.
+
+The project uses `context.WithTimeout` so outbound requests can be cancelled when they take too long. This prevents a single slow website from blocking the whole check job indefinitely.
+
+Timeouts are recorded in the result so the user can see that a URL failed because it was too slow rather than because the API itself failed.
+
+## Validation and error handling
+
+The API validates submitted URLs before checking them. It only accepts HTTP and HTTPS URLs, which prevents invalid schemes or malformed input from being treated as real website checks.
+
+Validation helps keep the API predictable and safer to use. Instead of failing later in the request process, invalid input is rejected early with a clear response.
+
+## Testing and evidence
+
+The project includes testing around the main backend behaviour:
+
+- Handler behaviour.
+- URL validation.
+- Website checker logic.
+- Stored job retrieval.
+- Statistics generation.
+- Concurrency safety checks.
+- Benchmark comparisons.
+
+The project also uses Postman for repeatable API demonstrations. This is useful for employer review because the API can be shown through clear endpoint requests and JSON responses.
+
+## Challenges
+
+The biggest challenge was learning how to structure concurrent code cleanly in Go.
+
+The API needed to:
+
+- Start multiple checks at the same time.
+- Wait for all of them to complete.
+- Avoid unsafe shared memory access.
+- Keep responses consistent.
+- Handle slow external requests safely.
+- Keep the scope manageable.
+
+Another challenge was deciding what not to build. A full monitoring dashboard, database, authentication, and deployment could all be future improvements, but adding them too early would distract from the backend/API learning goals.
+
+## Outcome
+
+The result is a finished backend/API project with a public GitHub repo and clear portfolio value.
+
+It demonstrates:
+
+- Go backend development.
+- REST API design.
+- JSON request and response handling.
+- Input validation.
+- Concurrent URL checking.
+- Timeout handling.
+- In-memory storage.
+- Testing and benchmarks.
+- Postman API evidence.
+- Technical decision-making.
+
+## What I learned
+
+This project helped me understand that backend development is not just about creating endpoints. It also involves handling unreliable input, unreliable external services, performance trade-offs, concurrency safety, and clear documentation.
+
+I also learned that concurrency can improve performance for network-bound work, but it introduces extra responsibility. Shared state, ordering, cancellation, and testing all become more important.
+
+## Future improvements
+
+Future improvements could include:
+
+- Adding a React or Next.js dashboard frontend.
+- Persisting check jobs in PostgreSQL or Supabase.
+- Deploying the API publicly.
+- Adding scheduled checks.
+- Adding authentication.
+- Adding email alerts for failed checks.
+- Improving the README with more screenshots and benchmark evidence.
+- Adding OpenAPI documentation.

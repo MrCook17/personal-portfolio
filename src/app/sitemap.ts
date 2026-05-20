@@ -1,14 +1,31 @@
 import type { MetadataRoute } from "next";
 
+import { sortedProjects } from "@/content/projects";
 import { siteConfig } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["/", "/projects", "/experience", "/about", "/contact"];
+  const baseUrl = (siteConfig.url || "http://localhost:3000").replace(
+    /\/$/,
+    "",
+  );
 
-  return routes.map((route) => ({
-    url: new URL(route, siteConfig.url).toString(),
+  const staticRoutes = [
+    "",
+    "/projects",
+    "/experience",
+    "/about",
+    "/blog",
+    "/contact",
+  ];
+
+  const projectRoutes = sortedProjects
+    .filter((project) => project.caseStudyUrl)
+    .map((project) => project.caseStudyUrl as string);
+
+  return [...staticRoutes, ...projectRoutes].map((route) => ({
+    url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: route === "/" ? 1 : 0.8,
+    changeFrequency: route.startsWith("/projects/") ? "monthly" : "weekly",
+    priority: route === "" ? 1 : route.startsWith("/projects/") ? 0.8 : 0.7,
   }));
 }
