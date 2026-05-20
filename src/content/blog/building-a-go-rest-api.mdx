@@ -1,0 +1,91 @@
+## Why I built the API
+
+The Go Website Health Check REST API was built as a backend project to check whether websites are reachable and responding correctly.
+
+The idea was simple: instead of manually checking a list of URLs, the API accepts URLs, checks them, and returns structured JSON results. Each result can include whether the request succeeded, the status code, the response time and any timeout or error information.
+
+Although the project is small compared with a production monitoring platform, it was useful because it brought together several backend ideas in one place.
+
+## Designing the endpoints
+
+The API was planned around a small set of clear endpoints:
+
+- `GET /health` to confirm the API is running
+- `POST /checks` to submit one or more URLs for checking
+- `GET /checks/{id}` to retrieve a saved check result
+- `GET /checks` to list saved checks
+- `GET /stats` to return aggregate information
+
+This helped me think about the API as more than one handler. Each endpoint had a specific responsibility, and the responses needed to stay predictable.
+
+## Input validation mattered more than expected
+
+A key part of the project was validating user-submitted URLs. The API should not accept random strings or unsupported protocols. It should only accept sensible HTTP or HTTPS URLs.
+
+That made the project feel more realistic because backend code cannot assume that input will always be clean. Even in a coursework-style project, validation makes the API safer, clearer and easier to test.
+
+Good validation also improves the developer experience. If a request fails, the response should make it clear why it failed.
+
+## Why concurrency was useful
+
+The most interesting technical part was checking multiple URLs concurrently.
+
+Website checks are network-bound. That means the API spends a lot of time waiting for external websites to respond. If each URL is checked one after another, one slow website can delay the whole job.
+
+Using goroutines made it possible to start multiple checks at the same time. A `sync.WaitGroup` can then wait for the checks to finish before returning the final JSON response.
+
+The main thing I had to be careful about was collecting results safely and keeping the response predictable.
+
+## Handling timeouts
+
+Timeouts were another important part of the project.
+
+A website might be slow, unavailable or never respond properly. Without a timeout, one bad request could block the job for too long. Using `context.WithTimeout` helped set a limit for each outbound request.
+
+This made the API more reliable because slow external websites could be handled as failed or timed-out checks rather than freezing the request.
+
+## Testing and benchmark evidence
+
+The project also helped me practise writing tests around backend behaviour.
+
+Useful areas to test included:
+
+- health endpoint response
+- URL validation
+- successful website checks
+- timeout behaviour
+- saved check retrieval
+- aggregate stats
+
+Benchmarks were also useful because they showed why concurrent checking matters. The exact numbers depend on the URLs and environment, but the comparison between sequential and concurrent checking helped explain the performance benefit.
+
+## What I learned
+
+The biggest lesson was that backend work is not only about making an endpoint return data.
+
+A useful backend API needs:
+
+- clear endpoint design
+- validation
+- structured JSON responses
+- safe timeout handling
+- predictable error responses
+- tests
+- evidence that the implementation works
+
+I also learned that concurrency is powerful, but it needs to be used carefully. It can improve performance for network-bound tasks, but it also introduces extra complexity around shared data, result collection and debugging.
+
+## Future improvements
+
+The strongest future improvement would be adding a frontend dashboard. That would turn the project into a clearer full-stack portfolio piece.
+
+A future version could include:
+
+- a Next.js dashboard
+- saved check history
+- charts for successes, failures and response times
+- persistent database storage
+- deployment for the API
+- authentication for private checks
+
+Even without those additions, the current project is a strong backend learning project because it brings together REST design, Go, JSON, concurrency, timeouts, tests and documentation.

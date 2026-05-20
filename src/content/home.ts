@@ -259,7 +259,7 @@ export const latestBlogPosts: BlogPostPreview[] = [
     title: "Building my portfolio with Next.js and TypeScript",
     description:
       "A short write-up on how I started building this portfolio, why I chose Next.js, and what I learned from setting up the project structure.",
-    href: "/blog",
+    href: "/blog/building-my-portfolio-nextjs-typescript",
     date: "May 2026",
     readingTime: "5 min read",
     tags: ["Next.js", "TypeScript", "Portfolio Build"],
@@ -268,18 +268,18 @@ export const latestBlogPosts: BlogPostPreview[] = [
     title: "What I learned from building a Go REST API",
     description:
       "Notes from creating a website health check API with URL validation, JSON responses, timeout handling, concurrency, tests, and benchmarks.",
-    href: "/blog",
+    href: "/blog/building-a-go-rest-api",
     date: "May 2026",
-    readingTime: "7 min read",
+    readingTime: "5 min read",
     tags: ["Go", "REST API", "Backend", "Testing"],
   },
   {
-    title: "Improving ecommerce SEO pages in a real CMS",
+    title: "What I learned improving ecommerce SEO pages in a real CMS",
     description:
       "A practical note on improving metadata, product descriptions, page structure, image SEO, and internal links within CMS limitations.",
-    href: "/blog",
+    href: "/blog/ecommerce-seo-lessons-real-cms",
     date: "May 2026",
-    readingTime: "6 min read",
+    readingTime: "5 min read",
     tags: ["SEO", "Ecommerce", "CMS", "Analytics"],
   },
 ];

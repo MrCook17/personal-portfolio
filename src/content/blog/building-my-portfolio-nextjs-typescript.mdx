@@ -1,0 +1,59 @@
+## Why I wanted this portfolio to be more than a simple CV site
+
+I wanted this portfolio to do more than list a few projects and contact links. The main aim was to build something that could show how I think through software decisions, how I explain technical work, and how I connect commercial experience with practical development skills.
+
+The site is aimed at junior software developer, backend developer, full-stack developer and web developer roles. That changed how I planned the structure. Instead of making the homepage the whole portfolio, I chose a multi-page structure with separate project, case study, experience, about, blog and contact areas.
+
+That lets the homepage stay quick to scan while the deeper pages provide the evidence.
+
+## Why I chose Next.js, TypeScript and MDX
+
+I chose Next.js because it gives the portfolio a strong base for routing, metadata, static pages, dynamic case studies and future backend features. TypeScript makes the content and components safer to work with because project data, blog data and shared props can be typed instead of guessed.
+
+MDX is useful because the project case studies and blog posts need more than plain text. They need headings, links, code examples, callouts and eventually screenshots or diagrams.
+
+The main lesson here is that the tech stack should support the content. For this portfolio, the content is the product. The code is important, but the real goal is to make the projects, experience and learning easy for employers to understand.
+
+## Keeping content separate from UI
+
+One of the most useful decisions was separating content from page layouts.
+
+For example, the homepage has its own content file, the project system has a project metadata file, the experience page has structured role data, and the blog now has a blog metadata file. This makes the site easier to update later because I do not need to dig through large route files just to change a sentence, date, tag or project link.
+
+This approach also makes future updates more predictable. Adding a new blog post should mainly mean adding:
+
+- a new MDX file
+- a metadata entry
+- a route generated from the slug
+
+That is much easier to maintain than hardcoding every card manually.
+
+## Building reusable components first
+
+Before building the main pages, I built reusable components such as buttons, cards, badges, tags, page headers, section headings, callouts and CTAs.
+
+That helped keep the site consistent. The same basic card style can support project cards, blog cards, experience cards and about page sections. The same tag pattern can support skills, project technologies and blog topics.
+
+This is a small version of a design system. It is not overcomplicated, but it gives the project a cleaner structure and reduces repeated styling.
+
+## What I learned from the build process
+
+The biggest learning point was that a portfolio is partly a software project and partly a communication project.
+
+It is not enough for the site to look good. It needs to explain:
+
+- what I built
+- why I built it that way
+- what constraints I worked with
+- what the technical decisions were
+- what I learned from the work
+
+I also learned that file structure matters more as the project grows. Early on, it is easy to put everything into one page file. That works temporarily, but it becomes harder to update once the homepage, project system, case studies, experience page and blog all exist.
+
+## What I would improve next
+
+The main improvements I want to make next are visual evidence and testing. The case studies will be stronger once they include safe screenshots, diagrams, Postman examples and benchmark outputs where appropriate.
+
+I also want to add more automated testing and a contact form backend later. That will help the portfolio demonstrate full-stack skills directly, not only through the case studies.
+
+For now, the main win is that the site structure is in place. Projects, experience, about content and blog notes can all grow without needing a full redesign.

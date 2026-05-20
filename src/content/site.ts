@@ -23,13 +23,10 @@ export const siteConfig = {
       label: "About",
       href: "/about",
     },
-    /*
-    Enable once at least 2 useful posts are ready.
     {
       label: "Blog",
       href: "/blog",
     },
-    */
     {
       label: "Contact",
       href: "/contact",
