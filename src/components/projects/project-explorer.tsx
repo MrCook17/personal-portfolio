@@ -14,6 +14,12 @@ type ProjectExplorerProps = {
   projects: Project[];
 };
 
+/**
+ * Render a project browsing UI with search, type/status filters, a results count, and a grid of filtered projects.
+ *
+ * @param projects - The list of projects available for searching and filtering
+ * @returns The ProjectExplorer UI as a JSX element
+ */
 export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeType, setActiveType] = useState<ProjectType | "All">("All");
