@@ -2,12 +2,13 @@
 
 import { useMemo, useState } from "react";
 
-import type { Project, ProjectStatus, ProjectType } from "@/types/project";
 import { ProjectFilters } from "@/components/projects/project-filters";
 import { ProjectGrid } from "@/components/projects/project-grid";
 import { ProjectSearch } from "@/components/projects/project-search";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { filterProjects } from "@/lib/project-filters";
+import type { Project, ProjectStatus, ProjectType } from "@/types/project";
 
 type ProjectExplorerProps = {
   projects: Project[];
@@ -20,33 +21,15 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
     "All",
   );
 
-  const filteredProjects = useMemo(() => {
-    const normalisedSearch = searchTerm.trim().toLowerCase();
-
-    return projects.filter((project) => {
-      const searchableText = [
-        project.title,
-        project.summary,
-        project.type,
-        project.status,
-        project.proofPoint,
-        ...project.techStack,
-        ...project.keywords,
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      const matchesSearch =
-        normalisedSearch.length === 0 ||
-        searchableText.includes(normalisedSearch);
-
-      const matchesType = activeType === "All" || project.type === activeType;
-      const matchesStatus =
-        activeStatus === "All" || project.status === activeStatus;
-
-      return matchesSearch && matchesType && matchesStatus;
-    });
-  }, [activeStatus, activeType, projects, searchTerm]);
+  const filteredProjects = useMemo(
+    () =>
+      filterProjects(projects, {
+        query: searchTerm,
+        type: activeType,
+        status: activeStatus,
+      }),
+    [activeStatus, activeType, projects, searchTerm],
+  );
 
   const hasActiveFilters =
     searchTerm.trim().length > 0 ||
