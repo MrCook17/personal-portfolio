@@ -44,7 +44,7 @@ export function FeaturedProjectsSection() {
               <CardContent className="flex-1 space-y-5">
                 <div className="rounded-2xl border bg-background/50 p-4">
                   <p className="text-sm font-medium text-foreground">
-                    Proof point
+                    What this shows
                   </p>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     {project.proof}

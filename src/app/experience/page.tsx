@@ -28,7 +28,7 @@ export default function ExperiencePage() {
       <PageHeader
         eyebrow="Experience"
         title="Commercial Software & Web Experience"
-        description="A timeline of software engineering, web operations, SEO, analytics, database-backed systems, debugging and practical business work."
+        description="A look at the commercial software and web work I’ve done alongside university, from desktop applications and existing codebases to SEO, analytics and CMS-based website improvements."
       />
 
       <Container size="lg" className="mt-10 md:mt-12">
@@ -37,7 +37,7 @@ export default function ExperiencePage() {
             <SectionHeading
               eyebrow="Timeline"
               title="Work experience"
-              description="Software engineering is positioned first because it is closest to the roles I am working towards, while ecommerce SEO and web operations remain an important commercial differentiator."
+              description="I’ve put the Software Engineer role first because it is most relevant to the developer roles I’m working towards, while my Web Operator role adds useful experience across ecommerce, SEO and analytics."
             />
 
             <div className="mt-10">

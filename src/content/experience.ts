@@ -18,7 +18,6 @@ export const experienceRoles = [
       "Work with database-backed business workflows covering records, jobs, customers, invoices and operational data.",
       "Debug existing codebases, investigate issues and implement updates across live business systems.",
       "Research and apply third-party APIs, including Shopify-related integration work.",
-      "Document sensitive commercial work through anonymised case studies instead of exposing private client data, credentials or internal screenshots.",
     ],
     technologies: [
       "C#",

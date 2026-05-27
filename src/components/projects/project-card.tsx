@@ -53,7 +53,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <CardContent className="flex flex-1 flex-col gap-5">
         <div className="rounded-2xl border border-border bg-background/40 p-4">
-          <p className="text-sm font-semibold text-foreground">Proof point</p>
+          <p className="text-sm font-semibold text-foreground">
+            What this shows
+          </p>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
             {project.proofPoint}
           </p>

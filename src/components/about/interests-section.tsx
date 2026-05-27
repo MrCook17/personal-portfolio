@@ -14,7 +14,7 @@ export function InterestsSection() {
       <SectionHeading
         eyebrow="Away from code"
         title="A bit of personality"
-        description="Kept light, because the main purpose of the portfolio is still software credibility."
+        description="A few personal interests that help show who I am outside of projects, university and work."
       />
 
       <div className="mt-8 grid gap-4 md:grid-cols-3">

@@ -10,7 +10,7 @@ export function SkillsAndToolsSection() {
       <SectionHeading
         eyebrow="Skills and tools"
         title="Technical areas I work with"
-        description="Grouped skills rather than percentage ratings, keeping the focus on practical project and workplace use."
+        description="The main languages, tools and workflows I’ve used across projects, coursework and commercial work."
       />
 
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">

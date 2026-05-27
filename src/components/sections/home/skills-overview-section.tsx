@@ -10,8 +10,8 @@ export function SkillsOverviewSection() {
       <Container size="lg">
         <SectionHeading
           eyebrow="Technical skills"
-          title="Practical skills grouped by how I use them"
-          description="No percentage bars or inflated ratings — just the tools, languages and workflows I use across projects, university work and commercial experience."
+          title="Skills I use in real projects"
+          description="A practical overview of the languages, tools and workflows I’ve used across university projects, commercial software development, CMS work, SEO and backend/API development."
         />
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
