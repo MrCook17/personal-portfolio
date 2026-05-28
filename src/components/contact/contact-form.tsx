@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -232,8 +233,14 @@ export function ContactForm() {
             I’ll use the details you provide to respond to your message. Your
             name, email address and message may be stored securely and sent to
             my email inbox as a notification. I do not use contact form
-            submissions for marketing. I only keep messages for as long as
-            needed to respond or manage the enquiry.
+            submissions for marketing.{" "}
+            <Link
+              href="/privacy"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Read the privacy page
+            </Link>
+            .
           </p>
 
           {formStatus ? (

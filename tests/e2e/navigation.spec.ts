@@ -41,4 +41,22 @@ test.describe("main navigation", () => {
       page.getByRole("heading", { level: 1, name: "Contact Me" }),
     ).toBeVisible();
   });
+
+  test("footer links to privacy and accessibility pages", async ({ page }) => {
+    const footer = page.getByRole("contentinfo");
+
+    await footer.getByRole("link", { name: "Privacy" }).click();
+    await expect(page).toHaveURL(/\/privacy$/);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Privacy" }),
+    ).toBeVisible();
+
+    await page.goto("/");
+
+    await footer.getByRole("link", { name: "Accessibility" }).click();
+    await expect(page).toHaveURL(/\/accessibility$/);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Accessibility" }),
+    ).toBeVisible();
+  });
 });
