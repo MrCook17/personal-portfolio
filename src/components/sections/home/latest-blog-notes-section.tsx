@@ -30,7 +30,7 @@ export function LatestBlogNotesSection() {
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {latestBlogPosts.map((post) => (
-            <Card key={post.title} className="bg-card/70">
+            <Card key={post.title} className="flex h-full flex-col bg-card/70">
               <CardHeader>
                 <CardTitle className="text-xl">{post.title}</CardTitle>
                 <CardDescription>{post.description}</CardDescription>
@@ -48,7 +48,7 @@ export function LatestBlogNotesSection() {
                 </div>
               </CardContent>
 
-              <CardFooter>
+              <CardFooter className="mt-auto">
                 <Button asChild variant="outline">
                   <Link href={post.href}>Read post</Link>
                 </Button>
