@@ -102,7 +102,11 @@ export function ContactLinks() {
           </div>
 
           <Button asChild className="w-full">
-            <Link href="/Charlie-Cook-CV.pdf">
+            <Link
+              href="/Charlie-Cook-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FileText className="mr-2 size-4" aria-hidden="true" />
               Download CV
             </Link>
@@ -114,9 +118,9 @@ export function ContactLinks() {
         <CardHeader>
           <CardTitle>Availability</CardTitle>
           <CardDescription>
-            Currently building a portfolio focused on software engineering,
-            backend/API work, commercial web development, SEO, analytics and
-            database-backed systems.
+            Currently studying Computer Science at university while working
+            part-time, so my main availability is for part-time, flexible,
+            remote or hybrid opportunities.
           </CardDescription>
         </CardHeader>
       </Card>

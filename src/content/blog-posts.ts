@@ -19,14 +19,14 @@ const blogPostData: BlogPostInput[] = [
     title: "What I learned from building a Go REST API",
     slug: "building-a-go-rest-api",
     description:
-      "Notes from building a website health check API with Go, REST endpoints, JSON responses, URL validation, timeouts, concurrency and tests.",
+      "A short note on building a Go API that checks website availability, handles timeouts, runs checks concurrently and returns structured JSON results.",
     date: "2026-05-20",
     tags: ["Go", "Backend", "REST API", "Learning"],
     wordCount: 1080,
     published: true,
   },
   {
-    title: "What I learned improving ecommerce SEO pages in a real CMS",
+    title: "What I learned from improving ecommerce SEO pages in a real CMS",
     slug: "ecommerce-seo-lessons-real-cms",
     description:
       "Practical lessons from improving ecommerce pages with metadata, page structure, internal links, image optimisation and CMS constraints.",

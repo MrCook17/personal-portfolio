@@ -61,7 +61,7 @@ function HeroActions() {
       </Button>
 
       <Button asChild size="lg" variant="outline">
-        <Link href={homeLinks.cv}>
+        <Link href={homeLinks.cv} target="_blank" rel="noopener noreferrer">
           Download CV
           <Download className="ml-2 size-4" aria-hidden="true" />
         </Link>

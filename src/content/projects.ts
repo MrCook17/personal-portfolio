@@ -67,7 +67,7 @@ export const projects: Project[] = [
       "content structure",
     ],
     liveUrl:
-      "https://www.cromartiehobbycraft.co.uk/Catalogue/Arts-Crafts/Marbling-Dyes-Tie-Dye/Tie-Dye-Techniques",
+      "https://www.cromartiehobbycraft.co.uk/AdditionalDepartments/Header-Content/Tie-Dye-Techniques",
     caseStudyUrl: "/projects/cromartie-tie-dye-page-rebuild",
     employerSafeNotes:
       "Use public page screenshots only. Do not show CMS admin screenshots unless approved.",

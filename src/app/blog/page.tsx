@@ -40,7 +40,7 @@ export default function BlogPage() {
       <PageHeader
         eyebrow="Blog & learning notes"
         title="Software Development Notes"
-        description="Notes on building projects, backend development, SEO, analytics, debugging and what I am learning while developing this portfolio and wider software projects."
+        description="Short write-ups about projects, technical decisions, lessons learned and practical development work."
       />
 
       <Container size="lg" className="mt-10 space-y-12 md:mt-12">

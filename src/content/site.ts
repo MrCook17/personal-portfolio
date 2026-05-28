@@ -32,7 +32,7 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
-  cvHref: "/cv",
+  cvHref: "/Charlie-Cook-CV.pdf",
   links: {
     github: "",
     linkedin: "",
