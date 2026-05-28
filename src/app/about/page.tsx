@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ProfileImage } from "@/components/about/profile-image";
 
 export const metadata: Metadata = {
   title: "About | Charlie Cook",
@@ -28,6 +29,7 @@ export default function AboutPage() {
         eyebrow="About"
         title="About Me"
         description="UK Computer Science student and software developer with commercial experience in software engineering, web operations, SEO, analytics and backend development."
+        visual={<ProfileImage />}
       />
 
       <Container size="lg" className="mt-10 md:mt-12">
