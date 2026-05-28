@@ -78,20 +78,24 @@ export function ContactLinks() {
                   key={item.label}
                   asChild
                   variant="outline"
-                  className="h-auto w-full justify-start gap-3 px-4 py-4 text-left"
+                  className="group h-auto w-full justify-start gap-3 px-4 py-4 text-left transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <Link
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                   >
                     <Icon
-                      className="size-5 shrink-0 text-primary"
+                      className="size-5 shrink-0 text-primary transition-colors group-hover:text-primary-foreground group-focus-visible:text-primary-foreground"
                       aria-hidden="true"
                     />
+
                     <span>
-                      <span className="block font-medium">{item.label}</span>
-                      <span className="block text-sm font-normal text-muted-foreground">
+                      <span className="block font-medium text-foreground transition-colors group-hover:text-primary-foreground group-focus-visible:text-primary-foreground">
+                        {item.label}
+                      </span>
+
+                      <span className="block text-sm font-normal text-muted-foreground transition-colors group-hover:text-primary-foreground/90 group-focus-visible:text-primary-foreground/90">
                         {item.description}
                       </span>
                     </span>

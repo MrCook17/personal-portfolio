@@ -14,9 +14,19 @@ test.describe("Contact page", () => {
     await expect(page.getByLabel("Email")).toBeVisible();
     await expect(page.getByLabel("Message")).toBeVisible();
 
-    await expect(page.getByRole("link", { name: /email/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /github/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /linkedin/i })).toBeVisible();
+    await expect(
+      page.locator('a[href="mailto:charlie_cook321@hotmail.com"]').first(),
+    ).toBeVisible();
+
+    await expect(
+      page.locator('a[href="https://github.com/MrCook17"]').first(),
+    ).toBeVisible();
+
+    await expect(
+      page
+        .locator('a[href="https://www.linkedin.com/in/charles-james-cook/"]')
+        .first(),
+    ).toBeVisible();
 
     await expect(page.locator('input[name="website"]')).toHaveAttribute(
       "tabindex",

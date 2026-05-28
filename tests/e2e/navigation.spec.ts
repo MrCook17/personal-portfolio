@@ -7,7 +7,7 @@ test.describe("main navigation", () => {
   });
 
   test("navigates to the main portfolio pages", async ({ page }) => {
-    const navigation = page.getByRole("navigation");
+    const navigation = page.getByRole("banner").getByRole("navigation");
 
     await navigation.getByRole("link", { name: /^Projects$/ }).click();
     await expect(page).toHaveURL(/\/projects$/);
@@ -43,9 +43,10 @@ test.describe("main navigation", () => {
   });
 
   test("footer links to privacy and accessibility pages", async ({ page }) => {
-    const footer = page.getByRole("contentinfo");
-
-    await footer.getByRole("link", { name: "Privacy" }).click();
+    await page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: "Privacy" })
+      .click();
     await expect(page).toHaveURL(/\/privacy$/);
     await expect(
       page.getByRole("heading", { level: 1, name: "Privacy" }),
@@ -53,7 +54,11 @@ test.describe("main navigation", () => {
 
     await page.goto("/");
 
-    await footer.getByRole("link", { name: "Accessibility" }).click();
+    await page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: "Accessibility" })
+      .click();
+
     await expect(page).toHaveURL(/\/accessibility$/);
     await expect(
       page.getByRole("heading", { level: 1, name: "Accessibility" }),
