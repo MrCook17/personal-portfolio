@@ -34,6 +34,7 @@ export function ProjectFilters({
               type="button"
               size="sm"
               variant={activeType === type ? "default" : "outline"}
+              className="h-auto py-2 text-left whitespace-normal"
               onClick={() => onTypeChange(type)}
             >
               {type}
@@ -53,6 +54,7 @@ export function ProjectFilters({
               type="button"
               size="sm"
               variant={activeStatus === status ? "default" : "outline"}
+              className="h-auto py-2 text-left whitespace-normal"
               onClick={() => onStatusChange(status)}
             >
               {status}

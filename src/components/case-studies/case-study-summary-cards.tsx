@@ -22,11 +22,13 @@ export function CaseStudySummaryCards({ summary }: CaseStudySummaryCardsProps) {
   ];
 
   return (
-    <div className="grid gap-5 md:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-3">
       {cards.map((card) => (
         <Card key={card.title}>
           <CardHeader>
-            <CardTitle className="text-lg">{card.title}</CardTitle>
+            <CardTitle as="h2" className="text-lg">
+              {card.title}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm leading-6 text-muted-foreground">

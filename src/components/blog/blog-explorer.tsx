@@ -30,7 +30,7 @@ export function BlogExplorer({ posts, tags }: BlogExplorerProps) {
   return (
     <section className="space-y-8" aria-labelledby="all-blog-posts-heading">
       <Card>
-        <CardContent className="space-y-4 p-4 md:p-5">
+        <CardContent className="space-y-5 p-5 md:p-6">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
               <h2

@@ -7,30 +7,33 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: (props) => (
       <h1
-        className="mt-10 scroll-m-24 text-4xl font-bold tracking-tight text-foreground"
+        className="mt-10 scroll-m-24 text-4xl font-bold tracking-tight text-foreground first:mt-0"
         {...props}
       />
     ),
     h2: (props) => (
       <h2
-        className="mt-12 scroll-m-24 border-b border-border pb-3 text-2xl font-semibold tracking-tight text-foreground"
+        className="mt-10 scroll-m-24 border-b border-border pb-3 text-2xl font-semibold tracking-tight text-foreground first:mt-0"
         {...props}
       />
     ),
     h3: (props) => (
       <h3
-        className="mt-8 scroll-m-24 text-xl font-semibold tracking-tight text-foreground"
+        className="mt-8 scroll-m-24 text-xl font-semibold tracking-tight text-foreground first:mt-0"
         {...props}
       />
     ),
     h4: (props) => (
       <h4
-        className="mt-6 scroll-m-24 text-lg font-semibold tracking-tight text-foreground"
+        className="mt-6 scroll-m-24 text-lg font-semibold tracking-tight text-foreground first:mt-0"
         {...props}
       />
     ),
     p: (props) => (
-      <p className="mt-4 leading-7 text-muted-foreground" {...props} />
+      <p
+        className="mt-4 leading-7 text-muted-foreground first:mt-0"
+        {...props}
+      />
     ),
     a: ({ className, href = "", ...props }) => {
       const isInternal = href.startsWith("/");
@@ -63,13 +66,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     ul: (props) => (
       <ul
-        className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground"
+        className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground first:mt-0"
         {...props}
       />
     ),
     ol: (props) => (
       <ol
-        className="mt-4 list-decimal space-y-2 pl-6 text-muted-foreground"
+        className="mt-4 list-decimal space-y-2 pl-6 text-muted-foreground first:mt-0"
         {...props}
       />
     ),
@@ -79,7 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     blockquote: (props) => (
       <blockquote
-        className="mt-6 rounded-2xl border border-border bg-card/70 px-5 py-4 text-muted-foreground shadow-sm"
+        className="mt-6 rounded-2xl border border-border bg-card/70 px-5 py-4 text-muted-foreground shadow-sm first:mt-0"
         {...props}
       />
     ),

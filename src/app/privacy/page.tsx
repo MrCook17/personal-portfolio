@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Container } from "@/components/ui/container";
+import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 
 export const metadata: Metadata = {
@@ -13,24 +13,24 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main>
+    <>
       <PageHeader
         eyebrow="Privacy"
         title="Privacy"
         description="A simple explanation of how contact form submissions are handled on this portfolio website."
       />
 
-      <Container size="md" className="py-16">
+      <PageContent size="md">
         <Card>
           <CardHeader>
-            <CardTitle>Contact form privacy summary</CardTitle>
+            <CardTitle as="h2">Contact form privacy summary</CardTitle>
           </CardHeader>
 
           <CardContent className="space-y-8 text-sm leading-7 text-muted-foreground">
             <section className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground">
+              <h3 className="text-base font-semibold text-foreground">
                 What information I collect
-              </h2>
+              </h3>
               <p>
                 When you use the contact form, I collect your name, email
                 address and message. The form also uses basic anti-spam checks,
@@ -40,9 +40,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground">
+              <h3 className="text-base font-semibold text-foreground">
                 Why I collect it
-              </h2>
+              </h3>
               <p>
                 I use the information you provide to respond to your enquiry,
                 such as a role opportunity, project question or
@@ -52,9 +52,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground">
+              <h3 className="text-base font-semibold text-foreground">
                 Where it is stored
-              </h2>
+              </h3>
               <p>
                 Valid contact form submissions are stored in Supabase. A
                 notification may also be sent through the configured email
@@ -63,9 +63,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground">
+              <h3 className="text-base font-semibold text-foreground">
                 Who it is shared with
-              </h2>
+              </h3>
               <p>
                 Contact form data may be processed by Supabase for database
                 storage and by the configured email provider for notification
@@ -75,9 +75,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground">
+              <h3 className="text-base font-semibold text-foreground">
                 How long I keep it
-              </h2>
+              </h3>
               <p>
                 I only keep contact form submissions for as long as needed to
                 respond to or manage the enquiry. As a practical approach, I aim
@@ -88,9 +88,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-base font-semibold text-foreground">
+              <h3 className="text-base font-semibold text-foreground">
                 Deletion or correction requests
-              </h2>
+              </h3>
               <p>
                 If you want your contact form submission deleted or corrected,
                 contact me using the{" "}
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
             </p>
           </CardContent>
         </Card>
-      </Container>
-    </main>
+      </PageContent>
+    </>
   );
 }

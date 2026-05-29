@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { latestBlogPosts } from "@/content/home";
@@ -20,9 +21,10 @@ export function LatestBlogNotesSection() {
   }
 
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="latest-notes">
+    <PageSection aria-labelledby="latest-notes">
       <Container size="lg">
         <SectionHeading
+          id="latest-notes"
           eyebrow="Latest notes"
           title="Software development notes"
           description="Short technical notes on project building, backend development, SEO, analytics, debugging and what I am learning."
@@ -57,6 +59,6 @@ export function LatestBlogNotesSection() {
           ))}
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

@@ -50,7 +50,7 @@ export function ContactLinks() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Contact details</CardTitle>
+          <CardTitle as="h2">Contact details</CardTitle>
           <CardDescription>
             Open to junior software developer, backend developer, full-stack
             developer, web developer and graduate software roles.
@@ -78,7 +78,7 @@ export function ContactLinks() {
                   key={item.label}
                   asChild
                   variant="outline"
-                  className="group h-auto w-full justify-start gap-3 px-4 py-4 text-left transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="group h-auto w-full justify-start gap-3 px-4 py-4 text-left whitespace-normal transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <Link
                     href={item.href}
@@ -90,7 +90,7 @@ export function ContactLinks() {
                       aria-hidden="true"
                     />
 
-                    <span>
+                    <span className="min-w-0">
                       <span className="block font-medium text-foreground transition-colors group-hover:text-primary-foreground group-focus-visible:text-primary-foreground">
                         {item.label}
                       </span>
@@ -120,7 +120,7 @@ export function ContactLinks() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Availability</CardTitle>
+          <CardTitle as="h2">Availability</CardTitle>
           <CardDescription>
             Currently studying Computer Science at university while working
             part-time, so my main availability is for part-time, flexible,

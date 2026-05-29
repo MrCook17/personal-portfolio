@@ -12,15 +12,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { featuredProjects } from "@/content/home";
 
 export function FeaturedProjectsSection() {
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="featured-projects">
+    <PageSection aria-labelledby="featured-projects">
       <Container size="lg">
         <SectionHeading
+          id="featured-projects"
           eyebrow="Project evidence"
           title="Featured software, backend and commercial web projects"
           description="A focused selection of projects that show backend/API work, commercial SEO, debugging, database-backed software, and practical technical decision-making."
@@ -58,7 +60,7 @@ export function FeaturedProjectsSection() {
                 </div>
               </CardContent>
 
-              <CardFooter className="flex flex-col gap-3 sm:flex-row sm:justify-between">
+              <CardFooter className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <Button asChild>
                   <Link href={project.primaryHref}>
                     {project.primaryLabel}
@@ -88,6 +90,6 @@ export function FeaturedProjectsSection() {
           ))}
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

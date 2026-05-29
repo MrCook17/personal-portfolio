@@ -49,10 +49,8 @@ export default async function ProjectCaseStudyPage({
   }
 
   return (
-    <main>
-      <CaseStudyLayout project={project}>
-        <CaseStudy />
-      </CaseStudyLayout>
-    </main>
+    <CaseStudyLayout project={project}>
+      <CaseStudy />
+    </CaseStudyLayout>
   );
 }

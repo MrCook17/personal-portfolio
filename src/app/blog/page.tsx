@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { BlogExplorer } from "@/components/blog/blog-explorer";
 import { FeaturedBlogCard } from "@/components/blog/featured-blog-card";
 import { Callout } from "@/components/ui/callout";
-import { Container } from "@/components/ui/container";
+import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import {
   getBlogTags,
@@ -36,14 +36,14 @@ export default function BlogPage() {
     : publishedPosts;
 
   return (
-    <main className="py-12 md:py-16">
+    <>
       <PageHeader
         eyebrow="Blog & learning notes"
         title="Software Development Notes"
         description="Short write-ups about projects, technical decisions, lessons learned and practical development work."
       />
 
-      <Container size="lg" className="mt-10 space-y-12 md:mt-12">
+      <PageContent size="lg" className="space-y-12">
         {publishedPosts.length >= 2 ? (
           <>
             {featuredPost ? <FeaturedBlogCard post={featuredPost} /> : null}
@@ -59,7 +59,7 @@ export default function BlogPage() {
             there are at least two useful notes available.
           </Callout>
         )}
-      </Container>
-    </main>
+      </PageContent>
+    </>
   );
 }

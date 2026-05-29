@@ -3,8 +3,9 @@ import Link from "next/link";
 import type { PropsWithChildren } from "react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { MdxContent } from "@/components/ui/mdx-content";
 import { Tag } from "@/components/ui/tag";
 import type { BlogPost } from "@/types/blog";
 
@@ -61,9 +62,7 @@ export function BlogPostLayout({ post, children }: BlogPostLayoutProps) {
           </div>
         </header>
 
-        <div className="mt-10 space-y-6 rounded-2xl border border-border/70 bg-card/45 p-6 leading-7 shadow-sm md:p-8 [&_a]:font-medium [&_a]:text-primary [&_a]:underline-offset-4 hover:[&_a]:underline [&_blockquote]:border-l-2 [&_blockquote]:border-primary/60 [&_blockquote]:pl-4 [&_blockquote]:text-muted-foreground [&_code]:rounded [&_code]:bg-muted [&_code]:px-1.5 [&_code]:py-0.5 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h3]:mt-8 [&_h3]:text-xl [&_h3]:font-semibold [&_li]:mt-2 [&_ol]:ml-5 [&_ol]:list-decimal [&_p]:text-muted-foreground [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border [&_pre]:bg-muted/70 [&_pre]:p-4 [&_strong]:text-foreground [&_ul]:ml-5 [&_ul]:list-disc">
-          {children}
-        </div>
+        <MdxContent className="mt-10">{children}</MdxContent>
 
         <div className="mt-10 rounded-2xl border border-border/70 bg-muted/20 p-6">
           <h2 className="text-xl font-semibold text-foreground">
@@ -73,14 +72,14 @@ export function BlogPostLayout({ post, children }: BlogPostLayoutProps) {
             These notes support the project case studies, but the main portfolio
             evidence still lives in the projects and experience pages.
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
+          <ButtonGroup className="mt-5">
             <Button asChild>
               <Link href="/projects">View projects</Link>
             </Button>
             <Button asChild variant="outline">
               <Link href="/experience">View experience</Link>
             </Button>
-          </div>
+          </ButtonGroup>
         </div>
       </Container>
     </article>

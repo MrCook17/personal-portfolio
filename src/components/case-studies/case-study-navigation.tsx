@@ -26,9 +26,13 @@ export function CaseStudyNavigation({ currentSlug }: CaseStudyNavigationProps) {
       aria-label="Case study navigation"
       className="mt-12 flex flex-col gap-4 border-t border-border pt-8 md:flex-row md:items-center md:justify-between"
     >
-      <div>
+      <div className="min-w-0">
         {previousProject?.caseStudyUrl ? (
-          <Button asChild variant="outline">
+          <Button
+            asChild
+            variant="outline"
+            className="h-auto max-w-full py-2 text-left whitespace-normal"
+          >
             <Link href={previousProject.caseStudyUrl}>
               <ArrowLeft className="mr-2 size-4" aria-hidden="true" />
               {previousProject.title}
@@ -39,9 +43,12 @@ export function CaseStudyNavigation({ currentSlug }: CaseStudyNavigationProps) {
         )}
       </div>
 
-      <div className="flex justify-start md:justify-end">
+      <div className="flex min-w-0 justify-start md:justify-end">
         {nextProject?.caseStudyUrl ? (
-          <Button asChild>
+          <Button
+            asChild
+            className="h-auto max-w-full py-2 text-left whitespace-normal"
+          >
             <Link href={nextProject.caseStudyUrl}>
               {nextProject.title}
               <ArrowRight className="ml-2 size-4" aria-hidden="true" />

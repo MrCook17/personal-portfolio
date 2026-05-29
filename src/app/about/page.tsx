@@ -9,9 +9,9 @@ import { EducationCard } from "@/components/about/education-card";
 import { InterestsSection } from "@/components/about/interests-section";
 import { SkillsAndToolsSection } from "@/components/about/skills-and-tools-section";
 import { WorkingStyleSection } from "@/components/about/working-style-section";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Container } from "@/components/ui/container";
+import { PageContent, PageSections } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProfileImage } from "@/components/about/profile-image";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="pb-24">
+    <>
       <PageHeader
         eyebrow="About"
         title="About Me"
@@ -32,8 +32,8 @@ export default function AboutPage() {
         visual={<ProfileImage />}
       />
 
-      <Container size="lg" className="mt-10 md:mt-12">
-        <div className="space-y-20">
+      <PageContent size="lg">
+        <PageSections>
           <AboutIntroSection />
 
           <CurrentFocusSection />
@@ -42,6 +42,7 @@ export default function AboutPage() {
 
           <section aria-labelledby="about-education">
             <SectionHeading
+              id="about-education"
               eyebrow="Education"
               title="University and coursework"
               description="My degree gives the technical foundation behind the commercial work and portfolio projects."
@@ -72,7 +73,7 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <ButtonGroup>
                   <Button asChild>
                     <Link href="/projects">View projects</Link>
                   </Button>
@@ -82,12 +83,12 @@ export default function AboutPage() {
                   <Button asChild variant="outline">
                     <Link href="/contact">Contact me</Link>
                   </Button>
-                </div>
+                </ButtonGroup>
               </CardContent>
             </Card>
           </section>
-        </div>
-      </Container>
-    </main>
+        </PageSections>
+      </PageContent>
+    </>
   );
 }

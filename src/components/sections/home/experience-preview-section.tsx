@@ -11,16 +11,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { experiencePreview, homeLinks } from "@/content/home";
 
 export function ExperiencePreviewSection() {
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="experience-preview">
+    <PageSection aria-labelledby="experience-preview">
       <Container size="lg">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
+            id="experience-preview"
             eyebrow="Commercial experience"
             title="Software engineering and ecommerce web experience"
             description="A snapshot of my current commercial roles across software development, existing codebases, SEO, analytics, CMS workflows, and business-facing web work."
@@ -72,6 +74,6 @@ export function ExperiencePreviewSection() {
           ))}
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

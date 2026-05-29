@@ -3,7 +3,7 @@ import { ArrowRight, Download, Mail } from "lucide-react";
 
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { homeLinks } from "@/content/home";
 
@@ -52,7 +52,7 @@ export function HeroSection() {
 
 function HeroActions() {
   return (
-    <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <ButtonGroup align="center" stackOnMobile className="mt-8">
       <Button asChild size="lg">
         <Link href={homeLinks.projects}>
           View projects
@@ -100,6 +100,6 @@ function HeroActions() {
           </Link>
         </Button>
       </div>
-    </div>
+    </ButtonGroup>
   );
 }

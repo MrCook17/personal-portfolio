@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { cn } from "@/lib/utils";
+import { PageSection } from "@/components/ui/page-layout";
 
 type CTAProps = {
   eyebrow?: string;
@@ -26,7 +26,7 @@ export function CTA({
   className,
 }: CTAProps) {
   return (
-    <section className={cn("py-16 sm:py-20", className)}>
+    <PageSection className={className}>
       <Container>
         <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-10 shadow-sm sm:px-10">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(155,109,255,0.22),transparent_35%)]" />
@@ -46,7 +46,7 @@ export function CTA({
               {description}
             </p>
 
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+            <ButtonGroup stackOnMobile className="pt-2">
               <Button asChild size="lg">
                 <Link href={primaryHref}>{primaryLabel}</Link>
               </Button>
@@ -56,10 +56,10 @@ export function CTA({
                   <Link href={secondaryHref}>{secondaryLabel}</Link>
                 </Button>
               ) : null}
-            </div>
+            </ButtonGroup>
           </div>
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

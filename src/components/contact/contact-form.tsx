@@ -141,7 +141,7 @@ export function ContactForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Send a message</CardTitle>
+        <CardTitle as="h2">Send a message</CardTitle>
         <CardDescription>
           Use the form below for role opportunities, portfolio questions or
           relevant software/web development enquiries.
