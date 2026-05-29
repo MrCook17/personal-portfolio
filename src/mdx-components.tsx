@@ -111,10 +111,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         tabIndex={0}
       >
         <table
-          className={cn(
-            "w-full min-w-[42rem] border-collapse text-sm",
-            className,
-          )}
+          className={cn("w-full min-w-2xl border-collapse text-sm", className)}
           {...props}
         />
       </div>
