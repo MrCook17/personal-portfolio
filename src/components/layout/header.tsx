@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { HeaderNav } from "@/components/layout/header-nav";
+import { MobileNav } from "@/components/layout/mobile-nav";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { MobileNav } from "@/components/layout/mobile-nav";
 import { siteConfig, siteFeatures } from "@/content/site";
 
 export function Header() {
@@ -27,17 +28,7 @@ export function Header() {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            {siteConfig.navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="transition hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <HeaderNav navItems={siteConfig.navItems} />
 
           {siteFeatures.enableThemeToggle ? <ThemeToggle /> : null}
 

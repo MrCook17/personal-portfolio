@@ -31,10 +31,6 @@ export default function BlogPage() {
   const featuredPost = getFeaturedBlogPost();
   const tags = getBlogTags();
 
-  const nonFeaturedPosts = featuredPost
-    ? publishedPosts.filter((post) => post.slug !== featuredPost.slug)
-    : publishedPosts;
-
   return (
     <>
       <PageHeader
@@ -49,8 +45,9 @@ export default function BlogPage() {
             {featuredPost ? <FeaturedBlogCard post={featuredPost} /> : null}
 
             <BlogExplorer
-              posts={featuredPost ? nonFeaturedPosts : publishedPosts}
+              posts={publishedPosts}
               tags={tags}
+              featuredPostSlug={featuredPost?.slug}
             />
           </>
         ) : (

@@ -7,33 +7,39 @@ import { usePathname } from "next/navigation";
 
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
-
-type NavItem = {
-  label: string;
-  href: string;
-};
+import { isActiveNavigationPath, type NavigationItem } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
 
 type MobileNavProps = {
-  navItems: NavItem[];
+  navItems: NavigationItem[];
   cvHref: string;
   enableThemeToggle: boolean;
 };
 
 const mobileLinkClassName =
-  "rounded-xl px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-accent/60 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
+  "rounded-xl px-3 py-2 text-base font-medium transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none";
 
 export function MobileNav({
   navItems,
   cvHref,
   enableThemeToggle,
 }: MobileNavProps) {
-  const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openedPathname, setOpenedPathname] = useState(pathname);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  const isOpen = isMenuOpen && openedPathname === pathname;
+
+  function toggleMenu() {
+    if (isOpen) {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    setOpenedPathname(pathname);
+    setIsMenuOpen(true);
+  }
 
   useEffect(() => {
     if (!isOpen) {
@@ -42,7 +48,7 @@ export function MobileNav({
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        setIsMenuOpen(false);
       }
     }
 
@@ -63,7 +69,7 @@ export function MobileNav({
         aria-controls={menuId}
         aria-expanded={isOpen}
         className="border-border/80 bg-background/40 hover:border-primary/40 hover:bg-accent/60"
-        onClick={() => setIsOpen((currentValue) => !currentValue)}
+        onClick={toggleMenu}
       >
         {isOpen ? (
           <X className="size-5" aria-hidden="true" />
@@ -82,16 +88,26 @@ export function MobileNav({
             className="mx-auto flex max-w-6xl flex-col px-4 py-5"
           >
             <div className="flex flex-col gap-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={mobileLinkClassName}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = isActiveNavigationPath(pathname, item.href);
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={cn(
+                      mobileLinkClassName,
+                      isActive
+                        ? "bg-primary/20 text-foreground ring-1 ring-primary/25"
+                        : "text-muted-foreground hover:bg-primary/15 hover:text-foreground",
+                    )}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="mt-4 space-y-4 border-t border-border/70 pt-4">
@@ -109,7 +125,7 @@ export function MobileNav({
                   href={cvHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Download CV
                 </Link>
