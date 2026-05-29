@@ -103,21 +103,55 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    table: (props) => (
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-border">
-        <table className="w-full border-collapse text-sm" {...props} />
+    table: ({ className, ...props }) => (
+      <div
+        aria-label="Scrollable table"
+        className="mt-6 overflow-x-auto rounded-2xl border border-border/80 bg-card/70 shadow-sm first:mt-0 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+        role="region"
+        tabIndex={0}
+      >
+        <table
+          className={cn(
+            "w-full min-w-[42rem] border-collapse text-sm",
+            className,
+          )}
+          {...props}
+        />
       </div>
     ),
-    thead: (props) => <thead className="bg-muted/50" {...props} />,
-    th: (props) => (
-      <th
-        className="border-b border-border px-4 py-3 text-left font-semibold text-foreground"
+    thead: ({ className, ...props }) => (
+      <thead className={cn("bg-muted/60", className)} {...props} />
+    ),
+    tbody: ({ className, ...props }) => (
+      <tbody
+        className={cn("divide-y divide-border/70", className)}
         {...props}
       />
     ),
-    td: (props) => (
+    tr: ({ className, ...props }) => (
+      <tr
+        className={cn(
+          "transition-colors hover:bg-muted/20 data-[state=selected]:bg-muted",
+          className,
+        )}
+        {...props}
+      />
+    ),
+    th: ({ className, ...props }) => (
+      <th
+        className={cn(
+          "border-r border-b border-border/80 px-4 py-3 text-left align-bottom font-semibold text-foreground last:border-r-0",
+          className,
+        )}
+        {...props}
+      />
+    ),
+    td: ({ className, ...props }) => (
       <td
-        className="border-b border-border px-4 py-3 text-muted-foreground last:border-b-0"
+        className={cn(
+          "border-r border-border/70 px-4 py-3 align-top leading-6 text-muted-foreground last:border-r-0",
+          className,
+        )}
         {...props}
       />
     ),
