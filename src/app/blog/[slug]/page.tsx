@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BlogPostLayout } from "@/components/blog/blog-post-layout";
 import { blogPostComponents } from "@/content/blog-post-components";
 import {
+  getAdjacentBlogPosts,
   getPublishedBlogPostBySlug,
   getPublishedBlogPosts,
 } from "@/content/blog-posts";
@@ -56,13 +57,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const BlogPostContent = blogPostComponents[post.slug];
+  const { previousPost, nextPost } = getAdjacentBlogPosts(post.slug);
 
   if (!BlogPostContent) {
     notFound();
   }
 
   return (
-    <BlogPostLayout post={post}>
+    <BlogPostLayout post={post} previousPost={previousPost} nextPost={nextPost}>
       <BlogPostContent />
     </BlogPostLayout>
   );

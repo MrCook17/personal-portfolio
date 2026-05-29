@@ -64,4 +64,36 @@ test.describe("main navigation", () => {
       page.getByRole("heading", { level: 1, name: "Accessibility" }),
     ).toBeVisible();
   });
+
+  test("blog post footer links to adjacent notes", async ({ page }) => {
+    await page.goto("/blog/building-my-portfolio-nextjs-typescript");
+
+    const firstPostNavigation = page.getByRole("navigation", {
+      name: "Blog post navigation",
+    });
+
+    await expect(
+      firstPostNavigation.getByRole("link", {
+        name: /next post: what i learned from building a go rest api/i,
+      }),
+    ).toHaveAttribute("href", "/blog/building-a-go-rest-api");
+    await expect(
+      firstPostNavigation.getByRole("link", { name: /previous post:/i }),
+    ).toHaveCount(0);
+
+    await page.goto("/blog/ecommerce-seo-lessons-real-cms");
+
+    const lastPostNavigation = page.getByRole("navigation", {
+      name: "Blog post navigation",
+    });
+
+    await expect(
+      lastPostNavigation.getByRole("link", {
+        name: /previous post: what i learned from building a go rest api/i,
+      }),
+    ).toHaveAttribute("href", "/blog/building-a-go-rest-api");
+    await expect(
+      lastPostNavigation.getByRole("link", { name: /next post:/i }),
+    ).toHaveCount(0);
+  });
 });

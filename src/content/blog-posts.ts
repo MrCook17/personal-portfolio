@@ -73,6 +73,27 @@ export function getPublishedBlogPostBySlug(slug: string) {
   return post;
 }
 
+export function getAdjacentBlogPosts(slug: string) {
+  const publishedPosts = getPublishedBlogPosts();
+  const currentIndex = publishedPosts.findIndex((post) => post.slug === slug);
+
+  if (currentIndex === -1) {
+    return {
+      previousPost: undefined,
+      nextPost: undefined,
+    };
+  }
+
+  return {
+    previousPost:
+      currentIndex > 0 ? publishedPosts[currentIndex - 1] : undefined,
+    nextPost:
+      currentIndex < publishedPosts.length - 1
+        ? publishedPosts[currentIndex + 1]
+        : undefined,
+  };
+}
+
 export function getBlogTags() {
   return Array.from(
     new Set(getPublishedBlogPosts().flatMap((post) => post.tags)),
