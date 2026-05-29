@@ -6,6 +6,7 @@ export const siteFeatures = {
 
 export const siteConfig = {
   name: "Charlie Cook",
+  brandIcon: "/icons/cc-logo-128.webp",
   title: "Charlie Cook | Software Developer Portfolio",
   description:
     "UK Computer Science student and software developer portfolio featuring backend projects, commercial web experience, SEO work, and technical case studies.",

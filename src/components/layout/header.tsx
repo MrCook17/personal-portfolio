@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -11,8 +12,17 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link
           href="/"
-          className="font-semibold tracking-tight text-foreground transition hover:text-primary"
+          className="inline-flex items-center gap-2 font-semibold tracking-tight text-foreground transition hover:text-primary"
         >
+          {siteConfig.brandIcon ? (
+            <Image
+              src={siteConfig.brandIcon}
+              alt=""
+              width={32}
+              height={32}
+              className="size-8 shrink-0 rounded-full border border-border/70 bg-card/80 shadow-sm shadow-black/10"
+            />
+          ) : null}
           {siteConfig.name}
         </Link>
 
