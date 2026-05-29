@@ -1,7 +1,9 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/content/site";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { MobileNav } from "@/components/layout/mobile-nav";
+import { siteConfig, siteFeatures } from "@/content/site";
 
 export function Header() {
   return (
@@ -27,6 +29,8 @@ export function Header() {
             ))}
           </nav>
 
+          {siteFeatures.enableThemeToggle ? <ThemeToggle /> : null}
+
           <Button asChild size="sm">
             <Link
               href={siteConfig.cvHref}
@@ -37,6 +41,12 @@ export function Header() {
             </Link>
           </Button>
         </div>
+
+        <MobileNav
+          navItems={siteConfig.navItems}
+          cvHref={siteConfig.cvHref}
+          enableThemeToggle={siteFeatures.enableThemeToggle}
+        />
       </div>
     </header>
   );

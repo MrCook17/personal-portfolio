@@ -249,7 +249,7 @@ export function ContactForm() {
               aria-live="polite"
               className={`rounded-xl border px-4 py-3 text-sm ${
                 formStatus.type === "success"
-                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-200"
+                  ? "border-emerald-600/40 bg-emerald-500/10 text-emerald-700 dark:border-emerald-500/40 dark:text-emerald-200"
                   : "border-destructive/40 bg-destructive/10 text-destructive"
               }`}
             >

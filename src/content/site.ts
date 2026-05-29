@@ -1,5 +1,9 @@
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
+export const siteFeatures = {
+  enableThemeToggle: true,
+} as const;
+
 export const siteConfig = {
   name: "Charlie Cook",
   title: "Charlie Cook | Software Developer Portfolio",
