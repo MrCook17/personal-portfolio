@@ -169,16 +169,8 @@
 
   .site-background__grid {
     background-image:
-      linear-gradient(
-        to right,
-        var(--site-grid-line) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        var(--site-grid-line) 1px,
-        transparent 1px
-      );
+      linear-gradient(to right, var(--site-grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--site-grid-line) 1px, transparent 1px);
     background-position: top center;
     background-size:
       var(--site-grid-size) var(--site-grid-size),

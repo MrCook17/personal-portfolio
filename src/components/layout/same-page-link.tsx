@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ComponentProps, MouseEvent } from "react";
 
-import { isSameNavigationPath } from "@/lib/navigation";
+import { normalizeNavigationPath } from "@/lib/navigation";
 
 type SamePageLinkProps = ComponentProps<typeof Link>;
 
@@ -30,6 +30,10 @@ function getScrollBehavior(): ScrollBehavior {
   return "smooth";
 }
 
+function getLinkPathname(element: HTMLAnchorElement) {
+  return new URL(element.href).pathname;
+}
+
 export function SamePageLink({
   href,
   onClick,
@@ -41,11 +45,13 @@ export function SamePageLink({
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     onClick?.(event);
 
+    const linkPathname = getLinkPathname(event.currentTarget);
+
     if (
       event.defaultPrevented ||
-      typeof href !== "string" ||
       !shouldHandleSamePageClick(event, target) ||
-      !isSameNavigationPath(pathname, href)
+      normalizeNavigationPath(pathname) !==
+        normalizeNavigationPath(linkPathname)
     ) {
       return;
     }

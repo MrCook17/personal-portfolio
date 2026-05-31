@@ -46,7 +46,10 @@ export function PageHeader({
 
   return (
     <section
-      className={cn("border-b border-border py-14 sm:py-16 lg:py-20", className)}
+      className={cn(
+        "border-b border-border py-14 sm:py-16 lg:py-20",
+        className,
+      )}
     >
       <Container size="lg">
         {visual ? (
