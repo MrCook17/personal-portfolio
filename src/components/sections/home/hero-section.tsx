@@ -10,8 +10,6 @@ import { homeLinks } from "@/content/home";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
-      <div className="absolute top-16 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl sm:h-96 sm:w-96" />
-
       <Container size="lg">
         <div className="mx-auto max-w-4xl text-center">
           <Badge variant="outline" className="mb-6">
