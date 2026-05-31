@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+import { SamePageLink } from "@/components/layout/same-page-link";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { isActiveNavigationPath, type NavigationItem } from "@/lib/navigation";
@@ -92,7 +93,7 @@ export function MobileNav({
                 const isActive = isActiveNavigationPath(pathname, item.href);
 
                 return (
-                  <Link
+                  <SamePageLink
                     key={item.href}
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
@@ -105,7 +106,7 @@ export function MobileNav({
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                  </Link>
+                  </SamePageLink>
                 );
               })}
             </div>

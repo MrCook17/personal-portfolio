@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { SamePageLink } from "@/components/layout/same-page-link";
 import { isActiveNavigationPath, type NavigationItem } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +22,7 @@ export function HeaderNav({ navItems }: HeaderNavProps) {
         const isActive = isActiveNavigationPath(pathname, item.href);
 
         return (
-          <Link
+          <SamePageLink
             key={item.href}
             href={item.href}
             aria-current={isActive ? "page" : undefined}
@@ -34,7 +34,7 @@ export function HeaderNav({ navItems }: HeaderNavProps) {
             )}
           >
             {item.label}
-          </Link>
+          </SamePageLink>
         );
       })}
     </nav>
