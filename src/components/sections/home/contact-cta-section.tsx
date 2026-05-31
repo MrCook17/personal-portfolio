@@ -13,8 +13,6 @@ export function ContactCtaSection() {
     <PageSection className="sm:py-24" aria-labelledby="contact-cta">
       <Container size="lg">
         <div className="relative overflow-hidden rounded-3xl border bg-card/80 p-8 text-center sm:p-12">
-          <div className="absolute top-0 left-1/2 -z-10 h-56 w-56 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
-
           <Badge variant="outline">Open to future opportunities</Badge>
 
           <h2
