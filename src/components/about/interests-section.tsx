@@ -18,7 +18,7 @@ export function InterestsSection() {
         description="A few personal interests that help show who I am outside of projects, university and work."
       />
 
-      <div className="mt-8 grid gap-6 md:grid-cols-3">
+      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-3">
         {personalInterestCards.map((card) => (
           <Card key={card.title} className="border-primary/20 bg-card/70">
             <CardHeader>

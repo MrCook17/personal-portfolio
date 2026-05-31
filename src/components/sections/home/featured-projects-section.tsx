@@ -28,7 +28,7 @@ export function FeaturedProjectsSection() {
           description="A focused selection of projects that show backend/API work, commercial SEO, debugging, database-backed software, and practical technical decision-making."
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-8 grid gap-6 md:mt-10 lg:grid-cols-2">
           {featuredProjects.map((project) => (
             <Card key={project.title} className="flex flex-col bg-card/70">
               <CardHeader>

@@ -37,7 +37,7 @@ export function ExperiencePreviewSection() {
           </Button>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-8 grid gap-6 md:mt-10 lg:grid-cols-2">
           {experiencePreview.map((role) => (
             <Card key={`${role.role}-${role.company}`} className="bg-card/70">
               <CardHeader>

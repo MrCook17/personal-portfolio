@@ -39,7 +39,7 @@ export default function BlogPage() {
         description="Short write-ups about projects, technical decisions, lessons learned and practical development work."
       />
 
-      <PageContent size="lg" className="space-y-12">
+      <PageContent size="lg" className="space-y-10 md:space-y-12">
         {publishedPosts.length >= 2 ? (
           <>
             {featuredPost ? <FeaturedBlogCard post={featuredPost} /> : null}

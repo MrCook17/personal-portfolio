@@ -14,7 +14,7 @@ export function SkillsAndToolsSection() {
         description="The main languages, tools and workflows I’ve used across projects, coursework and commercial work."
       />
 
-      <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
         {aboutSkillGroups.map((group) => (
           <Card key={group.title} className="border-primary/20 bg-card/70">
             <CardHeader>

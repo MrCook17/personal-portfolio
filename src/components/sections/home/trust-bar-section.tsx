@@ -9,7 +9,7 @@ import { trustIndicators } from "@/content/home";
 
 export function TrustBarSection() {
   return (
-    <section className="py-8">
+    <section className="py-6 sm:py-8">
       <Container size="lg">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {trustIndicators.map((item) => {

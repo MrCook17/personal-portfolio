@@ -14,10 +14,10 @@ type CaseStudyLayoutProps = {
 
 export function CaseStudyLayout({ project, children }: CaseStudyLayoutProps) {
   return (
-    <Container size="lg" className="pb-20 md:pb-24">
+    <Container size="lg" className="pb-16 md:pb-20 lg:pb-24">
       <CaseStudyHeader project={project} />
 
-      <div className="space-y-10 md:space-y-12">
+      <div className="space-y-8 md:space-y-10 lg:space-y-12">
         {project.caseStudy ? (
           <CaseStudySummaryCards summary={project.caseStudy} />
         ) : null}

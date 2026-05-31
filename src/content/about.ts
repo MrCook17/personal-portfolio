@@ -1,12 +1,7 @@
 import type { ProfileCard, SkillGroup } from "@/types/experience";
 
 export const aboutIntro = {
-  highlights: [
-    "UK-based",
-    "Computer Science student",
-    "Software developer",
-    "Commercial web experience",
-  ],
+  highlights: [],
   paragraphs: [
     "I’m a UK-based Computer Science student and software developer with commercial experience across software engineering, web operations, SEO, analytics, CMS systems and database-backed development.",
     "My work so far has involved building and maintaining real business software, improving ecommerce pages, debugging existing systems, investigating analytics issues and learning how technical decisions affect users and businesses.",

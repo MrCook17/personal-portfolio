@@ -33,8 +33,8 @@ export function BlogPostLayout({
 
   return (
     <article>
-      <Container size="lg" className="pb-20 md:pb-24">
-        <header className="space-y-8 py-12 md:py-16">
+      <Container size="lg" className="pb-16 md:pb-20 lg:pb-24">
+        <header className="space-y-7 py-10 md:space-y-8 md:py-14 lg:py-16">
           <Button asChild variant="ghost" size="sm">
             <Link href="/blog">
               <ArrowLeft className="mr-2 size-4" aria-hidden="true" />
@@ -72,7 +72,7 @@ export function BlogPostLayout({
           </div>
         </header>
 
-        <div className="space-y-10 md:space-y-12">
+        <div className="space-y-8 md:space-y-10 lg:space-y-12">
           <MdxContent>{children}</MdxContent>
 
           <BlogPostNavigation previousPost={previousPost} nextPost={nextPost} />

@@ -30,7 +30,7 @@ export function LatestBlogNotesSection() {
           description="Short technical notes on project building, backend development, SEO, analytics, debugging and what I am learning."
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:mt-10 lg:grid-cols-3">
           {latestBlogPosts.map((post) => (
             <Card key={post.title} className="flex h-full flex-col bg-card/70">
               <CardHeader>

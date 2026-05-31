@@ -9,13 +9,13 @@ type PageContentProps = React.ComponentProps<typeof Container> & {
 };
 
 const topSpacingClasses = {
-  default: "mt-10 md:mt-12",
+  default: "mt-8 md:mt-10 lg:mt-12",
   none: "",
 };
 
 const bottomSpacingClasses = {
-  default: "pb-20 md:pb-24",
-  compact: "pb-16 md:pb-20",
+  default: "pb-16 md:pb-20 lg:pb-24",
+  compact: "pb-14 md:pb-16 lg:pb-20",
   none: "",
 };
 
@@ -42,7 +42,10 @@ export function PageSections({
   ...props
 }: React.ComponentProps<"div">) {
   return (
-    <div className={cn("space-y-16 md:space-y-20", className)} {...props} />
+    <div
+      className={cn("space-y-14 md:space-y-16 lg:space-y-20", className)}
+      {...props}
+    />
   );
 }
 
@@ -50,5 +53,7 @@ export function PageSection({
   className,
   ...props
 }: React.ComponentProps<"section">) {
-  return <section className={cn("py-16 sm:py-20", className)} {...props} />;
+  return (
+    <section className={cn("py-10 sm:py-12 lg:py-14", className)} {...props} />
+  );
 }

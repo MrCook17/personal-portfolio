@@ -9,7 +9,7 @@ import { homeLinks } from "@/content/home";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
+    <section className="relative overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-14 lg:pt-32 lg:pb-16">
       <Container size="lg">
         <div className="mx-auto max-w-4xl text-center">
           <Badge variant="outline" className="mb-6">
@@ -31,7 +31,7 @@ export function HeroSection() {
 
           <HeroActions />
 
-          <div className="mt-10 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3 md:mt-10">
             <div className="flex items-center justify-center rounded-2xl border bg-card/60 px-4 py-3 text-center">
               Commercial software experience
             </div>

@@ -45,7 +45,9 @@ export function PageHeader({
   );
 
   return (
-    <section className={cn("border-b border-border py-16 sm:py-20", className)}>
+    <section
+      className={cn("border-b border-border py-14 sm:py-16 lg:py-20", className)}
+    >
       <Container size="lg">
         {visual ? (
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">

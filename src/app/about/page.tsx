@@ -48,7 +48,7 @@ export default function AboutPage() {
               description="My degree gives the technical foundation behind the commercial work and portfolio projects."
             />
 
-            <div className="mt-8">
+            <div className="mt-8 md:mt-10">
               <EducationCard education={education} />
             </div>
           </section>

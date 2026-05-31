@@ -41,7 +41,7 @@ export default function ExperiencePage() {
               description="I’ve put the Software Engineer role first because it is most relevant to the developer roles I’m working towards, while my Web Operator role adds useful experience across ecommerce, SEO and analytics."
             />
 
-            <div className="mt-10">
+            <div className="mt-8 md:mt-10">
               <ExperienceTimeline items={experienceRoles} />
             </div>
           </section>
@@ -54,7 +54,7 @@ export default function ExperiencePage() {
               description="A clearer breakdown of the commercial skills behind the role titles, linked to case studies where public or anonymised evidence exists."
             />
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
               {commercialWorkAreas.map((area) => (
                 <CommercialWorkCard key={area.title} area={area} />
               ))}
@@ -69,7 +69,7 @@ export default function ExperiencePage() {
               description="University work supports the commercial experience with software engineering, algorithms, databases, web technologies and backend/API coursework."
             />
 
-            <div className="mt-8">
+            <div className="mt-8 md:mt-10">
               <EducationCard education={education} />
             </div>
           </section>

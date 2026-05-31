@@ -13,7 +13,7 @@ type CaseStudyHeaderProps = {
 
 export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
   return (
-    <header className="space-y-8 py-12 md:py-16">
+    <header className="space-y-7 py-10 md:space-y-8 md:py-14 lg:py-16">
       <Button asChild variant="ghost" size="sm">
         <Link href="/projects">
           <ArrowLeft className="mr-2 size-4" aria-hidden="true" />

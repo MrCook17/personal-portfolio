@@ -16,7 +16,7 @@ export function SkillsOverviewSection() {
           description="A practical overview of the languages, tools and workflows I’ve used across university projects, commercial software development, CMS work, SEO and backend/API development."
         />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 md:mt-10 lg:grid-cols-3">
           {skillGroups.map((group) => {
             const Icon = group.icon;
 

@@ -10,7 +10,7 @@ import { homeLinks } from "@/content/home";
 
 export function ContactCtaSection() {
   return (
-    <PageSection className="sm:py-24" aria-labelledby="contact-cta">
+    <PageSection aria-labelledby="contact-cta">
       <Container size="lg">
         <div className="relative overflow-hidden rounded-3xl border bg-card/80 p-8 text-center sm:p-12">
           <Badge variant="outline">Open to future opportunities</Badge>

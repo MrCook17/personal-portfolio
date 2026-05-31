@@ -20,7 +20,7 @@ export function CurrentFocusSection() {
         description="A focused snapshot of the areas I am improving as I develop the portfolio and prepare for future software roles."
       />
 
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2">
         {currentFocusCards.map((card) => (
           <Card key={card.title} className="border-primary/20 bg-card/70">
             <CardHeader>
