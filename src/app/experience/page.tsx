@@ -15,12 +15,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageContent, PageSections } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Experience | Charlie Cook",
+export const metadata: Metadata = createWebsiteMetadata({
+  title: "Commercial Software & Web Experience | Charlie Cook",
   description:
-    "Commercial software engineering, web operations, SEO, analytics and database-backed development experience.",
-};
+    "Commercial software engineering, web operations, ecommerce SEO, analytics, CMS and database-backed development experience.",
+  path: "/experience",
+});
 
 export default function ExperiencePage() {
   return (

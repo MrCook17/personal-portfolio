@@ -4,12 +4,14 @@ import { sortedProjects } from "@/content/projects";
 import { ProjectExplorer } from "@/components/projects/project-explorer";
 import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Software Development Projects | Charlie Cook",
+export const metadata: Metadata = createWebsiteMetadata({
+  title: "Software Developer Projects | Charlie Cook",
   description:
-    "Backend, software, analytics, SEO and commercial web projects from Charlie Cook, a UK Computer Science student and software developer.",
-};
+    "Explore software developer projects covering backend APIs, full-stack work, ecommerce SEO, analytics and commercial case studies.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

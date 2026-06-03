@@ -26,6 +26,12 @@ export type CaseStudySummary = {
   outcome: string;
 };
 
+export type SeoMetadata = {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+};
+
 export type Project = {
   title: string;
   slug: string;
@@ -45,4 +51,5 @@ export type Project = {
   imageAlt?: string;
   employerSafeNotes?: string;
   caseStudy?: CaseStudySummary;
+  seo?: SeoMetadata;
 };

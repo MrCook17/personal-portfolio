@@ -6,6 +6,17 @@ export const projects: Project[] = [
     slug: "go-website-health-check-api",
     summary:
       "A Go REST API that checks website availability, handles timeouts, stores results, and returns structured JSON health check data.",
+    seo: {
+      title: "Go REST API Case Study | Website Health Checker",
+      description:
+        "Case study for a Go REST API that checks website health using JSON endpoints, validation, concurrency, timeouts, tests and benchmarks.",
+      keywords: [
+        "Go REST API case study",
+        "REST API case study",
+        "API case study",
+        "website health check API",
+      ],
+    },
     type: "Backend/API",
     status: "Finished",
     featured: true,
@@ -46,6 +57,17 @@ export const projects: Project[] = [
     slug: "cromartie-tie-dye-page-rebuild",
     summary:
       "A public-facing ecommerce page rebuild focused on SEO, content structure, layout, internal linking, and CMS-friendly HTML/CSS.",
+    seo: {
+      title: "Ecommerce SEO Case Study | Cromartie Page Rebuild",
+      description:
+        "Commercial ecommerce SEO case study covering keyword research, CMS constraints, page structure, internal linking and frontend improvements.",
+      keywords: [
+        "ecommerce SEO case study",
+        "CMS SEO case study",
+        "ecommerce SEO page rebuild",
+        "commercial SEO case study",
+      ],
+    },
     type: "Commercial SEO",
     status: "Finished",
     featured: true,
@@ -87,6 +109,17 @@ export const projects: Project[] = [
     slug: "analytics-tracking-drop-investigation",
     summary:
       "A debugging case study about investigating a sudden drop in website traffic data and checking whether it was caused by a real performance issue or a tracking problem.",
+    seo: {
+      title: "Google Analytics Tracking Issue Case Study",
+      description:
+        "Case study on investigating a GA4 tracking drop by comparing analytics, Search Console signals, hypotheses and likely tracking causes.",
+      keywords: [
+        "Google Analytics tracking issue case study",
+        "GA4 tracking issue",
+        "analytics debugging case study",
+        "Google Search Console comparison",
+      ],
+    },
     type: "Analytics",
     status: "Finished",
     featured: true,

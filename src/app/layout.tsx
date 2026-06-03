@@ -2,13 +2,29 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { JsonLd } from "@/components/seo/json-ld";
 import { SiteBackground } from "@/components/layout/site-background";
+import { siteConfig } from "@/content/site";
+import { getPersonJsonLd, getWebSiteJsonLd } from "@/lib/seo/schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Charlie Cook | Software Developer Portfolio",
-  description:
-    "Software developer portfolio for Charlie Cook, a UK Computer Science student with commercial web, SEO, backend and software experience.",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: "/",
+    siteName: siteConfig.name,
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
 };
 
 export default function RootLayout({
@@ -20,6 +36,8 @@ export default function RootLayout({
     <html lang="en-GB" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className="min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider>
+          <JsonLd data={[getPersonJsonLd(), getWebSiteJsonLd()]} />
+
           <div className="relative isolate min-h-screen bg-background">
             <SiteBackground />
 

@@ -9,7 +9,7 @@ export const siteConfig = {
   brandIcon: "/icons/cc-logo-128.webp",
   title: "Charlie Cook | Software Developer Portfolio",
   description:
-    "UK Computer Science student and software developer portfolio featuring backend projects, commercial web experience, SEO work, and technical case studies.",
+    "UK software developer and Computer Science student with commercial software, backend, full-stack, web operations and SEO experience.",
   url: siteUrl.replace(/\/$/, ""),
   navItems: [
     {
@@ -39,8 +39,8 @@ export const siteConfig = {
   ],
   cvHref: "/Charlie-Cook-CV.pdf",
   links: {
-    github: "",
-    linkedin: "",
-    email: "",
+    github: "https://github.com/MrCook17",
+    linkedin: "https://www.linkedin.com/in/charles-james-cook/",
+    email: "mailto:charlie_cook321@hotmail.com",
   },
 };

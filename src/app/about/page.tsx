@@ -15,16 +15,24 @@ import { PageContent, PageSections } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProfileImage } from "@/components/about/profile-image";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
+import { getProfilePageJsonLd } from "@/lib/seo/schema";
 
-export const metadata: Metadata = {
-  title: "About | Charlie Cook",
+const aboutMetadata = {
+  title: "About Charlie Cook | Software Developer",
   description:
-    "About Charlie Cook, a UK Computer Science student and software developer with commercial software, SEO, web operations and backend experience.",
+    "About Charlie Cook, a UK Computer Science student and software developer focused on practical web applications, backend APIs and SEO-aware web work.",
+  path: "/about",
 };
+
+export const metadata: Metadata = createWebsiteMetadata(aboutMetadata);
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={getProfilePageJsonLd(aboutMetadata)} />
+
       <PageHeader
         eyebrow="About"
         title="About Me"

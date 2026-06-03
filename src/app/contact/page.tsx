@@ -4,12 +4,14 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { ContactLinks } from "@/components/contact/contact-links";
 import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact | Charlie Cook",
+export const metadata: Metadata = createWebsiteMetadata({
+  title: "Contact Charlie Cook | Software Developer",
   description:
-    "Contact Charlie Cook for junior software developer, backend, full-stack, web developer and graduate software engineering opportunities.",
-};
+    "Contact Charlie Cook about junior software developer, backend, full-stack, web developer and graduate software opportunities in the UK.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
