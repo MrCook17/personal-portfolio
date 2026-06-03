@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { latestBlogPosts } from "@/content/home";
@@ -20,17 +21,18 @@ export function LatestBlogNotesSection() {
   }
 
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="latest-notes">
+    <PageSection aria-labelledby="latest-notes">
       <Container size="lg">
         <SectionHeading
+          id="latest-notes"
           eyebrow="Latest notes"
           title="Software development notes"
           description="Short technical notes on project building, backend development, SEO, analytics, debugging and what I am learning."
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:mt-10 lg:grid-cols-3">
           {latestBlogPosts.map((post) => (
-            <Card key={post.title} className="bg-card/70">
+            <Card key={post.title} className="flex h-full flex-col bg-card/70">
               <CardHeader>
                 <CardTitle className="text-xl">{post.title}</CardTitle>
                 <CardDescription>{post.description}</CardDescription>
@@ -48,7 +50,7 @@ export function LatestBlogNotesSection() {
                 </div>
               </CardContent>
 
-              <CardFooter>
+              <CardFooter className="mt-auto">
                 <Button asChild variant="outline">
                   <Link href={post.href}>Read post</Link>
                 </Button>
@@ -57,6 +59,6 @@ export function LatestBlogNotesSection() {
           ))}
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

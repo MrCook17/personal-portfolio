@@ -30,7 +30,7 @@ export function AboutIntroSection() {
 
         <Card className="border-primary/20 bg-card/70">
           <CardHeader>
-            <CardTitle id="about-intro" className="text-xl">
+            <CardTitle as="h2" id="about-intro" className="text-xl">
               Quick profile
             </CardTitle>
           </CardHeader>

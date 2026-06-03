@@ -11,19 +11,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { PageSection } from "@/components/ui/page-layout";
 import { Tag } from "@/components/ui/tag";
 import { caseStudyTeasers, homeLinks } from "@/content/home";
 
 export function CaseStudyTeaserSection() {
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="case-study-teaser">
+    <PageSection aria-labelledby="case-study-teaser">
       <Container size="lg">
         <div className="rounded-3xl border bg-card/70 p-6 sm:p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
               <Badge variant="outline">Detailed case studies</Badge>
 
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              <h2
+                id="case-study-teaser"
+                className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
+              >
                 Deeper project write-ups focused on decisions, constraints and
                 evidence.
               </h2>
@@ -66,6 +70,6 @@ export function CaseStudyTeaserSection() {
           </div>
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

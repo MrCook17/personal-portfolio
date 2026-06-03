@@ -1,26 +1,30 @@
 ## Why I wanted this portfolio to be more than a simple CV site
 
-I wanted this portfolio to do more than list a few projects and contact links. The main aim was to build something that could show how I think through software decisions, how I explain technical work, and how I connect commercial experience with practical development skills.
+I wanted this portfolio to do more than list a few projects and contact links. The aim is to build something that shows how I think through software decisions, how I explain technical work, and how my commercial experience connects with the developer roles I am working towards.
 
-The site is aimed at junior software developer, backend developer, full-stack developer and web developer roles. That changed how I planned the structure. Instead of making the homepage the whole portfolio, I chose a multi-page structure with separate project, case study, experience, about, blog and contact areas.
+The site is aimed at junior software developer, backend developer, full-stack developer and web developer roles. That affects how I have structured it. Instead of making the homepage do everything, I use separate pages for projects, case studies, experience, about, notes and contact.
 
-That lets the homepage stay quick to scan while the deeper pages provide the evidence.
+The homepage gives a quick overview, while the deeper pages give more detail about what I have built, what I have worked on and what I am learning.
 
 ## Why I chose Next.js, TypeScript and MDX
 
-I chose Next.js because it gives the portfolio a strong base for routing, metadata, static pages, dynamic case studies and future backend features. TypeScript makes the content and components safer to work with because project data, blog data and shared props can be typed instead of guessed.
+I chose Next.js because it gives the portfolio a strong base for routing, metadata, static pages, dynamic case studies and full-stack features such as the contact form.
 
-MDX is useful because the project case studies and blog posts need more than plain text. They need headings, links, code examples, callouts and eventually screenshots or diagrams.
+TypeScript helps keep the project easier to manage as it grows. Project data, notes, experience content and shared component props can be typed properly instead of relying on guesswork.
 
-The main lesson here is that the tech stack should support the content. For this portfolio, the content is the product. The code is important, but the real goal is to make the projects, experience and learning easy for employers to understand.
+MDX is useful because the case studies and notes need more than plain text. They can include headings, links, code examples, callouts and technical explanations while still being stored as content files.
+
+The main reason for choosing this stack is that it supports the content well. The code matters, but the portfolio also needs to explain my projects and experience clearly.
 
 ## Keeping content separate from UI
 
-One of the most useful decisions was separating content from page layouts.
+One of the most useful decisions has been separating content from page layouts.
 
-For example, the homepage has its own content file, the project system has a project metadata file, the experience page has structured role data, and the blog now has a blog metadata file. This makes the site easier to update later because I do not need to dig through large route files just to change a sentence, date, tag or project link.
+For example, the homepage has its own content file, the project system has project metadata, the experience page uses structured role data, and the notes section uses separate metadata and MDX files.
 
-This approach also makes future updates more predictable. Adding a new blog post should mainly mean adding:
+This makes the site easier to update because I do not need to dig through large page files just to change a sentence, date, tag or project link.
+
+It also makes future updates more predictable. Adding a new note mainly means adding:
 
 - a new MDX file
 - a metadata entry
@@ -30,30 +34,32 @@ That is much easier to maintain than hardcoding every card manually.
 
 ## Building reusable components first
 
-Before building the main pages, I built reusable components such as buttons, cards, badges, tags, page headers, section headings, callouts and CTAs.
+Before building the main pages, I created reusable components such as buttons, cards, badges, tags, page headers, section headings, callouts and CTA sections.
 
-That helped keep the site consistent. The same basic card style can support project cards, blog cards, experience cards and about page sections. The same tag pattern can support skills, project technologies and blog topics.
+That helped keep the design consistent. The same card style can support project cards, note cards, experience cards and about page sections. The same tag pattern can be reused for skills, project technologies and note topics.
 
-This is a small version of a design system. It is not overcomplicated, but it gives the project a cleaner structure and reduces repeated styling.
+It is not a huge design system, but it gives the project a cleaner structure and stops the same styling being repeated everywhere.
 
 ## What I learned from the build process
 
-The biggest learning point was that a portfolio is partly a software project and partly a communication project.
+The biggest thing I have learned is that a portfolio is not just a website. It is also a way to explain my work clearly.
 
 It is not enough for the site to look good. It needs to explain:
 
 - what I built
 - why I built it that way
 - what constraints I worked with
-- what the technical decisions were
+- what technical decisions I made
 - what I learned from the work
 
-I also learned that file structure matters more as the project grows. Early on, it is easy to put everything into one page file. That works temporarily, but it becomes harder to update once the homepage, project system, case studies, experience page and blog all exist.
+I have also learned that file structure matters more as the project grows. At the start, it is easy to put everything into one page file. That works for a while, but it becomes harder to maintain once the homepage, projects, case studies, experience page, notes and contact form are all in place.
 
-## What I would improve next
+## What I want to improve next
 
-The main improvements I want to make next are visual evidence and testing. The case studies will be stronger once they include safe screenshots, diagrams, Postman examples and benchmark outputs where appropriate.
+The main improvements I am focusing on now are expanding the content, refining existing case studies and continuing to improve the overall quality of the portfolio.
 
-I also want to add more automated testing and a contact form backend later. That will help the portfolio demonstrate full-stack skills directly, not only through the case studies.
+As new projects are completed, I plan to add more case studies with stronger technical detail, screenshots, diagrams, API examples and other supporting material where it is useful and appropriate to share. Some commercial work cannot include private screenshots or sensitive data, so those sections will continue to focus on explaining the technical decisions, challenges and outcomes instead.
 
-For now, the main win is that the site structure is in place. Projects, experience, about content and blog notes can all grow without needing a full redesign.
+I also want to keep improving the written content so it remains clear, accurate and useful for employers, recruiters and other developers who visit the site.
+
+Now that the portfolio has been launched, the main advantage is that the structure is already in place. The homepage, projects, case studies, experience page, contact form and notes section can continue to grow without requiring major changes to the site's foundations.

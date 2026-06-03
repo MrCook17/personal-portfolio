@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import type { Project } from "@/types/project";
 import { GitHubIcon } from "@/components/icons/brand-icons";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
 import { CaseStudyMeta } from "@/components/case-studies/case-study-meta";
 
@@ -13,7 +13,7 @@ type CaseStudyHeaderProps = {
 
 export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
   return (
-    <header className="space-y-8 py-12 md:py-16">
+    <header className="space-y-7 py-10 md:space-y-8 md:py-14 lg:py-16">
       <Button asChild variant="ghost" size="sm">
         <Link href="/projects">
           <ArrowLeft className="mr-2 size-4" aria-hidden="true" />
@@ -39,7 +39,7 @@ export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-3">
+      <ButtonGroup>
         {project.githubUrl ? (
           <Button asChild>
             <a href={project.githubUrl} target="_blank" rel="noreferrer">
@@ -57,7 +57,7 @@ export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
             </a>
           </Button>
         ) : null}
-      </div>
+      </ButtonGroup>
 
       <CaseStudyMeta project={project} />
     </header>

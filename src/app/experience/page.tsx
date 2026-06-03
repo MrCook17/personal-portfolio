@@ -10,49 +10,53 @@ import {
 import { EducationCard } from "@/components/about/education-card";
 import { CommercialWorkCard } from "@/components/experience/commercial-work-card";
 import { ExperienceTimeline } from "@/components/experience/experience-timeline";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Container } from "@/components/ui/container";
+import { PageContent, PageSections } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Experience | Charlie Cook",
+export const metadata: Metadata = createWebsiteMetadata({
+  title: "Commercial Software & Web Experience | Charlie Cook",
   description:
-    "Commercial software engineering, web operations, SEO, analytics and database-backed development experience.",
-};
+    "Commercial software engineering, web operations, ecommerce SEO, analytics, CMS and database-backed development experience.",
+  path: "/experience",
+});
 
 export default function ExperiencePage() {
   return (
-    <main className="pb-24">
+    <>
       <PageHeader
         eyebrow="Experience"
         title="Commercial Software & Web Experience"
-        description="A timeline of software engineering, web operations, SEO, analytics, database-backed systems, debugging and practical business work."
+        description="A look at the commercial software and web work I’ve done alongside university, from desktop applications and existing codebases to SEO, analytics and CMS-based website improvements."
       />
 
-      <Container size="lg" className="mt-10 md:mt-12">
-        <div className="space-y-20">
+      <PageContent size="lg">
+        <PageSections>
           <section aria-labelledby="experience-timeline">
             <SectionHeading
+              id="experience-timeline"
               eyebrow="Timeline"
               title="Work experience"
-              description="Software engineering is positioned first because it is closest to the roles I am working towards, while ecommerce SEO and web operations remain an important commercial differentiator."
+              description="I’ve put the Software Engineer role first because it is most relevant to the developer roles I’m working towards, while my Web Operator role adds useful experience across ecommerce, SEO and analytics."
             />
 
-            <div className="mt-10">
+            <div className="mt-8 md:mt-10">
               <ExperienceTimeline items={experienceRoles} />
             </div>
           </section>
 
           <section aria-labelledby="commercial-work">
             <SectionHeading
+              id="commercial-work"
               eyebrow="Commercial work"
               title="What this experience proves"
               description="A clearer breakdown of the commercial skills behind the role titles, linked to case studies where public or anonymised evidence exists."
             />
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
               {commercialWorkAreas.map((area) => (
                 <CommercialWorkCard key={area.title} area={area} />
               ))}
@@ -61,12 +65,13 @@ export default function ExperiencePage() {
 
           <section aria-labelledby="experience-education">
             <SectionHeading
+              id="experience-education"
               eyebrow="Education"
               title="Computer Science foundation"
               description="University work supports the commercial experience with software engineering, algorithms, databases, web technologies and backend/API coursework."
             />
 
-            <div className="mt-8">
+            <div className="mt-8 md:mt-10">
               <EducationCard education={education} />
             </div>
           </section>
@@ -108,19 +113,19 @@ export default function ExperiencePage() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <ButtonGroup>
                   <Button asChild>
                     <Link href="/projects">View projects</Link>
                   </Button>
                   <Button asChild variant="outline">
                     <Link href="/contact">Contact me</Link>
                   </Button>
-                </div>
+                </ButtonGroup>
               </CardContent>
             </Card>
           </section>
-        </div>
-      </Container>
-    </main>
+        </PageSections>
+      </PageContent>
+    </>
   );
 }

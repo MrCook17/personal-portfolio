@@ -8,12 +8,13 @@ export function SkillsAndToolsSection() {
   return (
     <section aria-labelledby="skills-and-tools">
       <SectionHeading
+        id="skills-and-tools"
         eyebrow="Skills and tools"
         title="Technical areas I work with"
-        description="Grouped skills rather than percentage ratings, keeping the focus on practical project and workplace use."
+        description="The main languages, tools and workflows I’ve used across projects, coursework and commercial work."
       />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
         {aboutSkillGroups.map((group) => (
           <Card key={group.title} className="border-primary/20 bg-card/70">
             <CardHeader>

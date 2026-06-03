@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/blog",
     "/contact",
+    "/privacy",
+    "/accessibility",
   ];
 
   const projectRoutes = sortedProjects

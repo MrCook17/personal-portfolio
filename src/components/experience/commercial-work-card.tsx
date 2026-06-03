@@ -17,24 +17,26 @@ type CommercialWorkCardProps = {
 export function CommercialWorkCard({ area }: CommercialWorkCardProps) {
   return (
     <Card className="flex h-full flex-col border-primary/20 bg-card/70 transition-colors hover:border-primary/40">
-      <CardHeader>
-        <CardTitle className="text-xl">{area.title}</CardTitle>
-        <CardDescription className="leading-6">
-          {area.description}
-        </CardDescription>
-      </CardHeader>
+      <CardHeader className="space-y-4">
+        <div className="space-y-2">
+          <CardTitle className="text-xl">{area.title}</CardTitle>
+          <CardDescription className="leading-6">
+            {area.description}
+          </CardDescription>
+        </div>
 
-      <CardContent className="mt-auto space-y-5">
         <div className="flex flex-wrap gap-2">
           {area.technologies.map((technology) => (
             <Tag key={technology}>{technology}</Tag>
           ))}
         </div>
+      </CardHeader>
 
-        {area.relatedLink ? (
+      {area.relatedLink ? (
+        <CardContent className="mt-auto pt-0">
           <RelatedLinkButton link={area.relatedLink} />
-        ) : null}
-      </CardContent>
+        </CardContent>
+      ) : null}
     </Card>
   );
 }

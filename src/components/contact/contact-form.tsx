@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -136,11 +137,12 @@ export function ContactForm() {
   const nameErrorId = errors.name ? "contact-name-error" : undefined;
   const emailErrorId = errors.email ? "contact-email-error" : undefined;
   const messageErrorId = errors.message ? "contact-message-error" : undefined;
+  const privacyNoticeId = "contact-privacy-notice";
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Send a message</CardTitle>
+        <CardTitle as="h2">Send a message</CardTitle>
         <CardDescription>
           Use the form below for role opportunities, portfolio questions or
           relevant software/web development enquiries.
@@ -151,6 +153,7 @@ export function ContactForm() {
         <form
           className="space-y-6"
           onSubmit={handleSubmit(onSubmit)}
+          aria-describedby={privacyNoticeId}
           noValidate
         >
           <div
@@ -228,12 +231,21 @@ export function ContactForm() {
             ) : null}
           </div>
 
-          <p className="text-sm leading-6 text-muted-foreground">
+          <p
+            id={privacyNoticeId}
+            className="text-sm leading-6 text-muted-foreground"
+          >
             I’ll use the details you provide to respond to your message. Your
             name, email address and message may be stored securely and sent to
             my email inbox as a notification. I do not use contact form
-            submissions for marketing. I only keep messages for as long as
-            needed to respond or manage the enquiry.
+            submissions for marketing.{" "}
+            <Link
+              href="/privacy"
+              className="font-medium text-primary underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+            >
+              Read the privacy page
+            </Link>
+            .
           </p>
 
           {formStatus ? (
@@ -242,7 +254,7 @@ export function ContactForm() {
               aria-live="polite"
               className={`rounded-xl border px-4 py-3 text-sm ${
                 formStatus.type === "success"
-                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-200"
+                  ? "border-emerald-600/40 bg-emerald-500/10 text-emerald-700 dark:border-emerald-500/40 dark:text-emerald-200"
                   : "border-destructive/40 bg-destructive/10 text-destructive"
               }`}
             >

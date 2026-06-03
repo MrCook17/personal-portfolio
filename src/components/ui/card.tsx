@@ -6,7 +6,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-card text-card-foreground shadow-sm shadow-black/10",
+        "rounded-2xl border border-border/80 bg-card/80 text-card-foreground shadow-sm shadow-black/10",
         className,
       )}
       {...props}
@@ -18,9 +18,17 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("space-y-2 p-6 pb-3", className)} {...props} />;
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"h3">) {
+type CardTitleProps = React.ComponentProps<"h3"> & {
+  as?: "h2" | "h3" | "h4";
+};
+
+function CardTitle({
+  as: Component = "h3",
+  className,
+  ...props
+}: CardTitleProps) {
   return (
-    <h3
+    <Component
       className={cn("text-lg font-semibold tracking-tight", className)}
       {...props}
     />

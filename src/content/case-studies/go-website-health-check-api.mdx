@@ -27,7 +27,7 @@ The API was designed to be practical, testable, and easy to demonstrate. The mai
 - Return predictable JSON responses.
 - Make URL checks concurrent because website requests are network-bound.
 - Apply timeouts so slow sites do not block the whole job.
-- Store completed results in memory for a simple portfolio-ready backend service.
+- Store completed check jobs in memory so results can be retrieved without adding unnecessary database complexity.
 - Add tests, benchmarks, and race detector evidence.
 
 ## Endpoint table
@@ -44,11 +44,8 @@ The API was designed to be practical, testable, and easy to demonstrate. The mai
 
 ```json
 {
-  "urls": [
-    "https://example.com",
-    "https://www.google.com",
-    "https://invalid-example.local"
-  ]
+  "urls": ["https://example.com", "https://golang.org"],
+  "timeout_ms": 3000
 }
 ```
 
@@ -56,22 +53,44 @@ The API was designed to be practical, testable, and easy to demonstrate. The mai
 
 ```json
 {
-  "id": "check_123",
-  "createdAt": "2026-05-20T12:00:00Z",
+  "id": "chk_001",
+  "created_at": "2026-05-20T12:00:00Z",
+  "status": "completed",
+  "urls": ["https://example.com", "https://golang.org"],
+  "timeout_ms": 3000,
   "results": [
     {
       "url": "https://example.com",
       "success": true,
-      "statusCode": 200,
-      "responseTimeMs": 142,
-      "error": ""
+      "status_code": 200,
+      "response_time_ms": 142,
+      "checked_at": "2026-05-20T12:00:00Z"
+    },
+    {
+      "url": "https://golang.org",
+      "success": true,
+      "status_code": 200,
+      "response_time_ms": 231,
+      "checked_at": "2026-05-20T12:00:00Z"
     }
   ],
   "summary": {
-    "total": 3,
+    "total": 2,
     "successes": 2,
-    "failures": 1,
-    "timeouts": 0
+    "failures": 0,
+    "average_latency_ms": 186.5,
+    "fastest_url": "https://example.com",
+    "fastest_response_ms": 142,
+    "slowest_url": "https://golang.org",
+    "slowest_response_ms": 231,
+    "timeout_count": 0,
+    "status_classes": {
+      "2xx": 2,
+      "3xx": 0,
+      "4xx": 0,
+      "5xx": 0,
+      "other": 0
+    }
   }
 }
 ```
@@ -184,6 +203,6 @@ Future improvements could include:
 - Deploying the API publicly.
 - Adding scheduled checks.
 - Adding authentication.
+- Adding rate limiting.
 - Adding email alerts for failed checks.
-- Improving the README with more screenshots and benchmark evidence.
-- Adding OpenAPI documentation.
+- Improving the README with more screenshots, example responses, and benchmark evidence.
