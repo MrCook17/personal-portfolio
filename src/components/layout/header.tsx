@@ -34,13 +34,9 @@ export function Header() {
           {siteFeatures.enableThemeToggle ? <ThemeToggle /> : null}
 
           <Button asChild size="sm">
-            <Link
-              href={siteConfig.cvHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={siteConfig.cvHref} download>
               Download CV
-            </Link>
+            </a>
           </Button>
         </div>
 

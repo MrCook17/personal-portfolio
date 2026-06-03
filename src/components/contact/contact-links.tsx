@@ -106,14 +106,10 @@ export function ContactLinks() {
           </div>
 
           <Button asChild className="w-full">
-            <Link
-              href="/Charlie-Cook-CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="/Charlie-Cook-CV.pdf" download>
               <FileText className="mr-2 size-4" aria-hidden="true" />
               Download CV
-            </Link>
+            </a>
           </Button>
         </CardContent>
       </Card>
