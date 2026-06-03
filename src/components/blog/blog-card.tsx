@@ -28,7 +28,7 @@ export function BlogCard({ post }: BlogCardProps) {
   );
 
   return (
-    <Card className="group flex h-full flex-col transition duration-200 hover:-translate-y-1 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/10">
+    <Card className="group flex h-full flex-col transition duration-200 hover:-translate-y-1 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       <CardHeader className="space-y-4">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1.5">
@@ -45,7 +45,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <CardTitle className="text-xl leading-tight">
             <Link
               href={post.href}
-              className="transition-colors outline-none hover:text-primary focus-visible:text-primary"
+              className="rounded-sm transition-colors outline-none hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               {post.title}
             </Link>

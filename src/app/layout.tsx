@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SiteBackground } from "@/components/layout/site-background";
 import { siteConfig } from "@/content/site";
+import { defaultOpenGraphImage } from "@/lib/seo/metadata";
 import { getPersonJsonLd, getWebSiteJsonLd } from "@/lib/seo/schema";
 import "./globals.css";
 
@@ -19,11 +20,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "en_GB",
     type: "website",
+    images: [defaultOpenGraphImage],
   },
   twitter: {
     card: "summary",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [defaultOpenGraphImage.url],
   },
 };
 

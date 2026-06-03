@@ -137,6 +137,7 @@ export function ContactForm() {
   const nameErrorId = errors.name ? "contact-name-error" : undefined;
   const emailErrorId = errors.email ? "contact-email-error" : undefined;
   const messageErrorId = errors.message ? "contact-message-error" : undefined;
+  const privacyNoticeId = "contact-privacy-notice";
 
   return (
     <Card>
@@ -152,6 +153,7 @@ export function ContactForm() {
         <form
           className="space-y-6"
           onSubmit={handleSubmit(onSubmit)}
+          aria-describedby={privacyNoticeId}
           noValidate
         >
           <div
@@ -229,14 +231,17 @@ export function ContactForm() {
             ) : null}
           </div>
 
-          <p className="text-sm leading-6 text-muted-foreground">
+          <p
+            id={privacyNoticeId}
+            className="text-sm leading-6 text-muted-foreground"
+          >
             I’ll use the details you provide to respond to your message. Your
             name, email address and message may be stored securely and sent to
             my email inbox as a notification. I do not use contact form
             submissions for marketing.{" "}
             <Link
               href="/privacy"
-              className="font-medium text-primary underline-offset-4 hover:underline"
+              className="font-medium text-primary underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
             >
               Read the privacy page
             </Link>

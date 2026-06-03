@@ -4,12 +4,14 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createWebsiteMetadata({
   title: "Accessibility | Charlie Cook",
   description:
     "Accessibility information for Charlie Cook's software developer portfolio, including current approach and feedback details.",
-};
+  path: "/accessibility",
+});
 
 export default function AccessibilityPage() {
   return (
@@ -72,7 +74,7 @@ export default function AccessibilityPage() {
                 the site, contact me using the{" "}
                 <Link
                   href="/contact"
-                  className="font-medium text-primary underline-offset-4 hover:underline"
+                  className="font-medium text-primary underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
                   contact page
                 </Link>

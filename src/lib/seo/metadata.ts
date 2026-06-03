@@ -14,6 +14,13 @@ type ArticleMetadataOptions = PageMetadataOptions & {
   tags?: string[];
 };
 
+export const defaultOpenGraphImage = {
+  url: "/images/profile_pic.webp",
+  width: 800,
+  height: 800,
+  alt: "Charlie Cook wearing a suit and yellow tie outdoors",
+};
+
 const sharedMetadata = ({ title, description, path }: PageMetadataOptions) => ({
   title,
   description,
@@ -24,6 +31,7 @@ const sharedMetadata = ({ title, description, path }: PageMetadataOptions) => ({
     card: "summary" as const,
     title,
     description,
+    images: [defaultOpenGraphImage.url],
   },
 });
 
@@ -37,6 +45,7 @@ export function createWebsiteMetadata(options: PageMetadataOptions): Metadata {
       siteName: siteConfig.name,
       locale: "en_GB",
       type: "website",
+      images: [defaultOpenGraphImage],
     },
   };
 }
@@ -56,6 +65,7 @@ export function createArticleMetadata(
       publishedTime: options.publishedTime,
       modifiedTime: options.modifiedTime,
       tags: options.tags,
+      images: [defaultOpenGraphImage],
     },
   };
 }

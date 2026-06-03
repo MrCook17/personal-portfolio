@@ -10,21 +10,14 @@ import {
   getFeaturedBlogPost,
   getPublishedBlogPosts,
 } from "@/content/blog-posts";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createWebsiteMetadata({
   title: "Software Development Notes | Charlie Cook",
   description:
     "Software development notes on Next.js, TypeScript, backend APIs, ecommerce SEO, analytics, debugging and portfolio learning.",
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
-    title: "Software Development Notes | Charlie Cook",
-    description:
-      "Notes on building projects, backend development, SEO, analytics, debugging and what I am learning.",
-    type: "website",
-  },
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const publishedPosts = getPublishedBlogPosts();
