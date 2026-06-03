@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { trustIndicators } from "@/content/home";
 
@@ -22,7 +17,9 @@ export function TrustBarSection() {
                     <Icon className="size-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
-                    <CardTitle className="text-base">{item.title}</CardTitle>
+                    <p className="text-base font-semibold tracking-tight text-card-foreground">
+                      {item.title}
+                    </p>
                     <CardDescription className="mt-1">
                       {item.detail}
                     </CardDescription>
