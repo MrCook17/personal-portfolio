@@ -4,6 +4,12 @@ import { notFound } from "next/navigation";
 import { caseStudyProjects, getProjectBySlug } from "@/content/projects";
 import { projectCaseStudies } from "@/content/project-case-studies";
 import { CaseStudyLayout } from "@/components/case-studies/case-study-layout";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createArticleMetadata } from "@/lib/seo/metadata";
+import {
+  getBreadcrumbListJsonLd,
+  getCreativeWorkJsonLd,
+} from "@/lib/seo/schema";
 
 type ProjectCaseStudyPageProps = {
   params: Promise<{
@@ -31,10 +37,17 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    title: `${project.title} | Case Study | Charlie Cook`,
-    description: project.summary,
-  };
+  const title =
+    project.seo?.title ?? `${project.title} | Case Study | Charlie Cook`;
+  const description = project.seo?.description ?? project.summary;
+  const path = project.caseStudyUrl ?? `/projects/${project.slug}`;
+
+  return createArticleMetadata({
+    title,
+    description,
+    path,
+    tags: project.seo?.keywords ?? project.keywords,
+  });
 }
 
 export default async function ProjectCaseStudyPage({
@@ -48,11 +61,24 @@ export default async function ProjectCaseStudyPage({
     notFound();
   }
 
+  const path = project.caseStudyUrl ?? `/projects/${project.slug}`;
+
   return (
-    <main>
+    <>
+      <JsonLd
+        data={[
+          getCreativeWorkJsonLd(project),
+          getBreadcrumbListJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Projects", path: "/projects" },
+            { name: project.title, path },
+          ]),
+        ]}
+      />
+
       <CaseStudyLayout project={project}>
         <CaseStudy />
       </CaseStudyLayout>
-    </main>
+    </>
   );
 }

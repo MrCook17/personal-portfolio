@@ -1,20 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { skillGroups } from "@/content/home";
 
 export function SkillsOverviewSection() {
   return (
-    <section className="py-16 sm:py-20" aria-labelledby="skills-overview">
+    <PageSection aria-labelledby="skills-overview">
       <Container size="lg">
         <SectionHeading
+          id="skills-overview"
           eyebrow="Technical skills"
-          title="Practical skills grouped by how I use them"
-          description="No percentage bars or inflated ratings — just the tools, languages and workflows I use across projects, university work and commercial experience."
+          title="Skills I use in real projects"
+          description="A practical overview of the languages, tools and workflows I’ve used across university projects, commercial software development, CMS work, SEO and backend/API development."
         />
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 md:mt-10 lg:grid-cols-3">
           {skillGroups.map((group) => {
             const Icon = group.icon;
 
@@ -44,6 +46,6 @@ export function SkillsOverviewSection() {
           })}
         </div>
       </Container>
-    </section>
+    </PageSection>
   );
 }

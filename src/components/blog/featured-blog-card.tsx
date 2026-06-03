@@ -48,7 +48,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
             <CardTitle className="text-2xl leading-tight md:text-3xl">
               <Link
                 href={post.href}
-                className="transition-colors outline-none hover:text-primary focus-visible:text-primary"
+                className="rounded-sm transition-colors outline-none hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {post.title}
               </Link>

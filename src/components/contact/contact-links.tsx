@@ -50,7 +50,7 @@ export function ContactLinks() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Contact details</CardTitle>
+          <CardTitle as="h2">Contact details</CardTitle>
           <CardDescription>
             Open to junior software developer, backend developer, full-stack
             developer, web developer and graduate software roles.
@@ -78,20 +78,24 @@ export function ContactLinks() {
                   key={item.label}
                   asChild
                   variant="outline"
-                  className="h-auto w-full justify-start gap-3 px-4 py-4 text-left"
+                  className="group h-auto w-full justify-start gap-3 px-4 py-4 text-left whitespace-normal transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <Link
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noreferrer" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                   >
                     <Icon
-                      className="size-5 shrink-0 text-primary"
+                      className="size-5 shrink-0 text-primary transition-colors group-hover:text-primary-foreground group-focus-visible:text-primary-foreground"
                       aria-hidden="true"
                     />
-                    <span>
-                      <span className="block font-medium">{item.label}</span>
-                      <span className="block text-sm font-normal text-muted-foreground">
+
+                    <span className="min-w-0">
+                      <span className="block font-medium text-foreground transition-colors group-hover:text-primary-foreground group-focus-visible:text-primary-foreground">
+                        {item.label}
+                      </span>
+
+                      <span className="block text-sm font-normal text-muted-foreground transition-colors group-hover:text-primary-foreground/90 group-focus-visible:text-primary-foreground/90">
                         {item.description}
                       </span>
                     </span>
@@ -102,7 +106,11 @@ export function ContactLinks() {
           </div>
 
           <Button asChild className="w-full">
-            <Link href="/Charlie-Cook-CV.pdf">
+            <Link
+              href="/Charlie-Cook-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FileText className="mr-2 size-4" aria-hidden="true" />
               Download CV
             </Link>
@@ -112,11 +120,11 @@ export function ContactLinks() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Availability</CardTitle>
+          <CardTitle as="h2">Availability</CardTitle>
           <CardDescription>
-            Currently building a portfolio focused on software engineering,
-            backend/API work, commercial web development, SEO, analytics and
-            database-backed systems.
+            Currently studying Computer Science at university while working
+            part-time, so my main availability is for part-time, flexible,
+            remote or hybrid opportunities.
           </CardDescription>
         </CardHeader>
       </Card>

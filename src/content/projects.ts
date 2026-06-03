@@ -6,6 +6,17 @@ export const projects: Project[] = [
     slug: "go-website-health-check-api",
     summary:
       "A Go REST API that checks website availability, handles timeouts, stores results, and returns structured JSON health check data.",
+    seo: {
+      title: "Go REST API Case Study | Website Health Checker",
+      description:
+        "Case study for a Go REST API that checks website health using JSON endpoints, validation, concurrency, timeouts, tests and benchmarks.",
+      keywords: [
+        "Go REST API case study",
+        "REST API case study",
+        "API case study",
+        "website health check API",
+      ],
+    },
     type: "Backend/API",
     status: "Finished",
     featured: true,
@@ -31,8 +42,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/MrCook17/URL-Health-Checker-API",
     caseStudyUrl: "/projects/go-website-health-check-api",
     caseStudy: {
-      role: "Individual backend developer",
-      timeline: "University coursework project",
+      role: "Sole developer",
+      timeline: "Completed over 6 weeks",
       problem:
         "Manually checking website availability is slow, inconsistent, and difficult to repeat across multiple URLs.",
       approach:
@@ -46,6 +57,17 @@ export const projects: Project[] = [
     slug: "cromartie-tie-dye-page-rebuild",
     summary:
       "A public-facing ecommerce page rebuild focused on SEO, content structure, layout, internal linking, and CMS-friendly HTML/CSS.",
+    seo: {
+      title: "Ecommerce SEO Case Study | Cromartie Page Rebuild",
+      description:
+        "Commercial ecommerce SEO case study covering keyword research, CMS constraints, page structure, internal linking and frontend improvements.",
+      keywords: [
+        "ecommerce SEO case study",
+        "CMS SEO case study",
+        "ecommerce SEO page rebuild",
+        "commercial SEO case study",
+      ],
+    },
     type: "Commercial SEO",
     status: "Finished",
     featured: true,
@@ -67,13 +89,13 @@ export const projects: Project[] = [
       "content structure",
     ],
     liveUrl:
-      "https://www.cromartiehobbycraft.co.uk/Catalogue/Arts-Crafts/Marbling-Dyes-Tie-Dye/Tie-Dye-Techniques",
+      "https://www.cromartiehobbycraft.co.uk/AdditionalDepartments/Header-Content/Tie-Dye-Techniques",
     caseStudyUrl: "/projects/cromartie-tie-dye-page-rebuild",
     employerSafeNotes:
       "Use public page screenshots only. Do not show CMS admin screenshots unless approved.",
     caseStudy: {
       role: "Web Operator",
-      timeline: "Commercial website work",
+      timeline: "Completed within a day",
       problem:
         "The page needed stronger SEO, clearer structure, better layout, improved content, images, and internal links.",
       approach:
@@ -86,7 +108,18 @@ export const projects: Project[] = [
     title: "Google Analytics Tracking Drop Investigation",
     slug: "analytics-tracking-drop-investigation",
     summary:
-      "A commercial analytics investigation into a sudden traffic drop, comparing GA4, Search Console, tracking behaviour, and likely causes.",
+      "A debugging case study about investigating a sudden drop in website traffic data and checking whether it was caused by a real performance issue or a tracking problem.",
+    seo: {
+      title: "Google Analytics Tracking Issue Case Study",
+      description:
+        "Case study on investigating a GA4 tracking drop by comparing analytics, Search Console signals, hypotheses and likely tracking causes.",
+      keywords: [
+        "Google Analytics tracking issue case study",
+        "GA4 tracking issue",
+        "analytics debugging case study",
+        "Google Search Console comparison",
+      ],
+    },
     type: "Analytics",
     status: "Finished",
     featured: true,
@@ -117,7 +150,7 @@ export const projects: Project[] = [
       "Use anonymised diagrams or written explanation only. Do not expose private analytics screenshots or confidential traffic data.",
     caseStudy: {
       role: "Web Operator",
-      timeline: "Commercial analytics investigation",
+      timeline: "Completed within a few hours",
       problem:
         "Google Analytics traffic appeared to drop heavily, making it unclear whether website performance had fallen or tracking had broken.",
       approach:
@@ -130,7 +163,7 @@ export const projects: Project[] = [
     title: "Internal Records Management Desktop Application",
     slug: "internal-records-management-desktop-application",
     summary:
-      "An anonymised commercial desktop software case study covering database-backed workflows, records, jobs, customers, invoices, and staff processes.",
+      "An anonymised desktop application project built around real business records, customer information, jobs, invoices and day-to-day staff workflows.",
     type: "Software",
     status: "Ongoing",
     featured: true,
@@ -155,13 +188,13 @@ export const projects: Project[] = [
       "Use anonymised wording, abstract diagrams, and generic UI mockups only. Do not show customer data, internal database screenshots, or private client details.",
     caseStudy: {
       role: "Software Engineer",
-      timeline: "Ongoing commercial software work",
+      timeline: "Ongoing software work",
       problem:
         "Staff needed database-backed software to manage business records and workflows more efficiently.",
       approach:
-        "Worked on a C# WinForms and SQL desktop application, contributing to features, debugging, existing code, and data-backed workflows.",
+        "Working on a C# WinForms and SQL desktop application, contributing to features, debugging, existing code, and data-backed workflows.",
       outcome:
-        "Gained commercial software experience with real business requirements, existing systems, database-backed features, and confidentiality constraints.",
+        "Gaining commercial software experience with real business requirements, existing systems, database-backed features, and confidentiality constraints.",
     },
   },
   {

@@ -9,29 +9,39 @@ import { EducationCard } from "@/components/about/education-card";
 import { InterestsSection } from "@/components/about/interests-section";
 import { SkillsAndToolsSection } from "@/components/about/skills-and-tools-section";
 import { WorkingStyleSection } from "@/components/about/working-style-section";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Container } from "@/components/ui/container";
+import { PageContent, PageSections } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ProfileImage } from "@/components/about/profile-image";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
+import { getProfilePageJsonLd } from "@/lib/seo/schema";
 
-export const metadata: Metadata = {
-  title: "About | Charlie Cook",
+const aboutMetadata = {
+  title: "About Charlie Cook | Software Developer",
   description:
-    "About Charlie Cook, a UK Computer Science student and software developer with commercial software, SEO, web operations and backend experience.",
+    "About Charlie Cook, a UK Computer Science student and software developer focused on practical web applications, backend APIs and SEO-aware web work.",
+  path: "/about",
 };
+
+export const metadata: Metadata = createWebsiteMetadata(aboutMetadata);
 
 export default function AboutPage() {
   return (
-    <main className="pb-24">
+    <>
+      <JsonLd data={getProfilePageJsonLd(aboutMetadata)} />
+
       <PageHeader
         eyebrow="About"
         title="About Me"
         description="UK Computer Science student and software developer with commercial experience in software engineering, web operations, SEO, analytics and backend development."
+        visual={<ProfileImage />}
       />
 
-      <Container size="lg" className="mt-10 md:mt-12">
-        <div className="space-y-20">
+      <PageContent size="lg">
+        <PageSections>
           <AboutIntroSection />
 
           <CurrentFocusSection />
@@ -40,12 +50,13 @@ export default function AboutPage() {
 
           <section aria-labelledby="about-education">
             <SectionHeading
+              id="about-education"
               eyebrow="Education"
               title="University and coursework"
               description="My degree gives the technical foundation behind the commercial work and portfolio projects."
             />
 
-            <div className="mt-8">
+            <div className="mt-8 md:mt-10">
               <EducationCard education={education} />
             </div>
           </section>
@@ -70,7 +81,7 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <ButtonGroup>
                   <Button asChild>
                     <Link href="/projects">View projects</Link>
                   </Button>
@@ -80,12 +91,12 @@ export default function AboutPage() {
                   <Button asChild variant="outline">
                     <Link href="/contact">Contact me</Link>
                   </Button>
-                </div>
+                </ButtonGroup>
               </CardContent>
             </Card>
           </section>
-        </div>
-      </Container>
-    </main>
+        </PageSections>
+      </PageContent>
+    </>
   );
 }

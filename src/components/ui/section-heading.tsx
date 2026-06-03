@@ -3,6 +3,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
+  id?: string;
   eyebrow?: string;
   title: string;
   description?: string;
@@ -11,6 +12,7 @@ type SectionHeadingProps = {
 };
 
 export function SectionHeading({
+  id,
   eyebrow,
   title,
   description,
@@ -31,7 +33,10 @@ export function SectionHeading({
         </p>
       ) : null}
 
-      <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h2
+        id={id}
+        className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+      >
         {title}
       </h2>
 

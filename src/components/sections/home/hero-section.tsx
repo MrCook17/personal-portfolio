@@ -3,15 +3,13 @@ import { ArrowRight, Download, Mail } from "lucide-react";
 
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonGroup } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { homeLinks } from "@/content/home";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
-      <div className="absolute top-16 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl sm:h-96 sm:w-96" />
-
+    <section className="relative overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-14 lg:pt-32 lg:pb-16">
       <Container size="lg">
         <div className="mx-auto max-w-4xl text-center">
           <Badge variant="outline" className="mb-6">
@@ -33,7 +31,7 @@ export function HeroSection() {
 
           <HeroActions />
 
-          <div className="mt-10 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3 md:mt-10">
             <div className="flex items-center justify-center rounded-2xl border bg-card/60 px-4 py-3 text-center">
               Commercial software experience
             </div>
@@ -52,7 +50,7 @@ export function HeroSection() {
 
 function HeroActions() {
   return (
-    <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <ButtonGroup align="center" stackOnMobile className="mt-8">
       <Button asChild size="lg">
         <Link href={homeLinks.projects}>
           View projects
@@ -61,7 +59,7 @@ function HeroActions() {
       </Button>
 
       <Button asChild size="lg" variant="outline">
-        <Link href={homeLinks.cv}>
+        <Link href={homeLinks.cv} target="_blank" rel="noopener noreferrer">
           Download CV
           <Download className="ml-2 size-4" aria-hidden="true" />
         </Link>
@@ -100,6 +98,6 @@ function HeroActions() {
           </Link>
         </Button>
       </div>
-    </div>
+    </ButtonGroup>
   );
 }

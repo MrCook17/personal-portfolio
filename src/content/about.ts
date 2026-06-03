@@ -1,16 +1,11 @@
 import type { ProfileCard, SkillGroup } from "@/types/experience";
 
 export const aboutIntro = {
-  highlights: [
-    "UK-based",
-    "Computer Science student",
-    "Software developer",
-    "Commercial web experience",
-  ],
+  highlights: [],
   paragraphs: [
     "I’m a UK-based Computer Science student and software developer with commercial experience across software engineering, web operations, SEO, analytics, CMS systems and database-backed development.",
     "My work so far has involved building and maintaining real business software, improving ecommerce pages, debugging existing systems, investigating analytics issues and learning how technical decisions affect users and businesses.",
-    "I’m especially interested in practical software: backend APIs, full-stack web applications, maintainable code, database-backed workflows and technical problem-solving. Outside of development, I enjoy climbing, hiking, learning and building things.",
+    "I enjoy building practical software that has a clear purpose, especially backend APIs, full-stack web applications and database-backed features. I like working through technical problems and making projects easier to use, maintain and understand. Outside of coding, I enjoy hiking, climbing mountains, indoor rock climbing and watching anime.",
   ],
 };
 
@@ -106,16 +101,16 @@ export const personalInterestCards = [
   {
     title: "Climbing and hiking",
     description:
-      "A useful balance outside coding, and a good reminder that steady progress matters more than rushing.",
+      "I enjoy getting outdoors, especially hiking, climbing mountains and indoor rock climbing when I get the chance.",
   },
   {
-    title: "Learning",
+    title: "Anime",
     description:
-      "I enjoy working through new tools, frameworks and technical ideas by applying them to real projects.",
+      "I enjoy watching anime in my free time. Some of my favourites are Hunter x Hunter, 86 and Jujutsu Kaisen, and I’m currently watching Witch Hat Atelier.",
   },
   {
     title: "Building things",
     description:
-      "Whether it is a project, a page rebuild or a case study, I like turning rough ideas into something usable.",
+      "I enjoy building projects that are genuinely useful to me. It is satisfying seeing an idea turn into something that works and solves a real problem, even in a small way.",
   },
 ] satisfies ProfileCard[];

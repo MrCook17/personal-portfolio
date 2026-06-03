@@ -22,6 +22,11 @@ export type BlogPost = {
   slug: string;
   href: `/blog/${string}`;
   description: string;
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+  };
   date: string;
   updated?: string;
   tags: BlogTag[];

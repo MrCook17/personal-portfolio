@@ -18,7 +18,7 @@ export function CodeBlock({
   return (
     <figure
       className={cn(
-        "overflow-hidden rounded-2xl border border-border bg-card",
+        "overflow-hidden rounded-2xl border border-border/80 bg-card/80",
         className,
       )}
     >

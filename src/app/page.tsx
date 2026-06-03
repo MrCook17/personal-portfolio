@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { CaseStudyTeaserSection } from "@/components/sections/home/case-study-teaser-section";
 import { ContactCtaSection } from "@/components/sections/home/contact-cta-section";
 import { ExperiencePreviewSection } from "@/components/sections/home/experience-preview-section";
@@ -6,6 +8,14 @@ import { HeroSection } from "@/components/sections/home/hero-section";
 import { LatestBlogNotesSection } from "@/components/sections/home/latest-blog-notes-section";
 import { SkillsOverviewSection } from "@/components/sections/home/skills-overview-section";
 import { TrustBarSection } from "@/components/sections/home/trust-bar-section";
+import { siteConfig } from "@/content/site";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = createWebsiteMetadata({
+  title: siteConfig.title,
+  description: siteConfig.description,
+  path: "/",
+});
 
 export default function HomePage() {
   return (

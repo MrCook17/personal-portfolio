@@ -43,7 +43,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <Card className="bg-card/80">
         <CardContent className="space-y-6 p-5 md:p-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">

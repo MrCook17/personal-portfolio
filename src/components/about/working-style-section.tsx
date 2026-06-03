@@ -12,12 +12,13 @@ export function WorkingStyleSection() {
   return (
     <section aria-labelledby="working-style">
       <SectionHeading
+        id="working-style"
         eyebrow="Working style"
         title="How I approach software work"
         description="A few values that connect my commercial work, university projects and personal development."
       />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2 xl:grid-cols-3">
         {workingStyleCards.map((card) => (
           <Card key={card.title} className="border-primary/20 bg-card/70">
             <CardHeader>

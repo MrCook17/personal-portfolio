@@ -18,7 +18,6 @@ export const experienceRoles = [
       "Work with database-backed business workflows covering records, jobs, customers, invoices and operational data.",
       "Debug existing codebases, investigate issues and implement updates across live business systems.",
       "Research and apply third-party APIs, including Shopify-related integration work.",
-      "Document sensitive commercial work through anonymised case studies instead of exposing private client data, credentials or internal screenshots.",
     ],
     technologies: [
       "C#",
@@ -36,10 +35,6 @@ export const experienceRoles = [
       {
         label: "View anonymised software case study",
         href: "/projects/internal-records-management-desktop-application",
-      },
-      {
-        label: "Browse projects",
-        href: "/projects",
       },
     ],
   },
@@ -114,10 +109,6 @@ export const commercialWorkAreas = [
     description:
       "Experience investigating issues in existing codebases, fixing bugs, updating live systems and working carefully around commercial requirements.",
     technologies: ["Debugging", "Git", "PHP", "JavaScript"],
-    relatedLink: {
-      label: "Browse projects",
-      href: "/projects",
-    },
   },
   {
     title: "Analytics and technical SEO investigation",
@@ -134,10 +125,6 @@ export const commercialWorkAreas = [
     description:
       "Workplace development involving third-party API research, reading technical documentation and applying unfamiliar services to real projects.",
     technologies: ["APIs", "Shopify API", "PHP", "JavaScript"],
-    relatedLink: {
-      label: "Browse related work",
-      href: "/projects",
-    },
   },
 ] satisfies CommercialWorkArea[];
 

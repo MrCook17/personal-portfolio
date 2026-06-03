@@ -3,54 +3,44 @@ import type { Metadata } from "next";
 import { BlogExplorer } from "@/components/blog/blog-explorer";
 import { FeaturedBlogCard } from "@/components/blog/featured-blog-card";
 import { Callout } from "@/components/ui/callout";
-import { Container } from "@/components/ui/container";
+import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import {
   getBlogTags,
   getFeaturedBlogPost,
   getPublishedBlogPosts,
 } from "@/content/blog-posts";
+import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createWebsiteMetadata({
   title: "Software Development Notes | Charlie Cook",
   description:
     "Software development notes on Next.js, TypeScript, backend APIs, ecommerce SEO, analytics, debugging and portfolio learning.",
-  alternates: {
-    canonical: "/blog",
-  },
-  openGraph: {
-    title: "Software Development Notes | Charlie Cook",
-    description:
-      "Notes on building projects, backend development, SEO, analytics, debugging and what I am learning.",
-    type: "website",
-  },
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const publishedPosts = getPublishedBlogPosts();
   const featuredPost = getFeaturedBlogPost();
   const tags = getBlogTags();
 
-  const nonFeaturedPosts = featuredPost
-    ? publishedPosts.filter((post) => post.slug !== featuredPost.slug)
-    : publishedPosts;
-
   return (
-    <main className="py-12 md:py-16">
+    <>
       <PageHeader
         eyebrow="Blog & learning notes"
         title="Software Development Notes"
-        description="Notes on building projects, backend development, SEO, analytics, debugging and what I am learning while developing this portfolio and wider software projects."
+        description="Short write-ups about projects, technical decisions, lessons learned and practical development work."
       />
 
-      <Container size="lg" className="mt-10 space-y-12 md:mt-12">
+      <PageContent size="lg" className="space-y-10 md:space-y-12">
         {publishedPosts.length >= 2 ? (
           <>
             {featuredPost ? <FeaturedBlogCard post={featuredPost} /> : null}
 
             <BlogExplorer
-              posts={featuredPost ? nonFeaturedPosts : publishedPosts}
+              posts={publishedPosts}
               tags={tags}
+              featuredPostSlug={featuredPost?.slug}
             />
           </>
         ) : (
@@ -59,7 +49,7 @@ export default function BlogPage() {
             there are at least two useful notes available.
           </Callout>
         )}
-      </Container>
-    </main>
+      </PageContent>
+    </>
   );
 }

@@ -1,8 +1,10 @@
 ## Overview
 
-The Google Analytics Tracking Drop Investigation is a commercial debugging and analytics case study. It focuses on investigating a sudden drop in analytics data and working out whether the issue reflected real website performance or a tracking problem.
+This project came from a sudden drop in Google Analytics traffic data during my Web Operator role.
 
-This is a useful portfolio case study because it shows practical problem-solving, careful data comparison, and communication rather than just code output.
+The main task was to work out whether the drop showed a real fall in website traffic or whether the data itself had become unreliable. I compared GA4 with Google Search Console, checked wider website context, and considered whether tracking or cookie consent behaviour could explain the difference.
+
+The project is included because it shows practical debugging, careful use of data, and the importance of checking evidence before drawing conclusions.
 
 ## What happened
 
@@ -75,34 +77,32 @@ The investigation followed a basic debugging process:
 
 ## Likely cause
 
-The likely cause was related to tracking or cookie consent behaviour rather than a straightforward SEO collapse.
+The evidence pointed towards a tracking or cookie consent issue rather than a clear SEO or traffic collapse.
 
-The exact public case study should avoid exposing private analytics screenshots or sensitive internal data, but the reasoning can still be explained safely: the pattern did not behave like a normal organic performance decline, and comparing data sources pointed toward measurement/tracking issues.
+GA4 showed a sharp drop, but the wider context did not fully support the idea that website performance had suddenly fallen in the same way. Comparing GA4 with Search Console helped show that the issue was more likely related to how visits were being recorded rather than a confirmed loss of organic visibility.
 
-## Communication and escalation
+The cause still needed further technical checking, but the investigation helped narrow the problem and avoid treating the GA4 drop as a confirmed traffic loss too early.
 
-The issue was escalated because unreliable analytics affects business understanding.
+## Communication
 
-The key communication points were:
+After comparing the data, I raised the issue and explained that the drop should not immediately be treated as a confirmed fall in website traffic.
 
-- The drop should not immediately be treated as a confirmed traffic collapse.
-- Multiple data sources needed to be compared.
-- GA4 and Search Console were telling different parts of the story.
-- Tracking/cookie consent behaviour was a likely area to investigate.
-- Further technical review was needed if tracking had changed.
+The main points were:
+
+- GA4 data had changed sharply.
+- Search Console did not suggest the same type of sudden collapse.
+- Tracking or cookie consent behaviour needed to be checked.
+- The data should be treated carefully until the cause was confirmed.
+
+This helped keep the discussion focused on evidence rather than assumptions from one analytics report.
 
 ## Outcome
 
-The main outcome was a clearer understanding of the issue and a more careful interpretation of the analytics data.
+The investigation helped narrow the issue and made the analytics data easier to interpret.
 
-The value of the case study is the process:
+Rather than assuming the website had suddenly lost traffic, the comparison between GA4, Search Console and wider website context suggested that tracking behaviour was the more likely area to investigate.
 
-- Notice an unusual data pattern.
-- Avoid assumptions.
-- Compare sources.
-- Identify likely causes.
-- Communicate clearly.
-- Escalate appropriately.
+The main value of the work was the process: noticing an unusual data pattern, checking multiple sources, avoiding quick assumptions, and communicating the likely cause clearly.
 
 ## What I learned
 
@@ -122,14 +122,3 @@ Next time, I would:
 - Check tracking and consent behaviour sooner.
 - Escalate earlier if the data affects business reporting.
 - Create a simple incident note so the investigation is easier to follow later.
-
-## Safe visual evidence to add before launch
-
-Use anonymised or recreated visuals only:
-
-- Simplified timeline diagram.
-- Redrawn GA4 vs Search Console comparison.
-- Written explanation of hypotheses.
-- No private GA4 screenshots.
-- No private Search Console screenshots.
-- No confidential traffic numbers unless approved.

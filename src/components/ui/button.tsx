@@ -56,4 +56,45 @@ function Button({
   );
 }
 
-export { Button, buttonVariants };
+type ButtonGroupProps = React.ComponentProps<"div"> & {
+  align?: "start" | "center" | "end" | "between";
+  stackOnMobile?: boolean;
+};
+
+const buttonGroupAlignment = {
+  start: "justify-start",
+  center: "justify-center",
+  end: "justify-end",
+  between: "justify-between",
+};
+
+const stackedButtonGroupAlignment = {
+  start: "items-start sm:items-center sm:justify-start",
+  center: "items-center sm:justify-center",
+  end: "items-end sm:items-center sm:justify-end",
+  between: "items-stretch sm:items-center sm:justify-between",
+};
+
+function ButtonGroup({
+  align = "start",
+  stackOnMobile = false,
+  className,
+  ...props
+}: ButtonGroupProps) {
+  return (
+    <div
+      className={cn(
+        stackOnMobile
+          ? "flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          : "flex flex-wrap items-center gap-3",
+        stackOnMobile
+          ? stackedButtonGroupAlignment[align]
+          : buttonGroupAlignment[align],
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export { Button, ButtonGroup, buttonVariants };

@@ -14,12 +14,13 @@ export function CurrentFocusSection() {
   return (
     <section aria-labelledby="current-focus">
       <SectionHeading
+        id="current-focus"
         eyebrow="Current focus"
         title="What I am building towards"
         description="A focused snapshot of the areas I am improving as I develop the portfolio and prepare for future software roles."
       />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2">
         {currentFocusCards.map((card) => (
           <Card key={card.title} className="border-primary/20 bg-card/70">
             <CardHeader>
