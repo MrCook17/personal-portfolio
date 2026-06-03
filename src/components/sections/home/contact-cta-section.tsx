@@ -36,10 +36,10 @@ export function ContactCtaSection() {
             </Button>
 
             <Button asChild size="lg" variant="outline">
-              <Link href={homeLinks.cv}>
+              <a href={homeLinks.cv} download>
                 Download CV
                 <Download className="ml-2 size-4" aria-hidden="true" />
-              </Link>
+              </a>
             </Button>
 
             <Button asChild size="lg" variant="ghost">

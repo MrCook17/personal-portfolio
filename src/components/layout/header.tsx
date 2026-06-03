@@ -28,7 +28,9 @@ export function Header() {
           </nav>
 
           <Button asChild size="sm">
-            <Link href={siteConfig.cvHref}>Download CV</Link>
+            <a href={siteConfig.cvHref} download>
+              Download CV
+            </a>
           </Button>
         </div>
       </div>
