@@ -69,9 +69,15 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={linkClassName}>
-                    {link.label}
-                  </Link>
+                  {link.href === "/sitemap.xml" ? (
+                    <a href={link.href} className={linkClassName}>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className={linkClassName}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
