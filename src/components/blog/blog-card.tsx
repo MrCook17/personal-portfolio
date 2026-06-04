@@ -20,6 +20,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
   month: "short",
   year: "numeric",
+  timeZone: "UTC",
 });
 
 export function BlogCard({ post }: BlogCardProps) {
