@@ -2,6 +2,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 import type { Project } from "@/types/project";
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon } from "@/components/icons/brand-icons";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
 import { TechStackTag } from "@/components/projects/tech-stack-tag";
@@ -84,19 +85,39 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         {project.githubUrl ? (
           <Button asChild variant="outline">
-            <a href={project.githubUrl} target="_blank" rel="noreferrer">
+            <TrackedAnchor
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              eventName="click_project_github"
+              eventParams={{
+                project_slug: project.slug,
+                project_title: project.title,
+                location: "project_card",
+              }}
+            >
               <GitHubIcon className="mr-2 size-4" aria-hidden="true" />
               GitHub
-            </a>
+            </TrackedAnchor>
           </Button>
         ) : null}
 
         {project.liveUrl ? (
           <Button asChild variant="outline">
-            <a href={project.liveUrl} target="_blank" rel="noreferrer">
+            <TrackedAnchor
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              eventName="click_live_project"
+              eventParams={{
+                project_slug: project.slug,
+                project_title: project.title,
+                location: "project_card",
+              }}
+            >
               <ExternalLink className="mr-2 size-4" aria-hidden="true" />
               Live page
-            </a>
+            </TrackedAnchor>
           </Button>
         ) : null}
       </CardFooter>

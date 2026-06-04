@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { AnalyticsConsentBanner } from "@/components/analytics/analytics-consent-banner";
+import { Ga4Provider } from "@/components/analytics/ga4-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -64,6 +66,8 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <Ga4Provider />
+        <AnalyticsConsentBanner />
         <Analytics />
         <SpeedInsights />
       </body>
