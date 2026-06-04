@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { siteConfig } from "@/content/site";
 
 const pageLinks = [
@@ -85,14 +86,22 @@ export function Footer() {
                 return (
                   <li key={link.href}>
                     {isExternal ? (
-                      <a
+                      <TrackedAnchor
                         href={link.href}
                         className={linkClassName}
                         target="_blank"
                         rel="noreferrer"
+                        eventName={
+                          link.label === "GitHub"
+                            ? "click_github"
+                            : "click_linkedin"
+                        }
+                        eventParams={{
+                          location: "footer",
+                        }}
                       >
                         {link.label}
-                      </a>
+                      </TrackedAnchor>
                     ) : (
                       <Link href={link.href} className={linkClassName}>
                         {link.label}

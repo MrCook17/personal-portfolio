@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +17,14 @@ import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Tag } from "@/components/ui/tag";
 import { featuredProjects } from "@/content/home";
+
+function getProjectSlug(projectHref: string) {
+  if (!projectHref.startsWith("/projects/")) {
+    return undefined;
+  }
+
+  return projectHref.replace("/projects/", "");
+}
 
 export function FeaturedProjectsSection() {
   return (
@@ -70,19 +79,33 @@ export function FeaturedProjectsSection() {
 
                 {project.secondaryHref ? (
                   <Button asChild variant="outline">
-                    <Link
-                      href={project.secondaryHref}
-                      target={project.secondaryExternal ? "_blank" : undefined}
-                      rel={project.secondaryExternal ? "noreferrer" : undefined}
-                    >
-                      {project.secondaryLabel}
-                      {project.secondaryExternal ? (
+                    {project.secondaryExternal ? (
+                      <TrackedAnchor
+                        href={project.secondaryHref}
+                        target="_blank"
+                        rel="noreferrer"
+                        eventName={
+                          project.secondaryLabel === "GitHub"
+                            ? "click_project_github"
+                            : "click_live_project"
+                        }
+                        eventParams={{
+                          project_slug: getProjectSlug(project.primaryHref),
+                          project_title: project.title,
+                          location: "homepage",
+                        }}
+                      >
+                        {project.secondaryLabel}
                         <ExternalLink
                           className="ml-2 size-4"
                           aria-hidden="true"
                         />
-                      ) : null}
-                    </Link>
+                      </TrackedAnchor>
+                    ) : (
+                      <Link href={project.secondaryHref}>
+                        {project.secondaryLabel}
+                      </Link>
+                    )}
                   </Button>
                 ) : null}
               </CardFooter>

@@ -1,7 +1,7 @@
 import type { ComponentType, SVGProps } from "react";
-import Link from "next/link";
 import { FileText, Mail, MapPin } from "lucide-react";
 
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +20,7 @@ type ContactLink = {
   href: string;
   icon: IconComponent;
   external?: boolean;
+  eventName: "click_email" | "click_github" | "click_linkedin";
 };
 
 const contactLinks: ContactLink[] = [
@@ -28,6 +29,7 @@ const contactLinks: ContactLink[] = [
     description: "Best for direct contact and role enquiries.",
     href: "mailto:charlie_cook321@hotmail.com",
     icon: Mail,
+    eventName: "click_email",
   },
   {
     label: "GitHub",
@@ -35,6 +37,7 @@ const contactLinks: ContactLink[] = [
     href: "https://github.com/MrCook17",
     icon: GitHubIcon,
     external: true,
+    eventName: "click_github",
   },
   {
     label: "LinkedIn",
@@ -42,6 +45,7 @@ const contactLinks: ContactLink[] = [
     href: "https://www.linkedin.com/in/charles-james-cook/",
     icon: LinkedInIcon,
     external: true,
+    eventName: "click_linkedin",
   },
 ];
 
@@ -80,10 +84,12 @@ export function ContactLinks() {
                   variant="outline"
                   className="group h-auto w-full justify-start gap-3 px-4 py-4 text-left whitespace-normal transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:border-primary focus-visible:bg-primary focus-visible:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
-                  <Link
+                  <TrackedAnchor
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
+                    eventName={item.eventName}
+                    eventParams={{ location: "contact_page" }}
                   >
                     <Icon
                       className="size-5 shrink-0 text-primary transition-colors group-hover:text-primary-foreground group-focus-visible:text-primary-foreground"
@@ -99,17 +105,22 @@ export function ContactLinks() {
                         {item.description}
                       </span>
                     </span>
-                  </Link>
+                  </TrackedAnchor>
                 </Button>
               );
             })}
           </div>
 
           <Button asChild className="w-full">
-            <a href="/Charlie-Cook-CV.pdf" download>
+            <TrackedAnchor
+              href="/Charlie-Cook-CV.pdf"
+              download
+              eventName="download_cv"
+              eventParams={{ location: "contact_page" }}
+            >
               <FileText className="mr-2 size-4" aria-hidden="true" />
               Download CV
-            </a>
+            </TrackedAnchor>
           </Button>
         </CardContent>
       </Card>

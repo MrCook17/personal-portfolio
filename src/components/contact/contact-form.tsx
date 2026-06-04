@@ -19,6 +19,7 @@ import {
   type ContactFormInput,
   type ContactFormValues,
 } from "@/lib/validations/contact";
+import { trackEvent } from "@/lib/analytics/ga";
 
 type ContactApiResponse =
   | {
@@ -114,6 +115,11 @@ export function ContactForm() {
       setFormStatus({
         type: "success",
         message: result.message,
+      });
+
+      trackEvent("contact_form_submit", {
+        location: "contact_page",
+        page_path: "/contact",
       });
 
       reset({

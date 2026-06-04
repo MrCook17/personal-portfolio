@@ -2,6 +2,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 import type { Project } from "@/types/project";
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon } from "@/components/icons/brand-icons";
 import { Button, ButtonGroup } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
@@ -42,19 +43,39 @@ export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
       <ButtonGroup>
         {project.githubUrl ? (
           <Button asChild>
-            <a href={project.githubUrl} target="_blank" rel="noreferrer">
+            <TrackedAnchor
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              eventName="click_project_github"
+              eventParams={{
+                project_slug: project.slug,
+                project_title: project.title,
+                location: "case_study_header",
+              }}
+            >
               <GitHubIcon className="mr-2 size-4" aria-hidden="true" />
               View GitHub
-            </a>
+            </TrackedAnchor>
           </Button>
         ) : null}
 
         {project.liveUrl ? (
           <Button asChild variant="outline">
-            <a href={project.liveUrl} target="_blank" rel="noreferrer">
+            <TrackedAnchor
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              eventName="click_live_project"
+              eventParams={{
+                project_slug: project.slug,
+                project_title: project.title,
+                location: "case_study_header",
+              }}
+            >
               <ExternalLink className="mr-2 size-4" aria-hidden="true" />
               View live page
-            </a>
+            </TrackedAnchor>
           </Button>
         ) : null}
       </ButtonGroup>

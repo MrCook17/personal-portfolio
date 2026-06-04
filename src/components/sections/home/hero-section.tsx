@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Download, Mail } from "lucide-react";
 
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button, ButtonGroup } from "@/components/ui/button";
@@ -59,10 +60,15 @@ function HeroActions() {
       </Button>
 
       <Button asChild size="lg" variant="outline">
-        <a href={homeLinks.cv} download>
+        <TrackedAnchor
+          href={homeLinks.cv}
+          download
+          eventName="download_cv"
+          eventParams={{ location: "homepage" }}
+        >
           Download CV
           <Download className="ml-2 size-4" aria-hidden="true" />
-        </a>
+        </TrackedAnchor>
       </Button>
 
       <Button asChild size="lg" variant="ghost">
@@ -71,31 +77,40 @@ function HeroActions() {
 
       <div className="flex items-center gap-2 pt-2 sm:pt-0">
         <Button asChild size="icon" variant="ghost">
-          <Link
+          <TrackedAnchor
             href={homeLinks.github}
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub profile"
+            eventName="click_github"
+            eventParams={{ location: "homepage" }}
           >
             <GitHubIcon className="size-5" aria-hidden="true" />
-          </Link>
+          </TrackedAnchor>
         </Button>
 
         <Button asChild size="icon" variant="ghost">
-          <Link
+          <TrackedAnchor
             href={homeLinks.linkedin}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn profile"
+            eventName="click_linkedin"
+            eventParams={{ location: "homepage" }}
           >
             <LinkedInIcon className="size-5" aria-hidden="true" />
-          </Link>
+          </TrackedAnchor>
         </Button>
 
         <Button asChild size="icon" variant="ghost">
-          <Link href={homeLinks.email} aria-label="Email Charlie Cook">
+          <TrackedAnchor
+            href={homeLinks.email}
+            aria-label="Email Charlie Cook"
+            eventName="click_email"
+            eventParams={{ location: "homepage" }}
+          >
             <Mail className="size-5" aria-hidden="true" />
-          </Link>
+          </TrackedAnchor>
         </Button>
       </div>
     </ButtonGroup>

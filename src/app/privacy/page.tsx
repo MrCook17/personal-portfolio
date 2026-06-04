@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { AnalyticsPreferencesControl } from "@/components/analytics/analytics-preferences-control";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageContent } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
@@ -78,6 +79,26 @@ export default function PrivacyPage() {
 
             <section className="space-y-3">
               <h3 className="text-base font-semibold text-foreground">
+                Analytics and cookies
+              </h3>
+              <p>
+                This site uses Vercel Web Analytics for aggregated site
+                insights. Google Analytics 4 is only used if you accept optional
+                analytics. These analytics help me understand page visits, CV
+                downloads, successful contact submissions and profile link
+                clicks.
+              </p>
+              <p>
+                Analytics are not used for advertising, remarketing or selling
+                data. You can decline optional analytics, and your analytics
+                preference may be stored locally in your browser so the banner
+                does not reappear on every page load.
+              </p>
+              <AnalyticsPreferencesControl />
+            </section>
+
+            <section className="space-y-3">
+              <h3 className="text-base font-semibold text-foreground">
                 How long I keep it
               </h3>
               <p>
@@ -107,7 +128,7 @@ export default function PrivacyPage() {
             </section>
 
             <p className="border-t border-border pt-6 text-xs">
-              Last updated: May 2026.
+              Last updated: June 2026.
             </p>
           </CardContent>
         </Card>

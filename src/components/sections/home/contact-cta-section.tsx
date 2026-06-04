@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Download, Mail } from "lucide-react";
 
+import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { LinkedInIcon } from "@/components/icons/brand-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button, ButtonGroup } from "@/components/ui/button";
@@ -38,17 +39,28 @@ export function ContactCtaSection() {
             </Button>
 
             <Button asChild size="lg" variant="outline">
-              <a href={homeLinks.cv} download>
+              <TrackedAnchor
+                href={homeLinks.cv}
+                download
+                eventName="download_cv"
+                eventParams={{ location: "homepage" }}
+              >
                 Download CV
                 <Download className="ml-2 size-4" aria-hidden="true" />
-              </a>
+              </TrackedAnchor>
             </Button>
 
             <Button asChild size="lg" variant="ghost">
-              <Link href={homeLinks.linkedin} target="_blank" rel="noreferrer">
+              <TrackedAnchor
+                href={homeLinks.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                eventName="click_linkedin"
+                eventParams={{ location: "homepage" }}
+              >
                 LinkedIn
                 <LinkedInIcon className="ml-2 size-5" aria-hidden="true" />
-              </Link>
+              </TrackedAnchor>
             </Button>
           </ButtonGroup>
         </div>

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { Project } from "@/types/project";
+import { CaseStudyViewTracker } from "@/components/analytics/case-study-view-tracker";
 import { CaseStudyHeader } from "@/components/case-studies/case-study-header";
 import { CaseStudyNavigation } from "@/components/case-studies/case-study-navigation";
 import { CaseStudySummaryCards } from "@/components/case-studies/case-study-summary-cards";
@@ -13,8 +14,16 @@ type CaseStudyLayoutProps = {
 };
 
 export function CaseStudyLayout({ project, children }: CaseStudyLayoutProps) {
+  const pagePath = project.caseStudyUrl ?? `/projects/${project.slug}`;
+
   return (
     <Container size="lg" className="pb-16 md:pb-20 lg:pb-24">
+      <CaseStudyViewTracker
+        pagePath={pagePath}
+        projectSlug={project.slug}
+        projectTitle={project.title}
+      />
+
       <CaseStudyHeader project={project} />
 
       <div className="space-y-8 md:space-y-10 lg:space-y-12">
