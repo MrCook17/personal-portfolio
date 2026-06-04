@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { HeaderNav } from "@/components/layout/header-nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
