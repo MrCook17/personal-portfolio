@@ -84,6 +84,7 @@ CONTACT_NOTIFICATION_EMAIL=you@example.com
 CONTACT_FROM_EMAIL="Portfolio Contact <contact@your-domain.com>"
 
 CONTACT_RATE_LIMIT_SECRET=replace-with-a-long-random-secret-at-least-32-chars
+CRON_SECRET=replace-with-a-long-random-secret-at-least-32-chars
 ```
 
 | Variable                     | Required                    | Purpose                                                                                                      |
@@ -95,6 +96,7 @@ CONTACT_RATE_LIMIT_SECRET=replace-with-a-long-random-secret-at-least-32-chars
 | `CONTACT_NOTIFICATION_EMAIL` | Yes for email notifications | Inbox that receives contact form notifications.                                                              |
 | `CONTACT_FROM_EMAIL`         | Yes for email notifications | Verified Resend sender address.                                                                              |
 | `CONTACT_RATE_LIMIT_SECRET`  | Yes for contact form        | Secret used to hash client IPs for rate limiting.                                                            |
+| `CRON_SECRET`                | Yes for Vercel Cron         | Secret Vercel Cron sends as a Bearer token when calling `/api/cron/supabase-keepalive`.                      |
 | `VERCEL_URL`                 | Automatic on Vercel         | Used by the contact API to allow Vercel preview origins.                                                     |
 
 Important:
@@ -359,6 +361,7 @@ environment:
 - `CONTACT_NOTIFICATION_EMAIL`
 - `CONTACT_FROM_EMAIL`
 - `CONTACT_RATE_LIMIT_SECRET`
+- `CRON_SECRET`
 
 After changing Vercel environment variables, redeploy the affected environment.
 
@@ -369,6 +372,8 @@ Deployment checks:
 - `/contact` loads.
 - A valid contact submission returns `201`.
 - Supabase receives rows in `contact_submissions` and `contact_rate_limits`.
+- Vercel Cron lists `/api/cron/supabase-keepalive` and its latest run returns
+  `200`.
 - The notification email arrives.
 - Browser bundles do not expose server-only secrets.
 
