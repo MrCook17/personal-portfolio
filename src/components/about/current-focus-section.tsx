@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 
 export function CurrentFocusSection() {
   return (
@@ -32,11 +32,7 @@ export function CurrentFocusSection() {
 
             {card.tags ? (
               <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {card.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </div>
+                <TagList tags={card.tags} />
               </CardContent>
             ) : null}
           </Card>

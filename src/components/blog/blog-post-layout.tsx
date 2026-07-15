@@ -3,10 +3,11 @@ import Link from "next/link";
 import type { PropsWithChildren } from "react";
 
 import { BlogPostNavigation } from "@/components/blog/blog-post-navigation";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { MdxContent } from "@/components/ui/mdx-content";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import type { BlogPost } from "@/types/blog";
 
 type BlogPostLayoutProps = PropsWithChildren<{
@@ -35,6 +36,14 @@ export function BlogPostLayout({
   return (
     <article>
       <Container size="lg" className="pb-16 md:pb-20 lg:pb-24">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.title, href: post.href },
+          ]}
+        />
+
         <header className="space-y-7 py-10 md:space-y-8 md:py-14 lg:py-16">
           <Button asChild variant="ghost" size="sm">
             <Link href="/blog">
@@ -66,11 +75,7 @@ export function BlogPostLayout({
             </span>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </div>
+          <TagList tags={post.tags} />
         </header>
 
         <div className="space-y-8 md:space-y-10 lg:space-y-12">

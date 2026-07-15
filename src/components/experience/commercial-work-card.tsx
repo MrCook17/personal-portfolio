@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import type { CommercialWorkArea } from "@/types/experience";
 
 import { RelatedLinkButton } from "./related-link-button";
@@ -25,11 +25,7 @@ export function CommercialWorkCard({ area }: CommercialWorkCardProps) {
           </CardDescription>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          {area.technologies.map((technology) => (
-            <Tag key={technology}>{technology}</Tag>
-          ))}
-        </div>
+        <TagList tags={area.technologies} />
       </CardHeader>
 
       {area.relatedLink ? (

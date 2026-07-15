@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import type { ExperienceRole } from "@/types/experience";
 
 import { RelatedLinkButton } from "./related-link-button";
@@ -66,11 +66,7 @@ export function ExperienceTimelineItem({ item }: ExperienceTimelineItemProps) {
             ))}
           </ul>
 
-          <div className="flex flex-wrap gap-2">
-            {item.technologies.map((technology) => (
-              <Tag key={technology}>{technology}</Tag>
-            ))}
-          </div>
+          <TagList tags={item.technologies} />
 
           <div className="flex flex-wrap gap-3">
             {item.relatedLinks.map((link) => (

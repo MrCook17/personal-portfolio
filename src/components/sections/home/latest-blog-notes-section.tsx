@@ -12,7 +12,7 @@ import {
 import { Container } from "@/components/ui/container";
 import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import { latestBlogPosts } from "@/content/home";
 
 export function LatestBlogNotesSection() {
@@ -43,11 +43,7 @@ export function LatestBlogNotesSection() {
                   {post.date} · {post.readingTime}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </div>
+                <TagList tags={post.tags} />
               </CardContent>
 
               <CardFooter className="mt-auto">

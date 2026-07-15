@@ -15,7 +15,7 @@ import {
 import { Container } from "@/components/ui/container";
 import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import { featuredProjects } from "@/content/home";
 
 function getProjectSlug(projectHref: string) {
@@ -62,11 +62,7 @@ export function FeaturedProjectsSection() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
-                    <Tag key={tech}>{tech}</Tag>
-                  ))}
-                </div>
+                <TagList tags={project.techStack} />
               </CardContent>
 
               <CardFooter className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">

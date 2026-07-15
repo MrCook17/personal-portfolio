@@ -13,6 +13,8 @@ export type GaEventName =
   | "click_github"
   | "click_linkedin"
   | "click_email"
+  | "click_contact"
+  | "click_experience"
   | "click_project_github"
   | "click_live_project"
   | "view_project_case_study";
