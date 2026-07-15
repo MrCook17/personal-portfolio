@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BriefcaseBusiness,
@@ -70,6 +71,23 @@ const focusAreas = [
   "Testing, accessibility and deployment workflows",
 ];
 
+const cvPreviewPages = [
+  {
+    pageNumber: 1,
+    src: "/cv/charlie-cook-cv-page-1.png",
+    width: 1588,
+    height: 2246,
+    alt: "Page 1 of Charlie Cook's software developer CV",
+  },
+  {
+    pageNumber: 2,
+    src: "/cv/charlie-cook-cv-page-2.png",
+    width: 1588,
+    height: 2246,
+    alt: "Page 2 of Charlie Cook's software developer CV",
+  },
+] as const;
+
 export default function CvPage() {
   return (
     <>
@@ -111,7 +129,7 @@ export default function CvPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open PDF
+              Open PDF in a new tab
               <ExternalLink className="ml-2 size-4" aria-hidden="true" />
             </a>
           </Button>
@@ -212,91 +230,51 @@ export default function CvPage() {
 
           <section aria-labelledby="cv-preview">
             <div className="space-y-4">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                <div className="max-w-3xl space-y-3">
-                  <h2
-                    id="cv-preview"
-                    className="text-2xl font-semibold tracking-tight text-foreground"
-                  >
-                    CV PDF preview
-                  </h2>
-                  <p className="leading-7 text-muted-foreground">
-                    The embedded file is the same CV PDF used by the download
-                    action. If your browser does not show the preview, use the
-                    PDF links below.
-                  </p>
-                </div>
-
-                <Button asChild variant="outline">
-                  <a
-                    href={siteConfig.cvPdfHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Open PDF in a new tab
-                    <ExternalLink className="ml-2 size-4" aria-hidden="true" />
-                  </a>
-                </Button>
+              <div className="max-w-3xl space-y-3">
+                <h2
+                  id="cv-preview"
+                  className="text-2xl font-semibold tracking-tight text-foreground"
+                >
+                  CV preview
+                </h2>
+                <p className="leading-7 text-muted-foreground">
+                  The preview is shown as page images for reliable browser
+                  support. You can also open or download the original PDF.
+                </p>
               </div>
 
-              <figure className="overflow-hidden rounded-2xl border border-border bg-card/70">
-                <object
-                  data={`${siteConfig.cvPdfHref}#view=FitH`}
-                  type="application/pdf"
-                  title="Preview of Charlie Cook CV PDF"
-                  aria-label="Preview of Charlie Cook CV PDF"
-                  className="h-[72vh] min-h-[520px] w-full bg-background"
-                >
-                  <div className="space-y-4 p-6">
-                    <p className="leading-7 text-muted-foreground">
-                      Your browser cannot display the embedded CV PDF here.
-                    </p>
-                    <ButtonGroup stackOnMobile>
-                      <Button asChild>
-                        <a
-                          href={siteConfig.cvPdfHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Open PDF in a new tab
-                          <ExternalLink
-                            className="ml-2 size-4"
-                            aria-hidden="true"
-                          />
-                        </a>
-                      </Button>
-                      <Button asChild variant="outline">
-                        <TrackedAnchor
-                          href={siteConfig.cvPdfHref}
-                          download
-                          eventName="download_cv"
-                          eventParams={{
-                            location: "cv_page_fallback",
-                            format: "pdf",
-                          }}
-                        >
-                          Download the CV PDF
-                          <Download
-                            className="ml-2 size-4"
-                            aria-hidden="true"
-                          />
-                        </TrackedAnchor>
-                      </Button>
-                    </ButtonGroup>
-                  </div>
-                </object>
-                <figcaption className="border-t border-border px-4 py-3 text-sm text-muted-foreground">
-                  Preview of Charlie Cook&apos;s downloadable software developer
-                  CV PDF.
-                </figcaption>
-              </figure>
+              <ol
+                aria-label="Charlie Cook CV pages"
+                className="mx-auto max-w-5xl space-y-8"
+              >
+                {cvPreviewPages.map((page, index) => (
+                  <li key={page.src}>
+                    <figure className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm shadow-black/15">
+                      <div className="bg-white p-2 sm:p-4">
+                        <Image
+                          src={page.src}
+                          alt={page.alt}
+                          width={page.width}
+                          height={page.height}
+                          sizes="(min-width: 1024px) 960px, calc(100vw - 2rem)"
+                          priority={index === 0}
+                          className="h-auto w-full rounded-sm bg-white"
+                        />
+                      </div>
+                      <figcaption className="border-t border-border bg-card/90 px-4 py-3 text-sm text-muted-foreground">
+                        Page {page.pageNumber} of Charlie Cook&apos;s CV.
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ol>
             </div>
           </section>
 
           <section aria-labelledby="cv-next-steps">
             <Card className="border-primary/30">
               <CardContent className="grid gap-6 p-6 md:grid-cols-[0.85fr_1.15fr] md:p-8">
-                <div className="space-y-3">
+                <div className="max-w-3xl space-y-3">
                   <h2
                     id="cv-next-steps"
                     className="text-2xl font-semibold tracking-tight text-foreground"

@@ -7,7 +7,7 @@ const cvPageCanonicalUrl = "https://charliecook.dev/cv";
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
-  "object-src 'self'",
+  "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
   "img-src 'self' data: blob: https:",
@@ -85,6 +85,10 @@ const nextConfig: NextConfig = {
           {
             key: "Link",
             value: `<${cvPageCanonicalUrl}>; rel="canonical"`,
+          },
+          {
+            key: "Content-Disposition",
+            value: 'inline; filename="Charlie-Cook-CV.pdf"',
           },
         ],
       },

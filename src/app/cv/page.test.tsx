@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import CvPage, { metadata } from "@/app/cv/page";
@@ -30,6 +30,9 @@ describe("CV page", () => {
     expect(
       screen.getByRole("link", { name: /^view my projects$/i }),
     ).toHaveAttribute("href", "/projects");
+    expect(
+      screen.getByRole("link", { name: /^open pdf in a new tab$/i }),
+    ).toHaveAttribute("href", siteConfig.cvPdfHref);
 
     const downloadLink = screen.getByRole("link", {
       name: /^download cv \(pdf\)$/i,
@@ -37,6 +40,46 @@ describe("CV page", () => {
 
     expect(downloadLink).toHaveAttribute("href", siteConfig.cvPdfHref);
     expect(downloadLink).toHaveAttribute("download");
+  });
+
+  it("renders one static image preview for each CV page", () => {
+    render(<CvPage />);
+
+    const previewList = screen.getByRole("list", {
+      name: "Charlie Cook CV pages",
+    });
+    const previewImages = within(previewList).getAllByRole("img");
+
+    expect(previewImages).toHaveLength(2);
+    expect(previewImages[0]).toHaveAttribute(
+      "alt",
+      "Page 1 of Charlie Cook's software developer CV",
+    );
+    expect(previewImages[0]).toHaveAttribute(
+      "src",
+      expect.stringContaining("charlie-cook-cv-page-1.png"),
+    );
+    expect(previewImages[0]).toHaveAttribute("width", "1588");
+    expect(previewImages[0]).toHaveAttribute("height", "2246");
+    expect(
+      screen.queryByText(
+        "Your browser cannot display the embedded CV PDF here.",
+      ),
+    ).not.toBeInTheDocument();
+  });
+
+  it("does not track viewing the CV page or opening the PDF as a download", () => {
+    vi.mocked(trackEvent).mockClear();
+    render(<CvPage />);
+
+    expect(trackEvent).not.toHaveBeenCalled();
+
+    fireEvent.click(
+      screen.getByRole("link", { name: /^open pdf in a new tab$/i }),
+    );
+    fireEvent.click(screen.getByRole("link", { name: /^contact me$/i }));
+
+    expect(trackEvent).not.toHaveBeenCalled();
   });
 
   it("tracks only the explicit PDF download action as download_cv", () => {

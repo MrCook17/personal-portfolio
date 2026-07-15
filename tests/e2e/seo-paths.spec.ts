@@ -131,6 +131,7 @@ for (const viewport of viewports) {
       await expect(
         page.getByRole("heading", { level: 1, name: "Charlie Cook CV" }),
       ).toBeVisible();
+      await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
       await expect(
         page.getByText(/commercial software engineering/i),
       ).toBeVisible();
@@ -146,6 +147,12 @@ for (const viewport of viewports) {
       await expect(
         page.getByRole("link", { name: /^view my projects$/i }),
       ).toHaveAttribute("href", "/projects");
+      await expect(
+        page.getByRole("link", { name: /^open pdf in a new tab$/i }),
+      ).toHaveAttribute("href", "/Charlie-Cook-CV.pdf");
+      await expect(
+        page.getByRole("link", { name: /^open pdf in a new tab$/i }),
+      ).not.toHaveAttribute("download", "");
 
       const nextSteps = page.locator("section").filter({
         has: page.getByRole("heading", { name: /explore my work/i }),
@@ -154,15 +161,47 @@ for (const viewport of viewports) {
       await expect(
         nextSteps.getByRole("link", { name: /^experience$/i }),
       ).toHaveAttribute("href", "/experience");
-
-      const preview = page.locator('object[type="application/pdf"]');
-      await expect(preview).toHaveAttribute(
-        "data",
-        "/Charlie-Cook-CV.pdf#view=FitH",
+      await expect(
+        nextSteps.getByRole("link", { name: /^about$/i }),
+      ).toHaveAttribute("href", "/about");
+      await expect(
+        nextSteps.getByRole("link", { name: /^github$/i }),
+      ).toHaveAttribute("href", "https://github.com/MrCook17");
+      await expect(
+        nextSteps.getByRole("link", { name: /^linkedin$/i }),
+      ).toHaveAttribute(
+        "href",
+        "https://www.linkedin.com/in/charles-james-cook/",
       );
-      await expect(preview).toHaveAttribute(
-        "title",
-        "Preview of Charlie Cook CV PDF",
+
+      await expect(page.getByText("CV preview")).toBeVisible();
+      await expect(
+        page.getByText(
+          /The preview is shown as page images for reliable browser support/i,
+        ),
+      ).toBeVisible();
+
+      const previewImages = page
+        .getByRole("list", { name: "Charlie Cook CV pages" })
+        .getByRole("img");
+
+      await expect(previewImages).toHaveCount(2);
+
+      const firstPreviewImage = page.getByRole("img", {
+        name: "Page 1 of Charlie Cook's software developer CV",
+      });
+
+      await expect(firstPreviewImage).toHaveAttribute(
+        "src",
+        /charlie-cook-cv-page-1\.png|%2Fcv%2Fcharlie-cook-cv-page-1\.png/,
+      );
+      await expect(firstPreviewImage).toHaveAttribute("width", "1588");
+      await expect(firstPreviewImage).toHaveAttribute("height", "2246");
+      await expect(
+        page.getByText("Your browser cannot display the embedded CV PDF here."),
+      ).toHaveCount(0);
+      await expect(page.locator('object[type="application/pdf"]')).toHaveCount(
+        0,
       );
 
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
@@ -205,11 +244,28 @@ test("header CV link navigates to the HTML CV page", async ({ page }) => {
 
 test("PDF response advertises the CV page canonical", async ({ request }) => {
   const response = await request.get("/Charlie-Cook-CV.pdf");
+  const contentDisposition = response.headers()["content-disposition"];
 
   expect(response.ok()).toBe(true);
   expect(response.headers()["link"]).toContain(
     '<https://charliecook.dev/cv>; rel="canonical"',
   );
+  expect(response.headers()["content-type"]).toContain("application/pdf");
+  expect(contentDisposition).toBe('inline; filename="Charlie-Cook-CV.pdf"');
+  expect(contentDisposition).not.toContain("attachment");
+});
+
+test("security headers support the static CV preview policy", async ({
+  request,
+}) => {
+  const response = await request.get("/cv");
+  const csp = response.headers()["content-security-policy"];
+
+  expect(csp).toContain("default-src 'self'");
+  expect(csp).toContain("img-src 'self' data: blob: https:");
+  expect(csp).toContain("object-src 'none'");
+  expect(csp).not.toContain("object-src *");
+  expect(csp).not.toContain("frame-src *");
 });
 
 test("sitemap includes the CV page and excludes the PDF", async ({

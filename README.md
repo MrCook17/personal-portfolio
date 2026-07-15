@@ -12,8 +12,8 @@ case studies, blog notes, experience, and a full-stack contact form.
   blog, CV, and contact.
 - MDX-backed blog posts and case studies.
 - Searchable and filterable project data.
-- A recruiter-facing `/cv` page with a same-origin PDF preview and downloadable
-  CV file.
+- A recruiter-facing `/cv` page with static page-image previews and a
+  downloadable CV PDF.
 - A full-stack contact form with server-side validation, Supabase storage, and
   Resend email notifications.
 - Contact form protections including origin checks, content-type checks,
@@ -158,20 +158,21 @@ accesses them directly.
 
 ## Available Scripts
 
-| Command                   | What it does                                        |
-| ------------------------- | --------------------------------------------------- |
-| `npm run dev`             | Starts the Next.js development server.              |
-| `npm run build`           | Creates a production build.                         |
-| `npm run start`           | Starts the production server after `npm run build`. |
-| `npm run lint`            | Runs ESLint.                                        |
-| `npm run typecheck`       | Runs TypeScript with `--noEmit`.                    |
-| `npm run format`          | Formats the project with Prettier.                  |
-| `npm run format:check`    | Checks formatting without writing changes.          |
-| `npm run test`            | Runs unit tests, then E2E tests.                    |
-| `npm run test:unit`       | Runs Vitest once.                                   |
-| `npm run test:unit:watch` | Runs Vitest in watch mode.                          |
-| `npm run test:e2e`        | Runs Playwright E2E tests.                          |
-| `npm run test:e2e:ui`     | Opens the Playwright UI.                            |
+| Command                       | What it does                                                 |
+| ----------------------------- | ------------------------------------------------------------ |
+| `npm run dev`                 | Starts the Next.js development server.                       |
+| `npm run build`               | Creates a production build.                                  |
+| `npm run start`               | Starts the production server after `npm run build`.          |
+| `npm run lint`                | Runs ESLint.                                                 |
+| `npm run typecheck`           | Runs TypeScript with `--noEmit`.                             |
+| `npm run format`              | Formats the project with Prettier.                           |
+| `npm run format:check`        | Checks formatting without writing changes.                   |
+| `npm run generate:cv-preview` | Regenerates `/cv` preview images from the CV PDF on Windows. |
+| `npm run test`                | Runs unit tests, then E2E tests.                             |
+| `npm run test:unit`           | Runs Vitest once.                                            |
+| `npm run test:unit:watch`     | Runs Vitest in watch mode.                                   |
+| `npm run test:e2e`            | Runs Playwright E2E tests.                                   |
+| `npm run test:e2e:ui`         | Opens the Playwright UI.                                     |
 
 Install Playwright browsers before the first E2E run:
 
@@ -227,23 +228,24 @@ Generated or local-only folders such as `.next/`, `node_modules/`,
 
 ## Key Files
 
-| File                                         | Purpose                                                       |
-| -------------------------------------------- | ------------------------------------------------------------- |
-| `src/content/site.ts`                        | Site metadata, navigation, and external links.                |
-| `src/content/projects.ts`                    | Project data used by the projects page and case study routes. |
-| `src/content/blog-posts.ts`                  | Blog post metadata and reading-time setup.                    |
-| `src/content/blog/*.mdx`                     | Blog post bodies.                                             |
-| `src/content/case-studies/*.mdx`             | Project case study bodies.                                    |
-| `src/app/cv/page.tsx`                        | Recruiter-facing HTML CV page with PDF preview/download.      |
-| `public/Charlie-Cook-CV.pdf`                 | Downloadable CV PDF linked from the `/cv` page.               |
-| `src/app/api/contact/route.ts`               | Contact form API route.                                       |
-| `src/lib/validations/contact.ts`             | Shared contact form validation rules.                         |
-| `src/lib/security/request-origin.ts`         | Allowed-origin logic for contact submissions.                 |
-| `src/lib/security/contact-rate-limit.ts`     | Supabase-backed rate limiting.                                |
-| `src/lib/supabase/server.ts`                 | Server-only Supabase client.                                  |
-| `src/lib/email/send-contact-notification.ts` | Resend notification email helper.                             |
-| `src/lib/project-filters.ts`                 | Search and filter logic for projects.                         |
-| `.github/workflows/ci.yml`                   | CI workflow.                                                  |
+| File                                         | Purpose                                                           |
+| -------------------------------------------- | ----------------------------------------------------------------- |
+| `src/content/site.ts`                        | Site metadata, navigation, and external links.                    |
+| `src/content/projects.ts`                    | Project data used by the projects page and case study routes.     |
+| `src/content/blog-posts.ts`                  | Blog post metadata and reading-time setup.                        |
+| `src/content/blog/*.mdx`                     | Blog post bodies.                                                 |
+| `src/content/case-studies/*.mdx`             | Project case study bodies.                                        |
+| `src/app/cv/page.tsx`                        | Recruiter-facing HTML CV page with static image preview/download. |
+| `public/cv/charlie-cook-cv-page-*.png`       | Static CV page previews generated from the PDF.                   |
+| `public/Charlie-Cook-CV.pdf`                 | Downloadable CV PDF linked from the `/cv` page.                   |
+| `src/app/api/contact/route.ts`               | Contact form API route.                                           |
+| `src/lib/validations/contact.ts`             | Shared contact form validation rules.                             |
+| `src/lib/security/request-origin.ts`         | Allowed-origin logic for contact submissions.                     |
+| `src/lib/security/contact-rate-limit.ts`     | Supabase-backed rate limiting.                                    |
+| `src/lib/supabase/server.ts`                 | Server-only Supabase client.                                      |
+| `src/lib/email/send-contact-notification.ts` | Resend notification email helper.                                 |
+| `src/lib/project-filters.ts`                 | Search and filter logic for projects.                             |
+| `.github/workflows/ci.yml`                   | CI workflow.                                                      |
 
 ## Editing Content
 
@@ -279,6 +281,16 @@ src/content/blog/
 
 The slug in the metadata must match the route and MDX file convention used by
 the existing content.
+
+When `public/Charlie-Cook-CV.pdf` changes, regenerate the static `/cv` page
+previews with:
+
+```bash
+npm run generate:cv-preview
+```
+
+The script uses the Windows PDF renderer to create committed PNG page images, so
+the `/cv` preview remains readable even when a browser cannot embed PDFs.
 
 ## Contact Form Flow
 
@@ -374,7 +386,8 @@ Deployment checks:
 
 - The site builds successfully.
 - `/sitemap.xml` and `/robots.txt` render.
-- `/cv` loads, previews the CV PDF, and links to `/Charlie-Cook-CV.pdf`.
+- `/cv` loads, shows static CV page-image previews, and links to
+  `/Charlie-Cook-CV.pdf`.
 - `/Charlie-Cook-CV.pdf` returns a canonical `Link` header pointing to
   `https://charliecook.dev/cv`.
 - `/contact` loads.

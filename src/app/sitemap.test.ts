@@ -32,6 +32,7 @@ describe("sitemap", () => {
 
     expect(urls.some((url) => url.includes("/api/"))).toBe(false);
     expect(urls.some((url) => url.includes("/_next/"))).toBe(false);
+    expect(urls.some((url) => url.includes("/cv/"))).toBe(false);
     expect(urls).not.toContain("https://charliecook.dev/style-guide");
     expect(urls).not.toContain("https://charliecook.dev/Charlie-Cook-CV.pdf");
   });
