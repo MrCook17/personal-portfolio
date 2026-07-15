@@ -21,7 +21,7 @@ const blogPostData: BlogPostInput[] = [
     },
     date: "2026-05-20",
     tags: ["Next.js", "TypeScript", "React", "Portfolio Build", "Learning"],
-    wordCount: 1040,
+    wordCount: 952,
     published: true,
     featured: true,
   },
@@ -42,7 +42,7 @@ const blogPostData: BlogPostInput[] = [
     },
     date: "2026-05-20",
     tags: ["Go", "Backend", "REST API", "Learning"],
-    wordCount: 1080,
+    wordCount: 717,
     published: true,
   },
   {
@@ -63,7 +63,7 @@ const blogPostData: BlogPostInput[] = [
     },
     date: "2026-05-20",
     tags: ["SEO", "Analytics", "CMS", "Commercial Web", "Learning"],
-    wordCount: 1010,
+    wordCount: 674,
     published: true,
   },
 ];

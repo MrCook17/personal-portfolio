@@ -32,6 +32,16 @@ It also makes future updates more predictable. Adding a new note mainly means ad
 
 That is much easier to maintain than hardcoding every card manually.
 
+## Implementation evidence in the repository
+
+The portfolio is built with the Next.js App Router, typed content files and MDX-backed pages. The [projects page](/projects) pulls from structured project metadata, while individual case studies use MDX so each write-up can include headings, links, code examples, tables and evidence sections without becoming one large page component.
+
+The contact flow is a full-stack feature rather than a static mail link only. The form validates input on the client and server, sends accepted submissions through an API route, stores them in Supabase and can send a Resend email notification. The browser never writes directly to Supabase.
+
+I also wanted the site to be testable. The repository includes Vitest unit tests for filtering and helpers, Playwright tests for navigation and the contact form, and a GitHub Actions workflow that runs validation on pushes and pull requests. That gives the portfolio a more realistic engineering shape than a purely visual project.
+
+The SEO and accessibility work is handled in code too: route metadata, canonical URL helpers, a sitemap, robots rules, structured page headings and reusable MDX rendering. The [about page](/about) then gives the personal context behind those technical choices.
+
 ## Building reusable components first
 
 Before building the main pages, I created reusable components such as buttons, cards, badges, tags, page headers, section headings, callouts and CTA sections.

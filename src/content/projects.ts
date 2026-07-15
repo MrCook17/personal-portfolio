@@ -101,7 +101,7 @@ export const projects: Project[] = [
       approach:
         "Researched keywords, reworked page content, rebuilt the public-facing layout, improved internal linking, and worked within CMS styling restrictions.",
       outcome:
-        "Produced a stronger ecommerce content page that better supports search visibility, usability, and commercial navigation.",
+        "Produced a clearer, more structured public ecommerce page; page-specific ranking, traffic, and conversion impact was not isolated or measured.",
     },
   },
   {

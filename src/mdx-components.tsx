@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 
+import { ArchitectureFlow } from "@/components/case-studies/architecture-flow";
 import { cn } from "@/lib/utils";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -116,6 +117,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       </div>
     ),
+    caption: ({ className, ...props }) => (
+      <caption
+        className={cn(
+          "px-4 py-3 text-left font-medium text-foreground",
+          className,
+        )}
+        {...props}
+      />
+    ),
     thead: ({ className, ...props }) => (
       <thead className={cn("bg-muted/60", className)} {...props} />
     ),
@@ -136,6 +146,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     th: ({ className, ...props }) => (
       <th
+        scope="col"
         className={cn(
           "border-r border-b border-border/80 px-4 py-3 text-left align-bottom font-semibold text-foreground last:border-r-0",
           className,
@@ -152,6 +163,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
+    ArchitectureFlow,
     ...components,
   };
 }
