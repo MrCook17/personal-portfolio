@@ -1,6 +1,7 @@
 export const projectTypes = [
   "Backend/API",
   "Commercial SEO",
+  "Ecommerce platform and technical SEO",
   "Software",
   "Analytics",
   "University",

@@ -72,6 +72,7 @@ test.describe("Contact page", () => {
         contentType: "application/json",
         body: JSON.stringify({
           ok: true,
+          stored: true,
           message: "Thanks — your message has been sent successfully.",
         }),
       });

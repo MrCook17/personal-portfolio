@@ -5,6 +5,34 @@ type BlogPostInput = Omit<BlogPost, "href" | "readingTime">;
 
 const blogPostData: BlogPostInput[] = [
   {
+    title: "How I Fixed Google Merchant Center Misrepresentation on Shopify",
+    slug: "google-merchant-center-misrepresentation-shopify",
+    description:
+      "The process I used to diagnose and recover a suspended Shopify Merchant Center account, including raw product links, policy consistency, feed exports and direct Google review.",
+    seo: {
+      title: "Fix Google Merchant Center Misrepresentation on Shopify",
+      description:
+        "A practical Shopify Merchant Center recovery checklist covering domain mismatches, policy URLs, storefront trust, product feeds and account review.",
+      keywords: [
+        "Google Merchant Center misrepresentation",
+        "Shopify Merchant Center",
+        "Merchant Center account suspended",
+        "mismatched online store URL",
+        "Merchant Center misrepresentation checklist",
+      ],
+    },
+    date: "2026-07-15",
+    tags: [
+      "Google Merchant Center",
+      "Shopify",
+      "Ecommerce SEO",
+      "Product Feeds",
+      "Troubleshooting",
+    ],
+    wordCount: 1730,
+    published: true,
+  },
+  {
     title: "Building my portfolio with Next.js and TypeScript",
     slug: "building-my-portfolio-nextjs-typescript",
     description:
@@ -21,7 +49,7 @@ const blogPostData: BlogPostInput[] = [
     },
     date: "2026-05-20",
     tags: ["Next.js", "TypeScript", "React", "Portfolio Build", "Learning"],
-    wordCount: 1040,
+    wordCount: 952,
     published: true,
     featured: true,
   },
@@ -42,7 +70,7 @@ const blogPostData: BlogPostInput[] = [
     },
     date: "2026-05-20",
     tags: ["Go", "Backend", "REST API", "Learning"],
-    wordCount: 1080,
+    wordCount: 717,
     published: true,
   },
   {
@@ -63,7 +91,7 @@ const blogPostData: BlogPostInput[] = [
     },
     date: "2026-05-20",
     tags: ["SEO", "Analytics", "CMS", "Commercial Web", "Learning"],
-    wordCount: 1010,
+    wordCount: 674,
     published: true,
   },
 ];

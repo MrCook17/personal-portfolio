@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/content/site";
+import { absoluteUrl } from "@/lib/seo/urls";
 
 type PageMetadataOptions = {
   title: string;
@@ -21,19 +22,23 @@ export const defaultOpenGraphImage = {
   alt: "Charlie Cook wearing a suit and yellow tie outdoors",
 };
 
-const sharedMetadata = ({ title, description, path }: PageMetadataOptions) => ({
-  title,
-  description,
-  alternates: {
-    canonical: path,
-  },
-  twitter: {
-    card: "summary" as const,
+const sharedMetadata = ({ title, description, path }: PageMetadataOptions) => {
+  const canonicalUrl = absoluteUrl(path);
+
+  return {
     title,
     description,
-    images: [defaultOpenGraphImage.url],
-  },
-});
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    twitter: {
+      card: "summary" as const,
+      title,
+      description,
+      images: [absoluteUrl(defaultOpenGraphImage.url)],
+    },
+  };
+};
 
 export function createWebsiteMetadata(options: PageMetadataOptions): Metadata {
   return {
@@ -41,7 +46,7 @@ export function createWebsiteMetadata(options: PageMetadataOptions): Metadata {
     openGraph: {
       title: options.title,
       description: options.description,
-      url: options.path,
+      url: absoluteUrl(options.path),
       siteName: siteConfig.name,
       locale: "en_GB",
       type: "website",
@@ -58,7 +63,7 @@ export function createArticleMetadata(
     openGraph: {
       title: options.title,
       description: options.description,
-      url: options.path,
+      url: absoluteUrl(options.path),
       siteName: siteConfig.name,
       locale: "en_GB",
       type: "article",

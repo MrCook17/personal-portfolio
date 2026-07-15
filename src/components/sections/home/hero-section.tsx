@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, FileText, Mail } from "lucide-react";
 
 import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
@@ -60,15 +60,10 @@ function HeroActions() {
       </Button>
 
       <Button asChild size="lg" variant="outline">
-        <TrackedAnchor
-          href={homeLinks.cv}
-          download
-          eventName="download_cv"
-          eventParams={{ location: "homepage" }}
-        >
-          Download CV
-          <Download className="ml-2 size-4" aria-hidden="true" />
-        </TrackedAnchor>
+        <Link href={homeLinks.cv}>
+          View CV
+          <FileText className="ml-2 size-4" aria-hidden="true" />
+        </Link>
       </Button>
 
       <Button asChild size="lg" variant="ghost">

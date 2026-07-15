@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import { skillGroups } from "@/content/home";
 
 export function SkillsOverviewSection() {
@@ -35,11 +35,7 @@ export function SkillsOverviewSection() {
                 </CardHeader>
 
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {group.skills.map((skill) => (
-                      <Tag key={skill}>{skill}</Tag>
-                    ))}
-                  </div>
+                  <TagList tags={group.skills} />
                 </CardContent>
               </Card>
             );

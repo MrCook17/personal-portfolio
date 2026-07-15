@@ -24,13 +24,15 @@ type ApiErrorBody = {
 type ApiSuccessBody = {
   ok: true;
   message: string;
+  stored: boolean;
 };
 
-function jsonSuccess(status = 200) {
+function jsonSuccess(status = 200, stored = false) {
   return NextResponse.json<ApiSuccessBody>(
     {
       ok: true,
       message: SUCCESS_MESSAGE,
+      stored,
     },
     { status },
   );
@@ -143,7 +145,7 @@ export async function POST(request: Request) {
       console.error("Contact notification failed:", emailResult.error);
     }
 
-    return jsonSuccess(201);
+    return jsonSuccess(201, true);
   } catch (error) {
     console.error(
       "Contact route failed:",

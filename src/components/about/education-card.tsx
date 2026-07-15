@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import type { Education } from "@/types/experience";
 
 type EducationCardProps = {
@@ -37,11 +37,7 @@ export function EducationCard({ education }: EducationCardProps) {
           <h3 className="text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase">
             Relevant modules
           </h3>
-          <div className="flex flex-wrap gap-2">
-            {education.modules.map((module) => (
-              <Tag key={module}>{module}</Tag>
-            ))}
-          </div>
+          <TagList tags={education.modules} />
         </div>
 
         <div className="space-y-3">

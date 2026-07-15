@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export const canonicalSiteUrl = "https://charliecook.dev";
 
 export const siteFeatures = {
   enableThemeToggle: false,
@@ -10,7 +10,7 @@ export const siteConfig = {
   title: "Charlie Cook | Software Developer Portfolio",
   description:
     "UK software developer and Computer Science student with commercial software, backend, full-stack, web operations and SEO experience.",
-  url: siteUrl.replace(/\/$/, ""),
+  url: canonicalSiteUrl,
   navItems: [
     {
       label: "Home",
@@ -37,7 +37,8 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
-  cvHref: "/Charlie-Cook-CV.pdf",
+  cvPageHref: "/cv",
+  cvPdfHref: "/Charlie-Cook-CV.pdf",
   links: {
     github: "https://github.com/MrCook17",
     linkedin: "https://www.linkedin.com/in/charles-james-cook/",

@@ -5,7 +5,6 @@ import type { Project } from "@/types/project";
 import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon } from "@/components/icons/brand-icons";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
-import { TechStackTag } from "@/components/projects/tech-stack-tag";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { TagList } from "@/components/ui/tag-list";
 
 type ProjectCardProps = {
   project: Project;
@@ -62,15 +62,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          {visibleTech.map((tech) => (
-            <TechStackTag key={tech}>{tech}</TechStackTag>
-          ))}
-
-          {hiddenTechCount > 0 ? (
-            <TechStackTag>{`+${hiddenTechCount} more`}</TechStackTag>
-          ) : null}
-        </div>
+        <TagList
+          tags={
+            hiddenTechCount > 0
+              ? [...visibleTech, `+${hiddenTechCount} more`]
+              : visibleTech
+          }
+        />
       </CardContent>
 
       <CardFooter className="mt-auto flex flex-wrap gap-3">

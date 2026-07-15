@@ -1,5 +1,6 @@
 import type { ComponentType, SVGProps } from "react";
 import { FileText, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
@@ -11,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { siteConfig } from "@/content/site";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -112,15 +114,10 @@ export function ContactLinks() {
           </div>
 
           <Button asChild className="w-full">
-            <TrackedAnchor
-              href="/Charlie-Cook-CV.pdf"
-              download
-              eventName="download_cv"
-              eventParams={{ location: "contact_page" }}
-            >
+            <Link href={siteConfig.cvPageHref}>
               <FileText className="mr-2 size-4" aria-hidden="true" />
-              Download CV
-            </TrackedAnchor>
+              View CV
+            </Link>
           </Button>
         </CardContent>
       </Card>

@@ -4,7 +4,9 @@ import type { Project } from "@/types/project";
 import { CaseStudyViewTracker } from "@/components/analytics/case-study-view-tracker";
 import { CaseStudyHeader } from "@/components/case-studies/case-study-header";
 import { CaseStudyNavigation } from "@/components/case-studies/case-study-navigation";
+import { CaseStudyRecruiterCta } from "@/components/case-studies/case-study-recruiter-cta";
 import { CaseStudySummaryCards } from "@/components/case-studies/case-study-summary-cards";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { MdxContent } from "@/components/ui/mdx-content";
 
@@ -24,6 +26,14 @@ export function CaseStudyLayout({ project, children }: CaseStudyLayoutProps) {
         projectTitle={project.title}
       />
 
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Projects", href: "/projects" },
+          { label: project.title, href: pagePath },
+        ]}
+      />
+
       <CaseStudyHeader project={project} />
 
       <div className="space-y-8 md:space-y-10 lg:space-y-12">
@@ -34,6 +44,8 @@ export function CaseStudyLayout({ project, children }: CaseStudyLayoutProps) {
         <article>
           <MdxContent>{children}</MdxContent>
         </article>
+
+        <CaseStudyRecruiterCta project={project} />
 
         <CaseStudyNavigation currentSlug={project.slug} />
       </div>

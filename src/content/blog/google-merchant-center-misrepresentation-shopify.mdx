@@ -1,0 +1,266 @@
+A Google Merchant Center **Misrepresentation** suspension can look like one vague policy warning, but the actual cause may be spread across the Shopify connection, product feed, policy URLs, business information and public storefront.
+
+I recently helped recover a friend's Shopify Merchant Center account after all **2,010 products** were prevented from appearing in the United Kingdom. The largest product-level issue was a **mismatched online store URL affecting 1,709 products**, even though Shopify and Merchant Center both appeared to show the correct public domain.
+
+For the full project context, evidence and bounded result, read the [Aura Co Google Merchant Center suspension recovery case study](/projects/auraco-google-merchant-center-recovery).
+
+This article explains the process I used. It is not a guarantee that the same steps will reinstate every suspended account. The useful principle is to build an evidence-led diagnosis rather than repeatedly requesting reviews without understanding what Google is seeing.
+
+## Separate account-level and product-level issues
+
+The first step is to identify which issue is actually blocking the account.
+
+In this case:
+
+- **Misrepresentation** was an account-level issue.
+- The account-level suspension prevented all **2,010 products** from appearing.
+- **1,709 products** separately had a mismatched online store URL.
+- Other products had image and advertising-policy warnings.
+
+These findings were related, but they were not interchangeable.
+
+A product image warning may stop one item from appearing. An account-level Misrepresentation suspension can stop the entire catalogue. Start with the issue that controls the widest amount of visibility.
+
+## Preserve evidence
+
+Before reconnecting apps or changing domains, collect the current state.
+
+Useful evidence includes:
+
+- the account suspension message;
+- the product-issues overview;
+- the exact issue detail;
+- the connected Shopify data source;
+- the Merchant Center claimed website;
+- Shopify's primary and connected domains;
+- return and shipping settings;
+- representative product final attributes;
+- representative product raw attributes;
+- a product-issue export;
+- a complete product-feed export.
+
+In the Aura Co investigation, the issue export contained **5,867 rows**, while the product export contained **2,010 rows**. The issue file repeated some items across destinations, so I counted unique products rather than treating every row as a separate product.
+
+## Check the submitted domain, not only visible settings
+
+Shopify showed the public domain as:
+
+```text
+auraco.org.uk
+```
+
+Merchant Center also showed that domain as verified and claimed.
+
+At first glance, that made the setup look correct.
+
+The important evidence came from Merchant Center's raw product attributes. An affected product's submitted landing-page URL used an internal `myshopify.com` domain.
+
+Product link patterns that changed the diagnosis:
+
+| Link pattern                |  Rows |
+| --------------------------- | ----: |
+| Blank public link field     | 1,709 |
+| Public `auraco.org.uk` link |   301 |
+
+The number of blank links matched the **1,709 products** in the mismatched online store URL diagnostic.
+
+The lesson is simple: **the domain displayed in Shopify's settings is not necessarily the domain being received in every Merchant Center product record**.
+
+## Check policy URLs
+
+The return-policy configuration also used the internal Shopify domain. That conflicted with the claimed public store.
+
+For an account under a Misrepresentation review, consistent identity matters across:
+
+- product landing pages;
+- return-policy URLs;
+- shipping-policy URLs;
+- business name;
+- address;
+- telephone number;
+- support email;
+- footer information;
+- checkout and account details.
+
+A policy page can contain correct text and still create an avoidable inconsistency when it is presented on a different domain.
+
+## Audit the public storefront
+
+Merchant Center is not only evaluating a feed in isolation. The public store also needs to present a coherent and trustworthy business.
+
+The Aura Co audit identified issues such as:
+
+- unfinished theme content;
+- a broken pickup-availability block;
+- empty product-information sections;
+- ratings or trust claims that needed clear evidence;
+- confusing stock or purchase states;
+- inconsistent policy and contact presentation.
+
+These issues were reviewed and corrected as part of the recovery work. The store continued to evolve after the review, so the case study records the state and remediation completed during June and July 2026 rather than making a permanent claim about every later storefront edit.
+
+## Export and quantify the feed
+
+The product feed showed wider data-quality gaps.
+
+Feed export findings used to prioritise the recovery work:
+
+| Field or issue                                   | Affected products or rows |
+| ------------------------------------------------ | ------------------------: |
+| Google product category blank                    |            1,985 of 2,010 |
+| Product type blank                               |            1,904 of 2,010 |
+| Public product link blank in the supplied export |            1,709 of 2,010 |
+| Mismatched online store URL                      |                     1,709 |
+| Image too small                                  |       225 unique products |
+| Sexual-interest advertising flag                 |                        24 |
+| Restricted-adult-content flag                    |                        24 |
+| Personal-hardship flag                           |        17 unique products |
+
+This made the priority clear. The domain problem affected most of the catalogue and sat underneath an account suspension. It needed attention before a large category-cleanup project.
+
+## Review product wording and categories
+
+Some apparel titles can trigger restricted or personalised-advertising classifications. Maternity products can also receive personal-hardship flags.
+
+The correct response is not to conceal what a product is. It is to:
+
+- use neutral and accurate product wording;
+- assign the correct Google product category;
+- assign a useful product type;
+- check whether personalised advertising is appropriate;
+- ensure the image and landing page match the product;
+- separate genuine policy restrictions from poor categorisation.
+
+These issues remained separate from the main account recovery and should not be falsely described as resolved when they were not changed.
+
+## Prioritise the work by phase
+
+I used three phases.
+
+### Phase 0 - Resolve before account review
+
+- submitted product-domain inconsistency;
+- policy URL inconsistency;
+- Shopify and Merchant Center connection and resync;
+- public storefront trust and completeness;
+- business identity and support consistency;
+- final evidence for the account review.
+
+### Phase 1 - Improve product eligibility
+
+- image dimensions;
+- product categories;
+- product types;
+- policy-sensitive product wording;
+- stock and availability consistency.
+
+### Phase 2 - Improve long-term feed quality
+
+- SKU coverage;
+- realistic product weights;
+- unit-pricing fields where required;
+- recurring export and diagnostic checks.
+
+This prevents a lower-impact warning from delaying the fix for a problem affecting the entire account.
+
+## Resynchronise and reprocess
+
+There was not one setting that solved the issue.
+
+The recovery involved a combination of:
+
+- reviewing and correcting the Shopify Google connection;
+- aligning the public and submitted domains;
+- correcting policy URLs;
+- resynchronising the Merchant API data;
+- checking representative product attributes;
+- correcting storefront trust issues;
+- aligning business and support information.
+
+After changes, allow time for Merchant Center to process the feed. Recheck the same products used in the original evidence pack.
+
+## Contact Google with a structured explanation
+
+The final part of the Aura Co recovery required direct contact with Google Merchant Center.
+
+The explanation covered:
+
+1. what the original issue was;
+2. why the visible domain settings had been misleading;
+3. what the product-feed evidence showed;
+4. which domain, policy and storefront changes had been made;
+5. how the feed had been resynchronised;
+6. why the account was ready for review.
+
+On **15 July 2026**, Google removed the suspension and cleared the mismatched online store URL problem for the affected products.
+
+This did not mean every unrelated product warning disappeared. It meant the account-level recovery and the 1,709-product domain issue had been resolved.
+
+## Merchant Center Misrepresentation checklist
+
+Before requesting another review, confirm:
+
+- The claimed website is the intended public domain.
+- Shopify's primary domain matches it.
+- Representative raw product links use the public domain.
+- No affected product link uses an internal `myshopify.com` URL.
+- Policy URLs use the public domain.
+- Business details agree across Shopify, Merchant Center and the store.
+- Shipping and return information is consistent.
+- Placeholder or broken theme content has been removed.
+- Empty product sections are populated or removed.
+- Ratings and trust claims have a genuine source.
+- Product stock states agree with the feed and checkout.
+- The feed has been resynchronised and reprocessed.
+- The largest diagnostics have materially improved.
+- A concise record of the completed changes is ready for Google.
+- The review request describes evidence rather than simply asking for another check.
+
+## What GSC, GA4 and Bing could not show
+
+Google Search Console, GA4 and Bing Webmaster Tools were useful parts of the ecommerce setup, but they did not identify the Merchant Center landing-page mismatch.
+
+They answer different questions:
+
+- Search Console shows Google Search crawling and performance.
+- GA4 shows on-site acquisition and behaviour.
+- Bing Webmaster Tools supports Bing crawling and search diagnostics.
+- Merchant Center diagnostics and submitted product attributes show product-feed eligibility problems.
+
+Use the platform that actually owns the failing system.
+
+For broader CMS and ecommerce context, I have also written about [ecommerce SEO lessons from working in a real CMS](/blog/ecommerce-seo-lessons-real-cms) and a separate [Cromartie Tie Dye Techniques Page Rebuild case study](/projects/cromartie-tie-dye-page-rebuild).
+
+## Main lessons
+
+### Inspect raw data
+
+A correct-looking account setting does not prove the submitted product data is correct.
+
+### Count unique products
+
+Issue exports can repeat the same product for different destinations.
+
+### Separate blockers from secondary work
+
+The domain problem and suspension came before a large product-category cleanup.
+
+### Treat the storefront and feed as one system
+
+Business identity, policies, theme quality and product data need to tell the same story.
+
+### Explain completed changes clearly
+
+Direct support became effective after the remediation could be presented as a structured set of verified changes.
+
+## Result
+
+The Aura Co Merchant Center suspension was removed on **15 July 2026**.
+
+The mismatched online store URL issue was cleared for all **1,709 affected products**. Other image, categorisation and advertising-policy issues were outside this recovery phase and were not presented as fixed.
+
+## Related reading
+
+- [Aura Co Google Merchant Center Suspension Recovery](/projects/auraco-google-merchant-center-recovery)
+- [What I learned improving ecommerce SEO pages in a real CMS](/blog/ecommerce-seo-lessons-real-cms)
+- [Cromartie Tie Dye Techniques Page Rebuild](/projects/cromartie-tie-dye-page-rebuild)

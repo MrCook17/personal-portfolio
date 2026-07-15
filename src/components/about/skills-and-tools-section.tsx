@@ -2,7 +2,7 @@ import { aboutSkillGroups } from "@/content/about";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 
 export function SkillsAndToolsSection() {
   return (
@@ -22,11 +22,7 @@ export function SkillsAndToolsSection() {
             </CardHeader>
 
             <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <Tag key={skill}>{skill}</Tag>
-                ))}
-              </div>
+              <TagList tags={group.skills} />
             </CardContent>
           </Card>
         ))}

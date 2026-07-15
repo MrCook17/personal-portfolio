@@ -13,7 +13,7 @@ import {
 import { Container } from "@/components/ui/container";
 import { PageSection } from "@/components/ui/page-layout";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import { experiencePreview, homeLinks } from "@/content/home";
 
 export function ExperiencePreviewSection() {
@@ -64,11 +64,7 @@ export function ExperiencePreviewSection() {
                   ))}
                 </ul>
 
-                <div className="flex flex-wrap gap-2">
-                  {role.techStack.map((tech) => (
-                    <Tag key={tech}>{tech}</Tag>
-                  ))}
-                </div>
+                <TagList tags={role.techStack} />
               </CardContent>
             </Card>
           ))}

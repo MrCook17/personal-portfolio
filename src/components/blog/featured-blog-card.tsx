@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import type { BlogPost } from "@/types/blog";
 
 type FeaturedBlogCardProps = {
@@ -79,11 +79,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </div>
+          <TagList tags={post.tags} />
         </CardContent>
       </div>
     </Card>

@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import type { BlogPost } from "@/types/blog";
 
 type BlogCardProps = {
@@ -58,11 +58,7 @@ export function BlogCard({ post }: BlogCardProps) {
       </CardHeader>
 
       <CardContent className="flex flex-1 flex-col justify-between gap-6">
-        <div className="flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <Tag key={tag}>{tag}</Tag>
-          ))}
-        </div>
+        <TagList tags={post.tags} />
 
         <Button asChild variant="outline" className="w-fit">
           <Link href={post.href}>

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { PageSection } from "@/components/ui/page-layout";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import { caseStudyTeasers, homeLinks } from "@/content/home";
 
 export function CaseStudyTeaserSection() {
@@ -58,11 +58,7 @@ export function CaseStudyTeaserSection() {
                   </CardHeader>
 
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {caseStudy.tags.map((tag) => (
-                        <Tag key={tag}>{tag}</Tag>
-                      ))}
-                    </div>
+                    <TagList tags={caseStudy.tags} />
                   </CardContent>
                 </Card>
               ))}

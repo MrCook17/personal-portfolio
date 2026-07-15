@@ -5,7 +5,7 @@ import type { Project } from "@/types/project";
 import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { GitHubIcon } from "@/components/icons/brand-icons";
 import { Button, ButtonGroup } from "@/components/ui/button";
-import { Tag } from "@/components/ui/tag";
+import { TagList } from "@/components/ui/tag-list";
 import { CaseStudyMeta } from "@/components/case-studies/case-study-meta";
 
 type CaseStudyHeaderProps = {
@@ -34,11 +34,7 @@ export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {project.techStack.map((tech) => (
-          <Tag key={tech}>{tech}</Tag>
-        ))}
-      </div>
+      <TagList tags={project.techStack} />
 
       <ButtonGroup>
         {project.githubUrl ? (
