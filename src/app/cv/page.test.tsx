@@ -23,6 +23,9 @@ describe("CV page", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: "Charlie Cook CV" }),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "Experience focus" }),
+    ).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /^contact me$/i })).toHaveAttribute(
       "href",
       "/contact",
@@ -61,6 +64,9 @@ describe("CV page", () => {
     );
     expect(previewImages[0]).toHaveAttribute("width", "1588");
     expect(previewImages[0]).toHaveAttribute("height", "2246");
+    expect(
+      screen.getByText("Page 1 of Charlie Cook's CV."),
+    ).toBeInTheDocument();
     expect(
       screen.queryByText(
         "Your browser cannot display the embedded CV PDF here.",

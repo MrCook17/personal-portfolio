@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/card";
 import { PageContent, PageSections } from "@/components/ui/page-layout";
 import { PageHeader } from "@/components/ui/page-header";
-import { education, experienceRoles } from "@/content/experience";
+import { education } from "@/content/experience";
 import { siteConfig } from "@/content/site";
 import { createWebsiteMetadata } from "@/lib/seo/metadata";
 
@@ -61,14 +61,6 @@ const cvSummary = [
     description: `${education.degree}, ${education.institution}, ${education.dates}.`,
     icon: GraduationCap,
   },
-];
-
-const focusAreas = [
-  "Backend and full-stack development",
-  "Commercial software maintenance",
-  "Database-backed business workflows",
-  "Ecommerce SEO and CMS implementation",
-  "Testing, accessibility and deployment workflows",
 ];
 
 const cvPreviewPages = [
@@ -183,51 +175,6 @@ export default function CvPage() {
             </div>
           </section>
 
-          <section aria-labelledby="cv-focus">
-            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-              <div className="space-y-3">
-                <h2
-                  id="cv-focus"
-                  className="text-2xl font-semibold tracking-tight text-foreground"
-                >
-                  Experience focus
-                </h2>
-                <p className="leading-7 text-muted-foreground">
-                  The page version gives a quick route into the work behind the
-                  PDF. For fuller context, the experience and project pages show
-                  the evidence in more detail.
-                </p>
-              </div>
-
-              <Card>
-                <CardContent className="pt-6">
-                  <ul className="grid gap-3 sm:grid-cols-2" role="list">
-                    {focusAreas.map((area) => (
-                      <li
-                        key={area}
-                        className="rounded-xl border border-border/70 bg-background/40 px-4 py-3 text-sm font-medium text-foreground"
-                      >
-                        {area}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
-                    {experienceRoles.map((role) => (
-                      <p key={role.company}>
-                        <span className="font-medium text-foreground">
-                          {role.role}
-                        </span>
-                        <br />
-                        {role.company}, {role.dateLabel}
-                      </p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </section>
-
           <section aria-labelledby="cv-preview">
             <div className="space-y-4">
               <div className="max-w-3xl space-y-3">
@@ -262,7 +209,7 @@ export default function CvPage() {
                         />
                       </div>
                       <figcaption className="border-t border-border bg-card/90 px-4 py-3 text-sm text-muted-foreground">
-                        Page {page.pageNumber} of Charlie Cook&apos;s CV.
+                        {`Page ${page.pageNumber} of Charlie Cook's CV.`}
                       </figcaption>
                     </figure>
                   </li>
