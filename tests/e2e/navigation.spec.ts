@@ -66,20 +66,40 @@ test.describe("main navigation", () => {
   });
 
   test("blog post footer links to adjacent notes", async ({ page }) => {
-    await page.goto("/blog/building-my-portfolio-nextjs-typescript");
+    await page.goto("/blog/google-merchant-center-misrepresentation-shopify");
 
-    const firstPostNavigation = page.getByRole("navigation", {
+    const newestPostNavigation = page.getByRole("navigation", {
       name: "Blog post navigation",
     });
 
     await expect(
-      firstPostNavigation.getByRole("link", {
+      newestPostNavigation.getByRole("link", {
+        name: /next post: building my portfolio with next.js and typescript/i,
+      }),
+    ).toHaveAttribute("href", "/blog/building-my-portfolio-nextjs-typescript");
+    await expect(
+      newestPostNavigation.getByRole("link", { name: /previous post:/i }),
+    ).toHaveCount(0);
+
+    await page.goto("/blog/building-my-portfolio-nextjs-typescript");
+
+    const portfolioPostNavigation = page.getByRole("navigation", {
+      name: "Blog post navigation",
+    });
+
+    await expect(
+      portfolioPostNavigation.getByRole("link", {
+        name: /previous post: how i fixed google merchant center misrepresentation on shopify/i,
+      }),
+    ).toHaveAttribute(
+      "href",
+      "/blog/google-merchant-center-misrepresentation-shopify",
+    );
+    await expect(
+      portfolioPostNavigation.getByRole("link", {
         name: /next post: what i learned from building a go rest api/i,
       }),
     ).toHaveAttribute("href", "/blog/building-a-go-rest-api");
-    await expect(
-      firstPostNavigation.getByRole("link", { name: /previous post:/i }),
-    ).toHaveCount(0);
 
     await page.goto("/blog/ecommerce-seo-lessons-real-cms");
 

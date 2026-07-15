@@ -30,6 +30,17 @@ const projects: SearchableProject[] = [
     keywords: ["ecommerce", "seo", "cromartie", "cms"],
   },
   {
+    title: "Aura Co Google Merchant Center Suspension Recovery",
+    summary:
+      "Recovered a suspended Shopify Merchant Center account after a product-feed URL mismatch.",
+    type: "Ecommerce platform and technical SEO" as ProjectType,
+    status: "Recovered" as ProjectStatus,
+    proofPoint:
+      "Product-feed analysis, Merchant Center diagnostics and Shopify domain remediation.",
+    techStack: ["Shopify", "Google Merchant Center", "Product Feeds"],
+    keywords: ["auraco", "merchant center", "domain mismatch"],
+  },
+  {
     title: "Internal Records Management Desktop Application",
     summary: "Database-backed desktop workflow for commercial records.",
     type: "Software" as ProjectType,
@@ -46,7 +57,7 @@ describe("projectMatchesSearch", () => {
   });
 
   it("matches by technology", () => {
-    expect(projectMatchesSearch(projects[2], "sql")).toBe(true);
+    expect(projectMatchesSearch(projects[3], "sql")).toBe(true);
   });
 
   it("matches by type", () => {
@@ -61,6 +72,10 @@ describe("projectMatchesSearch", () => {
     expect(projectMatchesSearch(projects[1], "ecommerce")).toBe(true);
   });
 
+  it("matches by recovered ecommerce platform evidence", () => {
+    expect(projectMatchesSearch(projects[2], "merchant center")).toBe(true);
+  });
+
   it("returns false when no searchable field matches", () => {
     expect(projectMatchesSearch(projects[0], "shopify")).toBe(false);
   });
@@ -72,7 +87,7 @@ describe("projectMatchesSearch", () => {
 
 describe("filterProjects", () => {
   it("returns all projects when no filters are active", () => {
-    expect(filterProjects(projects)).toHaveLength(3);
+    expect(filterProjects(projects)).toHaveLength(4);
   });
 
   it("filters by project type", () => {
@@ -92,6 +107,19 @@ describe("filterProjects", () => {
     expect(result).toHaveLength(1);
     expect(result[0].title).toBe(
       "Internal Records Management Desktop Application",
+    );
+  });
+
+  it("filters the recovered Merchant Center project", () => {
+    const result = filterProjects(projects, {
+      query: "domain mismatch",
+      type: "Ecommerce platform and technical SEO" as ProjectType,
+      status: "Recovered" as ProjectStatus,
+    });
+
+    expect(result).toHaveLength(1);
+    expect(result[0].title).toBe(
+      "Aura Co Google Merchant Center Suspension Recovery",
     );
   });
 

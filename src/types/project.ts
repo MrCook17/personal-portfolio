@@ -1,6 +1,7 @@
 export const projectTypes = [
   "Backend/API",
   "Commercial SEO",
+  "Ecommerce platform and technical SEO",
   "Software",
   "Analytics",
   "University",
@@ -9,6 +10,7 @@ export const projectTypes = [
 
 export const projectStatuses = [
   "Finished",
+  "Recovered",
   "Ongoing",
   "MVP complete",
   "In active development",

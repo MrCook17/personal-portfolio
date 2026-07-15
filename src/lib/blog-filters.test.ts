@@ -21,6 +21,19 @@ const posts: SearchableBlogPost[] = [
     tags: ["Go", "Backend", "REST API"] as BlogTag[],
   },
   {
+    title: "How I Fixed Google Merchant Center Misrepresentation on Shopify",
+    slug: "google-merchant-center-misrepresentation-shopify",
+    description:
+      "Diagnosing product-feed domain mismatches and account recovery evidence.",
+    tags: [
+      "Google Merchant Center",
+      "Shopify",
+      "Ecommerce SEO",
+      "Product Feeds",
+      "Troubleshooting",
+    ] as BlogTag[],
+  },
+  {
     title: "Improving ecommerce SEO pages in a real CMS",
     slug: "ecommerce-seo-lessons-real-cms",
     description: "Metadata, internal links and CMS constraints.",
@@ -38,7 +51,7 @@ describe("blogPostMatchesSearch", () => {
   });
 
   it("matches by tag", () => {
-    expect(blogPostMatchesSearch(posts[2], "analytics")).toBe(true);
+    expect(blogPostMatchesSearch(posts[3], "analytics")).toBe(true);
   });
 
   it("matches by slug", () => {
@@ -56,7 +69,7 @@ describe("blogPostMatchesSearch", () => {
 
 describe("filterBlogPosts", () => {
   it("returns all posts when no filters are active", () => {
-    expect(filterBlogPosts(posts)).toHaveLength(3);
+    expect(filterBlogPosts(posts)).toHaveLength(4);
   });
 
   it("filters by tag", () => {
@@ -76,6 +89,18 @@ describe("filterBlogPosts", () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].slug).toBe("ecommerce-seo-lessons-real-cms");
+  });
+
+  it("filters Merchant Center troubleshooting posts", () => {
+    const result = filterBlogPosts(posts, {
+      query: "domain",
+      tag: "Google Merchant Center" as BlogTag,
+    });
+
+    expect(result).toHaveLength(1);
+    expect(result[0].slug).toBe(
+      "google-merchant-center-misrepresentation-shopify",
+    );
   });
 
   it("returns an empty array when nothing matches", () => {

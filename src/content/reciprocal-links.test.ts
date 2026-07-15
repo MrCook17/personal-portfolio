@@ -40,4 +40,26 @@ describe("reciprocal content links", () => {
       "[ecommerce SEO lessons from working in a real CMS](/blog/ecommerce-seo-lessons-real-cms)",
     );
   });
+
+  it("links the Aura Co case study, Merchant Center blog and ecommerce context", () => {
+    const blog = readContentFile(
+      "src/content/blog/google-merchant-center-misrepresentation-shopify.mdx",
+    );
+    const caseStudy = readContentFile(
+      "src/content/case-studies/auraco-google-merchant-center-recovery.mdx",
+    );
+    const ecommerceBlog = readContentFile(
+      "src/content/blog/ecommerce-seo-lessons-real-cms.mdx",
+    );
+
+    expect(blog).toContain(
+      "[Aura Co Google Merchant Center suspension recovery case study](/projects/auraco-google-merchant-center-recovery)",
+    );
+    expect(caseStudy).toContain(
+      "[How I fixed Google Merchant Center Misrepresentation on Shopify](/blog/google-merchant-center-misrepresentation-shopify)",
+    );
+    expect(ecommerceBlog).toContain(
+      "[diagnosing product-feed and Merchant Center issues](/blog/google-merchant-center-misrepresentation-shopify)",
+    );
+  });
 });

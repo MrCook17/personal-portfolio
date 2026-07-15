@@ -1,9 +1,21 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 const viewports = [
   { name: "desktop", width: 1280, height: 900 },
   { name: "mobile", width: 390, height: 844 },
 ];
+
+async function getJsonLdObjects(page: Page) {
+  const scriptContents = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+
+  return scriptContents.flatMap((content) => {
+    const data = JSON.parse(content) as Record<string, unknown> | unknown[];
+
+    return Array.isArray(data) ? data : [data];
+  });
+}
 
 for (const viewport of viewports) {
   test.describe(`recruiter and related paths (${viewport.name})`, () => {
@@ -70,6 +82,152 @@ for (const viewport of viewports) {
           name: /ecommerce seo lessons from working in a real cms/i,
         }),
       ).toHaveAttribute("href", "/blog/ecommerce-seo-lessons-real-cms");
+    });
+
+    test("renders Aura Co case study evidence, schema and reciprocal links", async ({
+      page,
+    }) => {
+      await page.goto("/projects/auraco-google-merchant-center-recovery");
+
+      await expect(
+        page.getByRole("heading", {
+          level: 1,
+          name: "Aura Co Google Merchant Center Suspension Recovery",
+        }),
+      ).toBeVisible();
+      await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
+      await expect(
+        page.getByRole("navigation", { name: "Breadcrumb" }),
+      ).toBeVisible();
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        "https://charliecook.dev/projects/auraco-google-merchant-center-recovery",
+      );
+      await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+        "content",
+        "https://charliecook.dev/projects/auraco-google-merchant-center-recovery",
+      );
+
+      await expect(
+        page.getByRole("img", {
+          name: /diagram representing the recovery of an ecommerce product feed/i,
+        }),
+      ).toHaveAttribute("width", "1200");
+
+      const initialIssuesTable = page.getByRole("table", {
+        name: /initial merchant center issue counts/i,
+      });
+      await expect(
+        initialIssuesTable.locator('thead th[scope="col"]'),
+      ).toHaveCount(2);
+      await expect(initialIssuesTable.locator("tbody tr")).toHaveCount(9);
+
+      const outcomeTable = page.getByRole("table", {
+        name: /before and after recovery outcome/i,
+      });
+      await expect(outcomeTable.locator('thead th[scope="col"]')).toHaveCount(
+        3,
+      );
+      await expect(outcomeTable.locator("tbody tr")).toHaveCount(6);
+
+      await expect(
+        page
+          .getByText(
+            /Google removed the suspension on 15 July 2026 and cleared the mismatched online store URL problem for all 1,709 affected products/i,
+          )
+          .first(),
+      ).toBeVisible();
+      await expect(
+        page.getByRole("link", {
+          name: /how i fixed google merchant center misrepresentation on shopify/i,
+        }),
+      ).toHaveAttribute(
+        "href",
+        "/blog/google-merchant-center-misrepresentation-shopify",
+      );
+      await expect(
+        page.getByRole("link", { name: /^Aura Co website$/i }),
+      ).toHaveAttribute("href", "https://auraco.org.uk");
+      await expect(
+        page.getByRole("link", { name: /^view my cv$/i }),
+      ).toHaveAttribute("href", "/cv");
+      await expect(page.getByText("aura-co-4671")).toHaveCount(0);
+
+      const jsonLdObjects = await getJsonLdObjects(page);
+      expect(jsonLdObjects).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            "@type": "CreativeWork",
+            url: "https://charliecook.dev/projects/auraco-google-merchant-center-recovery",
+          }),
+          expect.objectContaining({
+            "@type": "BreadcrumbList",
+          }),
+        ]),
+      );
+    });
+
+    test("renders Merchant Center blog evidence, schema and related links", async ({
+      page,
+    }) => {
+      await page.goto("/blog/google-merchant-center-misrepresentation-shopify");
+
+      await expect(
+        page.getByRole("heading", {
+          level: 1,
+          name: "How I Fixed Google Merchant Center Misrepresentation on Shopify",
+        }),
+      ).toBeVisible();
+      await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
+      await expect(
+        page.getByRole("navigation", { name: "Breadcrumb" }),
+      ).toBeVisible();
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        "https://charliecook.dev/blog/google-merchant-center-misrepresentation-shopify",
+      );
+      await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+        "content",
+        "https://charliecook.dev/blog/google-merchant-center-misrepresentation-shopify",
+      );
+
+      await expect(
+        page.getByRole("link", {
+          name: /aura co google merchant center suspension recovery case study/i,
+        }),
+      ).toHaveAttribute(
+        "href",
+        "/projects/auraco-google-merchant-center-recovery",
+      );
+      await expect(
+        page.getByRole("link", {
+          name: /ecommerce seo lessons from working in a real cms/i,
+        }),
+      ).toHaveAttribute("href", "/blog/ecommerce-seo-lessons-real-cms");
+
+      const feedTable = page.getByRole("table", {
+        name: /feed export findings used to prioritise/i,
+      });
+      await expect(feedTable.locator('thead th[scope="col"]')).toHaveCount(2);
+      await expect(feedTable.locator("tbody tr")).toHaveCount(8);
+
+      await expect(
+        page.getByText(/not a guarantee that the same steps will reinstate/i),
+      ).toBeVisible();
+      await expect(page.getByText("aura-co-4671")).toHaveCount(0);
+
+      const jsonLdObjects = await getJsonLdObjects(page);
+      expect(jsonLdObjects).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            "@type": "Article",
+            url: "https://charliecook.dev/blog/google-merchant-center-misrepresentation-shopify",
+          }),
+          expect.objectContaining({
+            "@type": "BreadcrumbList",
+          }),
+        ]),
+      );
     });
 
     test("shows contact success and error states", async ({ page }) => {

@@ -105,6 +105,71 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Aura Co Google Merchant Center Suspension Recovery",
+    slug: "auraco-google-merchant-center-recovery",
+    summary:
+      "Recovered a suspended Shopify Merchant Center account after analysing 2,010 products, resolving a 1,709-item domain mismatch and presenting the completed remediation to Google.",
+    seo: {
+      title: "Aura Co Merchant Center Recovery | Charlie Cook",
+      description:
+        "How I audited a suspended Shopify Merchant Center account, resolved a 1,709-product URL mismatch and helped recover Aura Co after a direct Google review.",
+      keywords: [
+        "Google Merchant Center suspension recovery",
+        "Shopify Merchant Center recovery",
+        "Merchant Center misrepresentation case study",
+        "product feed troubleshooting",
+      ],
+    },
+    type: "Ecommerce platform and technical SEO",
+    status: "Recovered",
+    featured: false,
+    launchCaseStudy: true,
+    priority: 2.5,
+    techStack: [
+      "Shopify",
+      "Google Merchant Center",
+      "Product Feeds",
+      "Ecommerce SEO",
+      "Google Search Console",
+      "GA4",
+      "Bing Webmaster Tools",
+    ],
+    proofPoint:
+      "Shows ecommerce platform troubleshooting, product-feed analysis, technical SEO, Shopify configuration, evidence-led prioritisation and clear communication with platform support.",
+    keywords: [
+      "auraco",
+      "aura co",
+      "shopify",
+      "google merchant center",
+      "merchant center",
+      "misrepresentation",
+      "product feeds",
+      "ecommerce seo",
+      "google search console",
+      "ga4",
+      "bing webmaster tools",
+      "domain mismatch",
+      "technical seo",
+    ],
+    liveUrl: "https://auraco.org.uk",
+    caseStudyUrl: "/projects/auraco-google-merchant-center-recovery",
+    image: "/projects/auraco-merchant-center-recovery.svg",
+    imageAlt:
+      "Diagram representing the recovery of an ecommerce product feed with 2,010 products and 1,709 URL mismatches.",
+    employerSafeNotes:
+      "Use approved aggregate facts and original diagrams only. Do not publish Merchant Center or Shopify admin screenshots, private exports, account IDs or contact details.",
+    caseStudy: {
+      role: "Ecommerce platform support and technical SEO",
+      timeline: "June-July 2026",
+      problem:
+        "A Google Merchant Center Misrepresentation suspension prevented all 2,010 connected Shopify products from appearing in the United Kingdom.",
+      approach:
+        "Analysed Merchant Center diagnostics, raw product attributes, Shopify domain and policy settings, feed exports, storefront trust issues and review evidence before contacting Google.",
+      outcome:
+        "Google removed the suspension on 15 July 2026 and cleared the mismatched online store URL problem for all 1,709 affected products.",
+    },
+  },
+  {
     title: "Google Analytics Tracking Drop Investigation",
     slug: "analytics-tracking-drop-investigation",
     summary:

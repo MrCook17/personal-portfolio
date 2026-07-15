@@ -7,6 +7,7 @@ type BadgeVariant = ComponentProps<typeof Badge>["variant"];
 
 const statusToVariant: Record<ProjectStatus, BadgeVariant> = {
   Finished: "success",
+  Recovered: "success",
   Ongoing: "warning",
   "MVP complete": "success",
   "In active development": "warning",
