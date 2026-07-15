@@ -121,7 +121,7 @@ export const projects: Project[] = [
       ],
     },
     type: "Ecommerce platform and technical SEO",
-    status: "Recovered",
+    status: "Finished",
     featured: false,
     launchCaseStudy: true,
     priority: 2.5,
@@ -153,11 +153,8 @@ export const projects: Project[] = [
     ],
     liveUrl: "https://auraco.org.uk",
     caseStudyUrl: "/projects/auraco-google-merchant-center-recovery",
-    image: "/projects/auraco-merchant-center-recovery.svg",
-    imageAlt:
-      "Diagram representing the recovery of an ecommerce product feed with 2,010 products and 1,709 URL mismatches.",
     employerSafeNotes:
-      "Use approved aggregate facts and original diagrams only. Do not publish Merchant Center or Shopify admin screenshots, private exports, account IDs or contact details.",
+      "Use approved aggregate facts only. Do not publish Merchant Center or Shopify admin screenshots, private exports, account IDs or contact details.",
     caseStudy: {
       role: "Ecommerce platform support and technical SEO",
       timeline: "June-July 2026",

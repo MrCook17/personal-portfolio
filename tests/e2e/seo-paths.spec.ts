@@ -112,19 +112,23 @@ for (const viewport of viewports) {
         page.getByRole("img", {
           name: /diagram representing the recovery of an ecommerce product feed/i,
         }),
-      ).toHaveAttribute("width", "1200");
+      ).toHaveCount(0);
 
-      const initialIssuesTable = page.getByRole("table", {
-        name: /initial merchant center issue counts/i,
-      });
+      await expect(
+        page.getByText(
+          "Initial Merchant Center issue counts recorded during the suspension:",
+        ),
+      ).toBeVisible();
+      const initialIssuesTable = page.locator("article table").nth(0);
       await expect(
         initialIssuesTable.locator('thead th[scope="col"]'),
       ).toHaveCount(2);
       await expect(initialIssuesTable.locator("tbody tr")).toHaveCount(9);
 
-      const outcomeTable = page.getByRole("table", {
-        name: /before and after recovery outcome/i,
-      });
+      await expect(
+        page.getByText("Before and after recovery outcome:"),
+      ).toBeVisible();
+      const outcomeTable = page.locator("article table").nth(3);
       await expect(outcomeTable.locator('thead th[scope="col"]')).toHaveCount(
         3,
       );
@@ -205,9 +209,12 @@ for (const viewport of viewports) {
         }),
       ).toHaveAttribute("href", "/blog/ecommerce-seo-lessons-real-cms");
 
-      const feedTable = page.getByRole("table", {
-        name: /feed export findings used to prioritise/i,
-      });
+      await expect(
+        page.getByText(
+          "Feed export findings used to prioritise the recovery work:",
+        ),
+      ).toBeVisible();
+      const feedTable = page.locator("article table").nth(1);
       await expect(feedTable.locator('thead th[scope="col"]')).toHaveCount(2);
       await expect(feedTable.locator("tbody tr")).toHaveCount(8);
 

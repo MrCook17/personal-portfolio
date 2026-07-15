@@ -19,11 +19,10 @@ describe("Aura Co Merchant Center content", () => {
 
     expect(project).toMatchObject({
       title: "Aura Co Google Merchant Center Suspension Recovery",
-      status: "Recovered",
+      status: "Finished",
       type: "Ecommerce platform and technical SEO",
       caseStudyUrl: "/projects/auraco-google-merchant-center-recovery",
       liveUrl: "https://auraco.org.uk",
-      image: "/projects/auraco-merchant-center-recovery.svg",
     });
     expect(projectCaseStudies).toContain(
       '"auraco-google-merchant-center-recovery": AuracoGoogleMerchantCenterRecovery',

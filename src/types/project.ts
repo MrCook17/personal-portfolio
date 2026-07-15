@@ -10,7 +10,6 @@ export const projectTypes = [
 
 export const projectStatuses = [
   "Finished",
-  "Recovered",
   "Ongoing",
   "MVP complete",
   "In active development",

@@ -55,27 +55,12 @@ At first glance, that made the setup look correct.
 
 The important evidence came from Merchant Center's raw product attributes. An affected product's submitted landing-page URL used an internal `myshopify.com` domain.
 
-<table>
-  <caption>Product link patterns that changed the diagnosis.</caption>
-  <thead>
-    <tr>
-      <th scope="col">Link pattern</th>
-      <th scope="col">Rows</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Blank public link field</td>
-      <td>1,709</td>
-    </tr>
-    <tr>
-      <td>
-        Public <code>auraco.org.uk</code> link
-      </td>
-      <td>301</td>
-    </tr>
-  </tbody>
-</table>
+Product link patterns that changed the diagnosis:
+
+| Link pattern                |  Rows |
+| --------------------------- | ----: |
+| Blank public link field     | 1,709 |
+| Public `auraco.org.uk` link |   301 |
 
 The number of blank links matched the **1,709 products** in the mismatched online store URL diagnostic.
 
@@ -118,49 +103,18 @@ These issues were reviewed and corrected as part of the recovery work. The store
 
 The product feed showed wider data-quality gaps.
 
-<table>
-  <caption>Feed export findings used to prioritise the recovery work.</caption>
-  <thead>
-    <tr>
-      <th scope="col">Field or issue</th>
-      <th scope="col">Affected products or rows</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Google product category blank</td>
-      <td>1,985 of 2,010</td>
-    </tr>
-    <tr>
-      <td>Product type blank</td>
-      <td>1,904 of 2,010</td>
-    </tr>
-    <tr>
-      <td>Public product link blank in the supplied export</td>
-      <td>1,709 of 2,010</td>
-    </tr>
-    <tr>
-      <td>Mismatched online store URL</td>
-      <td>1,709</td>
-    </tr>
-    <tr>
-      <td>Image too small</td>
-      <td>225 unique products</td>
-    </tr>
-    <tr>
-      <td>Sexual-interest advertising flag</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <td>Restricted-adult-content flag</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <td>Personal-hardship flag</td>
-      <td>17 unique products</td>
-    </tr>
-  </tbody>
-</table>
+Feed export findings used to prioritise the recovery work:
+
+| Field or issue                                   | Affected products or rows |
+| ------------------------------------------------ | ------------------------: |
+| Google product category blank                    |            1,985 of 2,010 |
+| Product type blank                               |            1,904 of 2,010 |
+| Public product link blank in the supplied export |            1,709 of 2,010 |
+| Mismatched online store URL                      |                     1,709 |
+| Image too small                                  |       225 unique products |
+| Sexual-interest advertising flag                 |                        24 |
+| Restricted-adult-content flag                    |                        24 |
+| Personal-hardship flag                           |        17 unique products |
 
 This made the priority clear. The domain problem affected most of the catalogue and sat underneath an account suspension. It needed attention before a large category-cleanup project.
 
@@ -179,11 +133,11 @@ The correct response is not to conceal what a product is. It is to:
 
 These issues remained separate from the main account recovery and should not be falsely described as resolved when they were not changed.
 
-## Prioritise P0/P1/P2 work
+## Prioritise the work by phase
 
-I used three levels.
+I used three phases.
 
-### P0 - Resolve before account review
+### Phase 0 - Resolve before account review
 
 - submitted product-domain inconsistency;
 - policy URL inconsistency;
@@ -192,7 +146,7 @@ I used three levels.
 - business identity and support consistency;
 - final evidence for the account review.
 
-### P1 - Improve product eligibility
+### Phase 1 - Improve product eligibility
 
 - image dimensions;
 - product categories;
@@ -200,7 +154,7 @@ I used three levels.
 - policy-sensitive product wording;
 - stock and availability consistency.
 
-### P2 - Improve long-term feed quality
+### Phase 2 - Improve long-term feed quality
 
 - SKU coverage;
 - realistic product weights;

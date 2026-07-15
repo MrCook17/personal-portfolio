@@ -34,7 +34,7 @@ const projects: SearchableProject[] = [
     summary:
       "Recovered a suspended Shopify Merchant Center account after a product-feed URL mismatch.",
     type: "Ecommerce platform and technical SEO" as ProjectType,
-    status: "Recovered" as ProjectStatus,
+    status: "Finished" as ProjectStatus,
     proofPoint:
       "Product-feed analysis, Merchant Center diagnostics and Shopify domain remediation.",
     techStack: ["Shopify", "Google Merchant Center", "Product Feeds"],
@@ -72,7 +72,7 @@ describe("projectMatchesSearch", () => {
     expect(projectMatchesSearch(projects[1], "ecommerce")).toBe(true);
   });
 
-  it("matches by recovered ecommerce platform evidence", () => {
+  it("matches by Merchant Center platform evidence", () => {
     expect(projectMatchesSearch(projects[2], "merchant center")).toBe(true);
   });
 
@@ -110,11 +110,11 @@ describe("filterProjects", () => {
     );
   });
 
-  it("filters the recovered Merchant Center project", () => {
+  it("filters the Merchant Center project", () => {
     const result = filterProjects(projects, {
       query: "domain mismatch",
       type: "Ecommerce platform and technical SEO" as ProjectType,
-      status: "Recovered" as ProjectStatus,
+      status: "Finished" as ProjectStatus,
     });
 
     expect(result).toHaveLength(1);
