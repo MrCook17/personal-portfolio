@@ -12,7 +12,7 @@ export const homeLinks = {
   projects: "/projects",
   experience: "/experience",
   contact: "/contact",
-  cv: "/Charlie-Cook-CV.pdf",
+  cv: "/cv",
   github: "https://github.com/MrCook17",
   linkedin: "https://www.linkedin.com/in/charles-james-cook/",
   email: "mailto:charlie_cook321@hotmail.com",

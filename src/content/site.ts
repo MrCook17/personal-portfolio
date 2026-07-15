@@ -37,7 +37,8 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
-  cvHref: "/Charlie-Cook-CV.pdf",
+  cvPageHref: "/cv",
+  cvPdfHref: "/Charlie-Cook-CV.pdf",
   links: {
     github: "https://github.com/MrCook17",
     linkedin: "https://www.linkedin.com/in/charles-james-cook/",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { BriefcaseBusiness, Download, Mail } from "lucide-react";
+import Link from "next/link";
+import { BriefcaseBusiness, FileText, Mail } from "lucide-react";
 
 import { sortedProjects } from "@/content/projects";
 import { TrackedAnchor } from "@/components/analytics/tracked-link";
@@ -78,15 +79,10 @@ export default function ProjectsPage() {
                 </Button>
 
                 <Button asChild variant="outline">
-                  <TrackedAnchor
-                    href={siteConfig.cvHref}
-                    download
-                    eventName="download_cv"
-                    eventParams={{ location: "projects_page_cta" }}
-                  >
-                    Download CV
-                    <Download className="ml-2 size-4" aria-hidden="true" />
-                  </TrackedAnchor>
+                  <Link href={siteConfig.cvPageHref}>
+                    View CV
+                    <FileText className="ml-2 size-4" aria-hidden="true" />
+                  </Link>
                 </Button>
               </ButtonGroup>
             </CardContent>

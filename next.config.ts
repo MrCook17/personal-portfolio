@@ -2,11 +2,12 @@ import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
+const cvPageCanonicalUrl = "https://charliecook.dev/cv";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
-  "object-src 'none'",
+  "object-src 'self'",
   "frame-ancestors 'none'",
   "form-action 'self'",
   "img-src 'self' data: blob: https:",
@@ -77,6 +78,15 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/Charlie-Cook-CV.pdf",
+        headers: [
+          {
+            key: "Link",
+            value: `<${cvPageCanonicalUrl}>; rel="canonical"`,
+          },
+        ],
       },
     ];
   },

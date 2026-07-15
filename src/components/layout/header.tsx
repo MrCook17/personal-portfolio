@@ -1,6 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { HeaderNav } from "@/components/layout/header-nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { SamePageLink } from "@/components/layout/same-page-link";
@@ -34,20 +34,13 @@ export function Header() {
           {siteFeatures.enableThemeToggle ? <ThemeToggle /> : null}
 
           <Button asChild size="sm">
-            <TrackedAnchor
-              href={siteConfig.cvHref}
-              download
-              eventName="download_cv"
-              eventParams={{ location: "header" }}
-            >
-              Download CV
-            </TrackedAnchor>
+            <Link href={siteConfig.cvPageHref}>View CV</Link>
           </Button>
         </div>
 
         <MobileNav
           navItems={siteConfig.navItems}
-          cvHref={siteConfig.cvHref}
+          cvPageHref={siteConfig.cvPageHref}
           enableThemeToggle={siteFeatures.enableThemeToggle}
         />
       </div>

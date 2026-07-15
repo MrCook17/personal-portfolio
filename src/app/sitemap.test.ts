@@ -13,6 +13,7 @@ describe("sitemap", () => {
       "https://charliecook.dev/about",
       "https://charliecook.dev/blog",
       "https://charliecook.dev/contact",
+      "https://charliecook.dev/cv",
       "https://charliecook.dev/privacy",
       "https://charliecook.dev/accessibility",
       "https://charliecook.dev/projects/go-website-health-check-api",
@@ -23,7 +24,7 @@ describe("sitemap", () => {
       "https://charliecook.dev/blog/building-a-go-rest-api",
       "https://charliecook.dev/blog/ecommerce-seo-lessons-real-cms",
     ]);
-    expect(urls).toHaveLength(15);
+    expect(urls).toHaveLength(16);
   });
 
   it("excludes internal, API, removed and PDF routes", () => {

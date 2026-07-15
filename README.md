@@ -9,9 +9,11 @@ case studies, blog notes, experience, and a full-stack contact form.
 ## What This Project Includes
 
 - App Router pages for home, projects, project case studies, experience, about,
-  blog, and contact.
+  blog, CV, and contact.
 - MDX-backed blog posts and case studies.
 - Searchable and filterable project data.
+- A recruiter-facing `/cv` page with a same-origin PDF preview and downloadable
+  CV file.
 - A full-stack contact form with server-side validation, Supabase storage, and
   Resend email notifications.
 - Contact form protections including origin checks, content-type checks,
@@ -197,6 +199,7 @@ personal-portfolio
 |   |   |-- about
 |   |   |-- blog
 |   |   |-- contact
+|   |   |-- cv
 |   |   |-- experience
 |   |   |-- projects
 |   |   |-- globals.css
@@ -231,6 +234,8 @@ Generated or local-only folders such as `.next/`, `node_modules/`,
 | `src/content/blog-posts.ts`                  | Blog post metadata and reading-time setup.                    |
 | `src/content/blog/*.mdx`                     | Blog post bodies.                                             |
 | `src/content/case-studies/*.mdx`             | Project case study bodies.                                    |
+| `src/app/cv/page.tsx`                        | Recruiter-facing HTML CV page with PDF preview/download.      |
+| `public/Charlie-Cook-CV.pdf`                 | Downloadable CV PDF linked from the `/cv` page.               |
 | `src/app/api/contact/route.ts`               | Contact form API route.                                       |
 | `src/lib/validations/contact.ts`             | Shared contact form validation rules.                         |
 | `src/lib/security/request-origin.ts`         | Allowed-origin logic for contact submissions.                 |
@@ -369,6 +374,9 @@ Deployment checks:
 
 - The site builds successfully.
 - `/sitemap.xml` and `/robots.txt` render.
+- `/cv` loads, previews the CV PDF, and links to `/Charlie-Cook-CV.pdf`.
+- `/Charlie-Cook-CV.pdf` returns a canonical `Link` header pointing to
+  `https://charliecook.dev/cv`.
 - `/contact` loads.
 - A valid contact submission returns `201`.
 - Supabase receives rows in `contact_submissions` and `contact_rate_limits`.

@@ -4,7 +4,6 @@ import { useEffect, useId, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { SamePageLink } from "@/components/layout/same-page-link";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 type MobileNavProps = {
   navItems: NavigationItem[];
-  cvHref: string;
+  cvPageHref: string;
   enableThemeToggle: boolean;
 };
 
@@ -22,7 +21,7 @@ const mobileLinkClassName =
 
 export function MobileNav({
   navItems,
-  cvHref,
+  cvPageHref,
   enableThemeToggle,
 }: MobileNavProps) {
   const menuId = useId();
@@ -122,16 +121,12 @@ export function MobileNav({
               ) : null}
 
               <Button asChild className="w-full">
-                <TrackedAnchor
-                  href={cvHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  eventName="download_cv"
-                  eventParams={{ location: "header" }}
+                <SamePageLink
+                  href={cvPageHref}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Download CV
-                </TrackedAnchor>
+                  View CV
+                </SamePageLink>
               </Button>
             </div>
           </nav>

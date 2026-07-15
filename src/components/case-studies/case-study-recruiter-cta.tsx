@@ -1,4 +1,5 @@
-import { BriefcaseBusiness, Download, Mail } from "lucide-react";
+import Link from "next/link";
+import { BriefcaseBusiness, FileText, Mail } from "lucide-react";
 
 import { TrackedAnchor } from "@/components/analytics/tracked-link";
 import { Button, ButtonGroup } from "@/components/ui/button";
@@ -29,8 +30,8 @@ export function CaseStudyRecruiterCta({ project }: CaseStudyRecruiterCtaProps) {
               Interested in my software and web experience?
             </h2>
             <p className="max-w-2xl leading-7 text-muted-foreground">
-              Get in touch, read the wider work history, or download the CV PDF
-              for a concise recruiter view.
+              Get in touch, read the wider work history, or view the CV for a
+              concise recruiter overview.
             </p>
           </div>
 
@@ -58,15 +59,10 @@ export function CaseStudyRecruiterCta({ project }: CaseStudyRecruiterCtaProps) {
             </Button>
 
             <Button asChild variant="outline">
-              <TrackedAnchor
-                href={siteConfig.cvHref}
-                download
-                eventName="download_cv"
-                eventParams={eventParams}
-              >
-                Download my CV
-                <Download className="ml-2 size-4" aria-hidden="true" />
-              </TrackedAnchor>
+              <Link href={siteConfig.cvPageHref}>
+                View my CV
+                <FileText className="ml-2 size-4" aria-hidden="true" />
+              </Link>
             </Button>
           </ButtonGroup>
         </CardContent>

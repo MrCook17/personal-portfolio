@@ -48,8 +48,8 @@ for (const viewport of viewports) {
         cta.getByRole("link", { name: /view my experience/i }),
       ).toHaveAttribute("href", "/experience");
       await expect(
-        cta.getByRole("link", { name: /download my cv/i }),
-      ).toHaveAttribute("href", "/Charlie-Cook-CV.pdf");
+        cta.getByRole("link", { name: /view my cv/i }),
+      ).toHaveAttribute("href", "/cv");
     });
 
     test("renders blog reciprocal links", async ({ page }) => {
@@ -122,6 +122,54 @@ for (const viewport of viewports) {
         ),
       ).toBeVisible();
     });
+
+    test("renders recruiter CV page with PDF preview and supporting routes", async ({
+      page,
+    }) => {
+      await page.goto("/cv");
+
+      await expect(
+        page.getByRole("heading", { level: 1, name: "Charlie Cook CV" }),
+      ).toBeVisible();
+      await expect(
+        page.getByText(/commercial software engineering/i),
+      ).toBeVisible();
+      await expect(
+        page.getByRole("link", { name: /^download cv \(pdf\)$/i }),
+      ).toHaveAttribute("href", "/Charlie-Cook-CV.pdf");
+      await expect(
+        page.getByRole("link", { name: /^download cv \(pdf\)$/i }),
+      ).toHaveAttribute("download", "");
+      await expect(
+        page.getByRole("link", { name: /^contact me$/i }),
+      ).toHaveAttribute("href", "/contact");
+      await expect(
+        page.getByRole("link", { name: /^view my projects$/i }),
+      ).toHaveAttribute("href", "/projects");
+
+      const nextSteps = page.locator("section").filter({
+        has: page.getByRole("heading", { name: /explore my work/i }),
+      });
+
+      await expect(
+        nextSteps.getByRole("link", { name: /^experience$/i }),
+      ).toHaveAttribute("href", "/experience");
+
+      const preview = page.locator('object[type="application/pdf"]');
+      await expect(preview).toHaveAttribute(
+        "data",
+        "/Charlie-Cook-CV.pdf#view=FitH",
+      );
+      await expect(preview).toHaveAttribute(
+        "title",
+        "Preview of Charlie Cook CV PDF",
+      );
+
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        "https://charliecook.dev/cv",
+      );
+    });
   });
 }
 
@@ -139,6 +187,37 @@ test("mobile menu exposes primary navigation and CV link", async ({ page }) => {
     mobileNavigation.getByRole("link", { name: "Projects" }),
   ).toHaveAttribute("href", "/projects");
   await expect(
-    mobileNavigation.getByRole("link", { name: "Download CV" }),
-  ).toHaveAttribute("href", "/Charlie-Cook-CV.pdf");
+    mobileNavigation.getByRole("link", { name: "View CV" }),
+  ).toHaveAttribute("href", "/cv");
+});
+
+test("header CV link navigates to the HTML CV page", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+
+  const cvLink = page.getByRole("banner").getByRole("link", {
+    name: "View CV",
+  });
+
+  await expect(cvLink).toHaveAttribute("href", "/cv");
+  await expect(cvLink).not.toHaveAttribute("download", "");
+});
+
+test("PDF response advertises the CV page canonical", async ({ request }) => {
+  const response = await request.get("/Charlie-Cook-CV.pdf");
+
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["link"]).toContain(
+    '<https://charliecook.dev/cv>; rel="canonical"',
+  );
+});
+
+test("sitemap includes the CV page and excludes the PDF", async ({
+  request,
+}) => {
+  const response = await request.get("/sitemap.xml");
+  const body = await response.text();
+
+  expect(body).toContain("<loc>https://charliecook.dev/cv</loc>");
+  expect(body).not.toContain("Charlie-Cook-CV.pdf");
 });
