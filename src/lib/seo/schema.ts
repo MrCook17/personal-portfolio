@@ -1,6 +1,7 @@
 import { siteConfig } from "@/content/site";
 import type { BlogPost } from "@/types/blog";
 import type { Project } from "@/types/project";
+import { absoluteUrl } from "@/lib/seo/urls";
 
 type BreadcrumbItem = {
   name: string;
@@ -25,16 +26,6 @@ const knownProgrammingLanguages = new Set([
   "SQL",
   "TypeScript",
 ]);
-
-export function absoluteUrl(path = "") {
-  if (path.startsWith("http")) {
-    return path;
-  }
-
-  const normalisedPath = path.startsWith("/") ? path : `/${path}`;
-
-  return `${siteConfig.url}${normalisedPath}`;
-}
 
 function getSameAsLinks() {
   return [siteConfig.links.github, siteConfig.links.linkedin].filter((link) =>

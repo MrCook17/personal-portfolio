@@ -25,6 +25,7 @@ type ContactApiResponse =
   | {
       ok: true;
       message: string;
+      stored: boolean;
     }
   | {
       ok: false;
@@ -117,10 +118,12 @@ export function ContactForm() {
         message: result.message,
       });
 
-      trackEvent("contact_form_submit", {
-        location: "contact_page",
-        page_path: "/contact",
-      });
+      if (result.stored) {
+        trackEvent("contact_form_submit", {
+          location: "contact_page",
+          page_path: "/contact",
+        });
+      }
 
       reset({
         name: "",
