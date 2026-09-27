@@ -41,17 +41,17 @@ export const experienceRoles = [
   {
     role: "Web Operator",
     company: "Cromartie Hobbycraft Ltd",
-    dateLabel: "July 2025 – Present",
+    dateLabel: "July 2025 – September 2026",
     employmentType: "Part-time",
     locationType: "Mainly remote",
     summary:
-      "Improving a live ecommerce website through SEO, analytics, CMS content, front-end page updates, image optimisation and technical problem-solving.",
+      "Improved a live ecommerce website through SEO, analytics, CMS content, front-end page updates, image optimisation and technical problem-solving.",
     bullets: [
-      "Optimise public ecommerce pages across metadata, product descriptions, image SEO, internal linking and page structure.",
-      "Use Google Analytics, Google Search Console and keyword research tools to investigate search visibility, indexing and performance issues.",
-      "Build and adjust CMS page content with HTML, CSS and JavaScript within Gob2b CMS constraints.",
-      "Optimise images and page content for usability, search visibility and commercial clarity.",
-      "Support a large ecommerce catalogue of 4,000+ products while keeping page improvements consistent and maintainable.",
+      "Optimised public ecommerce pages across metadata, product descriptions, image SEO, internal linking and page structure.",
+      "Used Google Analytics, Google Search Console and keyword research tools to investigate search visibility, indexing and performance issues.",
+      "Built and adjusted CMS page content with HTML, CSS and JavaScript within Gob2b CMS constraints.",
+      "Optimised images and page content for usability, search visibility and commercial clarity.",
+      "Supported a large ecommerce catalogue of 4,000+ products while keeping page improvements consistent and maintainable.",
     ],
     technologies: [
       "Gob2b CMS",

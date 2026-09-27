@@ -155,10 +155,10 @@ export const experiencePreview: ExperiencePreview[] = [
   {
     role: "Web Operator",
     company: "Cromartie Hobbycraft",
-    dates: "July 2025 – Present",
+    dates: "July 2025 – September 2026",
     location: "Part-time · Mainly remote",
     summary:
-      "Improving SEO, analytics, content quality, and ecommerce pages across a live business website.",
+      "Improved SEO, analytics, content quality, and ecommerce pages across a live business website.",
     bullets: [
       "Optimised metadata, product descriptions, image SEO, internal links, and structured page content.",
       "Used Google Analytics, Google Search Console, Ubersuggest, Squoosh, Gob2b CMS, HTML, CSS, and JavaScript.",

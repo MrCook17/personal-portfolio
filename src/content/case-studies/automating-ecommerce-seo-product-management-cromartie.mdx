@@ -1,0 +1,312 @@
+## The problem
+
+A large part of my work at Cromartie involved maintaining products through the GO b2b ecommerce CMS. This included updating product names, meta titles and descriptions, writing product content, optimising images and working through large groups of related products.
+
+Individually, none of these jobs are particularly difficult. The problem is how repetitive they become when they need to be completed across hundreds of products.
+
+A typical product could involve opening it in the CMS, copying its existing information, checking its images, preparing all of that information for ChatGPT alongside the relevant SEO guidance, reviewing the result, copying each field back into the CMS and then opening every image individually to update its metadata.
+
+Matrix products made this even more difficult. A single product range could contain a parent product and several variants, each with different sizes, descriptions and images that needed to stay associated with the correct product.
+
+I had already created processes and SEO rules that made this work more consistent, but I was still spending a lot of time moving information between systems.
+
+So I started automating it.
+
+## What I built
+
+I built a Windows desktop automation system primarily using **AutoHotkey v2** and **Windows UI Automation**.
+
+The application works across three interfaces I was already using:
+
+- Cromartie's GO b2b CMS in Chrome
+- ChatGPT in Chrome
+- Windows itself, including file selection and clipboard operations
+
+Instead of replacing my existing workflow, I automated the repetitive parts around it.
+
+For a standard product, the system can read the existing information directly from the CMS, detect and collect its images, construct the correct SEO prompt, send everything to ChatGPT and wait for a structured response.
+
+It then validates the response before putting anything back into the website.
+
+Once the result passes those checks, the system can update the product name, meta title, meta description, HTML description and individual image SEO fields before saving the product.
+
+The important part for me was that ChatGPT never actually controls the workflow.
+
+It generates the content. My code decides what product is being edited, what information is sent, whether the response is valid, which CMS field each value belongs in and whether the workflow is safe to continue.
+
+## More than one automation
+
+The project started around normal product optimisation, but it grew as I found other repetitive parts of my website work that could use the same system.
+
+It now supports separate workflows for:
+
+- full product optimisation
+- metadata-only optimisation
+- image-only SEO
+- department page optimisation
+- matrix products and their variants
+- supplier-backed product creation
+- promotional text updates
+- batches of reference products
+- website and app visibility updates
+
+I kept these as separate modes because the rules are not always the same.
+
+For example, a department page should target broader search terms than an individual product. A matrix parent may own the main metadata while its children need their own descriptions and image information. An image-only job should not have permission to unexpectedly rewrite the product description.
+
+Keeping those responsibilities separate made the automation safer and also let me reuse the underlying CMS and browser code.
+
+## Separating AI from the automation
+
+One of the biggest design decisions was deciding what ChatGPT should and should not be responsible for.
+
+I use ChatGPT for the parts it is actually useful at: interpreting SEO guidance, working with product images, writing natural product descriptions and producing metadata.
+
+I use normal code for everything that needs to be predictable.
+
+The workflow is roughly:
+
+```text
+GO b2b product
+      ↓
+Read existing product data
+      ↓
+Identify and collect images
+      ↓
+Build the correct prompt
+      ↓
+Send context + images to ChatGPT
+      ↓
+Receive structured output
+      ↓
+Parse and validate it
+      ↓
+Verify the correct product is still open
+      ↓
+Update individual CMS fields
+      ↓
+Read values back to verify them
+      ↓
+Save
+```
+
+The prompts use strict output formats rather than asking ChatGPT for a normal conversational answer.
+
+That means the program can expect specific fields in a specific order. More complicated workflows also include things such as the expected mode, product identity, number of products and number of images.
+
+If those values do not match what the application already knows, it stops rather than trying to guess what ChatGPT meant.
+
+This became one of the most important principles of the project:
+
+**AI can make the editorial decisions, but deterministic code controls execution.**
+
+## Making browser automation reliable
+
+Automating GO b2b turned out to be much harder than simply clicking fixed positions on the screen.
+
+I use a combination of AutoHotkey and UIA-v2 to inspect Chrome's accessibility tree. This lets the application identify things such as catalogue products, image controls and matrix variants using information from the interface rather than relying entirely on coordinates.
+
+However, I found that UI Automation was not consistently reliable either.
+
+In several parts of GO b2b, Chrome can expose incomplete or stale accessibility information. Sometimes the most reliable approach was to use UIA to identify the correct live control and its position, then use a real mouse click to interact with it.
+
+This resulted in a hybrid approach:
+
+```text
+UI Automation
+→ identify and verify the correct control
+→ retrieve its current screen position
+→ physical mouse/keyboard interaction
+→ verify the resulting state
+```
+
+It is not as clean as interacting with a proper API, but GO b2b is an existing third-party system that I have to work around rather than redesign.
+
+## The image gallery problem
+
+One of the stranger problems I ran into was determining how many images a product actually had.
+
+GO b2b splits larger image galleries across multiple pages, but Chrome does not always expose every image in its accessibility tree immediately.
+
+Simply counting the controls could therefore give the wrong answer.
+
+I ended up building a gallery discovery process that moves through the available image pages and compares several related UI controls. A result is only accepted when the expected Remove, Details, Size Options and Image controls agree and remain stable.
+
+Once the application knows the gallery is stable, it can process the images in their actual order.
+
+The same defensive approach is used when transferring images to ChatGPT. The application records the existing attachment count and checks that it increases after each image is pasted rather than assuming the paste worked.
+
+## Matrix products were considerably harder
+
+Matrix products were probably the most difficult part of the project.
+
+A matrix might contain one parent product and multiple child SKUs. Those children can have very similar names while having different sizes, images and descriptions.
+
+The main problem was that after opening a child product and returning to the parent, Chrome could leave me with a stale accessibility tree.
+
+Continuing to use those controls could mean opening or updating the wrong variant.
+
+Instead of trying to keep those UI objects alive, I changed the workflow.
+
+The system records the exact order and identity of the matrix products, including their names, size information, row context and image counts.
+
+When it needs to move to another child, it can completely reopen the parent, obtain a fresh accessibility tree, rediscover the child controls and check that their order still matches the saved state.
+
+After opening a child, it reads its Product Name from the CMS again before changing anything.
+
+It makes the workflow slower, but I would much rather spend a few more seconds reopening a page than silently put one product's content onto another product.
+
+## Verifying every CMS write
+
+Another problem with desktop automation is that a paste operation succeeding from AutoHotkey's point of view does not necessarily mean the correct field received the value.
+
+Focus can move. A page can still be loading. Chrome can behave differently than expected.
+
+For important text fields, my application therefore does not just paste and continue.
+
+It:
+
+1. selects the existing field value
+2. pastes the new value
+3. copies the field contents back out
+4. compares them with the expected value
+5. retries if they do not match
+
+After several failed attempts, the workflow stops.
+
+I use the same general philosophy throughout the project: wherever possible, observe the result of an action rather than assuming an action succeeded.
+
+## Automating supplier products
+
+I later extended the project beyond updating existing products.
+
+Some new products needed information and images collected from suppliers before they could be added properly to Cromartie's website.
+
+I built two separate Node.js tools for this.
+
+The BOTZ scraper uses **Playwright** to navigate the supplier catalogue, extract product information and download product images.
+
+The Crystal Art scraper uses the supplier's public Shopify data, verifies the exact SKU and collects the product information and images.
+
+For Crystal Art, I also needed to deal with GO b2b's image requirements. The scraper uses **Sharp** to convert images to JPEG and progressively resize/compress them until they are below the required file-size limit.
+
+Downloaded images are hashed with SHA-256 so duplicate image content can be detected rather than relying only on filenames or URLs.
+
+The end result is a local product folder containing the supplier information, source information and ordered images.
+
+That folder can then feed into the main automation.
+
+```text
+Supplier
+   ↓
+Scraper
+   ↓
+Verified product data + images
+   ↓
+Cromartie automation
+   ↓
+ChatGPT SEO/content generation
+   ↓
+Validation
+   ↓
+GO b2b product
+```
+
+This means the system can automate much more of the journey from supplier product to completed ecommerce listing.
+
+## Making interrupted jobs recoverable
+
+As the workflows became longer, recovery became more important.
+
+A supplier product might involve uploading several images, filling their metadata, updating the main product and saving everything. If something fails halfway through, blindly starting again could create duplicate images.
+
+I added persistent workflow state to handle this.
+
+For example, during a supplier image upload the system records that an image is pending before continuing. It only marks that image as successfully uploaded once the following work has completed.
+
+If the application stops at an ambiguous point, it deliberately refuses to automatically retry that image.
+
+I have generally preferred this kind of behaviour throughout the project:
+
+**If the software cannot prove what happened, stop and let me check rather than guessing.**
+
+The project also creates logs, original-value backups and diagnostic information that I can use when something does go wrong.
+
+## Testing and debugging
+
+Testing desktop automation against a real CMS is quite different from testing normal application code.
+
+The supplier tools have automated Node.js tests. At the time of documenting the project, there were **10 passing BOTZ tests and 6 passing Crystal Art tests**, covering areas including parsing, recovery, exact SKU matching and image conversion.
+
+The AutoHotkey side uses syntax validation alongside a testing mode that can record timings, window state, field verification and UI Automation trees.
+
+A lot of the hardest problems only appeared against the real GO b2b and Chrome interfaces, so I also built diagnostic tools specifically for inspecting accessibility trees and understanding what Chrome was exposing at different points in a workflow.
+
+Automated testing for the main AutoHotkey application is still an area I want to improve. The live CMS and ChatGPT workflow currently relies heavily on runtime validation and manual integration testing.
+
+## Refactoring the project
+
+The project originally grew as one large AutoHotkey script.
+
+That was useful while I was rapidly testing whether different parts of the workflow were even possible, but eventually the script reached roughly 7,000 lines and became difficult to work with.
+
+I later refactored it into responsibility-based modules covering areas such as:
+
+```text
+Core/
+UI/
+Workflows/
+Modes/
+Browser/
+CMS/
+SEO/
+prompts/
+Helpers/
+```
+
+I deliberately approached the refactor as a behaviour-preservation exercise rather than trying to redesign everything at the same time.
+
+The application still uses a global AutoHotkey execution model in places, but separating the CMS interaction, browser interaction, workflow logic, prompts and validation has made adding new modes considerably easier.
+
+## What the project has changed
+
+I have not formally measured the amount of time the system saves yet, so I do not want to put an arbitrary percentage against it.
+
+What I can say is that it removes a large amount of work I previously had to repeat manually.
+
+The system now handles things such as:
+
+- collecting existing CMS information
+- backing up the original fields
+- building the correct prompt
+- counting and transferring images
+- parsing the generated response
+- entering individual CMS fields
+- checking those values were entered correctly
+- moving through image records
+- navigating catalogue products
+- working through matrix variants
+- collecting supplier product information
+- downloading and preparing supplier images
+
+It also means the SEO rules I use are part of the workflow itself rather than something I have to remember and manually apply to every product.
+
+The system has been used extensively in my actual website work, although the logs and backup files it creates mean I cannot reliably turn those artefacts into an exact number of completed products.
+
+## What I learned
+
+This project started because I was bored of copying and pasting the same information between GO b2b and ChatGPT.
+
+It ended up teaching me much more about automation reliability than I expected.
+
+The difficult part was not making AutoHotkey click buttons or making ChatGPT write a meta description. The difficult part was deciding when the software could safely trust that it was looking at the right product, the right image or the right variant.
+
+A lot of the project became about handling uncertainty: stale accessibility trees, incomplete image galleries, failed clipboard operations, ambiguous uploads and AI responses that might not exactly match the expected format.
+
+The biggest lesson I took from it was that automating something that works 95% of the time is quite easy. Building something I am comfortable allowing to make changes to a live ecommerce website requires considerably more validation, state management and recovery logic.
+
+There are still parts I want to improve, particularly automated testing, reducing the remaining coordinate-based interactions and adding better before/after review tools.
+
+Longer term, I would also like to move away from UI automation where APIs are available.
+
+The project turned a repetitive part of my job into a system that combines browser automation, UI Automation, web scraping, image processing, SEO rules and AI-assisted content generation in one workflow.

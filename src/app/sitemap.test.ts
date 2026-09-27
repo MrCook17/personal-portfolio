@@ -16,6 +16,7 @@ describe("sitemap", () => {
       "https://charliecook.dev/cv",
       "https://charliecook.dev/privacy",
       "https://charliecook.dev/accessibility",
+      "https://charliecook.dev/projects/automating-ecommerce-seo-product-management-cromartie",
       "https://charliecook.dev/projects/go-website-health-check-api",
       "https://charliecook.dev/projects/cromartie-tie-dye-page-rebuild",
       "https://charliecook.dev/projects/auraco-google-merchant-center-recovery",
@@ -26,7 +27,7 @@ describe("sitemap", () => {
       "https://charliecook.dev/blog/building-a-go-rest-api",
       "https://charliecook.dev/blog/ecommerce-seo-lessons-real-cms",
     ]);
-    expect(urls).toHaveLength(18);
+    expect(urls).toHaveLength(19);
   });
 
   it("excludes internal, API, removed and PDF routes", () => {

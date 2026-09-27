@@ -53,17 +53,17 @@ describe("CV page", () => {
     });
     const previewImages = within(previewList).getAllByRole("img");
 
-    expect(previewImages).toHaveLength(2);
+    expect(previewImages).toHaveLength(1);
     expect(previewImages[0]).toHaveAttribute(
       "alt",
       "Page 1 of Charlie Cook's software developer CV",
     );
     expect(previewImages[0]).toHaveAttribute(
       "src",
-      expect.stringContaining("charlie-cook-cv-page-1.png"),
+      expect.stringContaining("charlie-cook-cv-page-1-20260927.png"),
     );
     expect(previewImages[0]).toHaveAttribute("width", "1588");
-    expect(previewImages[0]).toHaveAttribute("height", "2246");
+    expect(previewImages[0]).toHaveAttribute("height", "2245");
     expect(
       screen.getByText("Page 1 of Charlie Cook's CV."),
     ).toBeInTheDocument();

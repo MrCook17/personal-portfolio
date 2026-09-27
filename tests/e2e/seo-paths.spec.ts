@@ -350,7 +350,7 @@ for (const viewport of viewports) {
         .getByRole("list", { name: "Charlie Cook CV pages" })
         .getByRole("img");
 
-      await expect(previewImages).toHaveCount(2);
+      await expect(previewImages).toHaveCount(1);
 
       const firstPreviewImage = page.getByRole("img", {
         name: "Page 1 of Charlie Cook's software developer CV",
@@ -358,10 +358,10 @@ for (const viewport of viewports) {
 
       await expect(firstPreviewImage).toHaveAttribute(
         "src",
-        /charlie-cook-cv-page-1\.png|%2Fcv%2Fcharlie-cook-cv-page-1\.png/,
+        /charlie-cook-cv-page-1-20260927\.png|%2Fcv%2Fcharlie-cook-cv-page-1-20260927\.png/,
       );
       await expect(firstPreviewImage).toHaveAttribute("width", "1588");
-      await expect(firstPreviewImage).toHaveAttribute("height", "2246");
+      await expect(firstPreviewImage).toHaveAttribute("height", "2245");
       await expect(
         page.getByText("Your browser cannot display the embedded CV PDF here."),
       ).toHaveCount(0);
