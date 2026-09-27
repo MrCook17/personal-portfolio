@@ -2,6 +2,71 @@ import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
+    title: "Automating Ecommerce SEO and Product Management at Cromartie",
+    slug: "automating-ecommerce-seo-product-management-cromartie",
+    summary:
+      "A Windows automation system I built to speed up the repetitive work involved in maintaining and optimising products on Cromartie Hobbycraft's ecommerce website.",
+    seo: {
+      title: "Ecommerce SEO Automation at Cromartie | Charlie Cook",
+      description:
+        "How I built a Windows automation system using AutoHotkey, UI Automation, Node.js and AI to streamline ecommerce SEO and product management.",
+      keywords: [
+        "ecommerce SEO automation",
+        "AutoHotkey automation",
+        "product management automation",
+        "Windows UI Automation",
+        "AI-assisted ecommerce",
+      ],
+    },
+    type: "Software",
+    status: "Ongoing",
+    featured: true,
+    launchCaseStudy: true,
+    priority: 0,
+    techStack: [
+      "AutoHotkey v2",
+      "Windows UI Automation",
+      "Node.js",
+      "Playwright",
+      "Sharp",
+      "ChatGPT",
+      "SEO",
+    ],
+    proofPoint:
+      "Production automation used in real ecommerce work, with validation, recovery, supplier scraping, image processing and safeguards for a live CMS.",
+    keywords: [
+      "cromartie",
+      "ecommerce",
+      "seo",
+      "automation",
+      "autohotkey",
+      "windows ui automation",
+      "node.js",
+      "playwright",
+      "sharp",
+      "chatgpt",
+      "web scraping",
+      "image processing",
+      "product management",
+      "go b2b",
+      "cms",
+    ],
+    caseStudyUrl:
+      "/projects/automating-ecommerce-seo-product-management-cromartie",
+    employerSafeNotes:
+      "Do not publish private CMS screens, credentials, customer data, internal prompts, logs, backups or supplier account information.",
+    caseStudy: {
+      role: "Sole developer and Web Operator",
+      timeline: "Ongoing production use",
+      problem:
+        "Maintaining and optimising hundreds of ecommerce products involved repetitive transfers between GO b2b, ChatGPT and Windows tools, with additional complexity around images and matrix variants.",
+      approach:
+        "Built a modular Windows automation system that combines AutoHotkey v2, UI Automation, structured AI output, supplier scrapers, image processing, validation and recoverable workflow state.",
+      outcome:
+        "Removed a large amount of repetitive manual work while keeping deterministic code in control of product identity, CMS writes, validation, recovery and saving.",
+    },
+  },
+  {
     title: "Go Website Health Check REST API",
     slug: "go-website-health-check-api",
     summary:
