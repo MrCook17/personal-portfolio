@@ -79,7 +79,7 @@ $outputFolder = Wait-WinRtOperation `
 for ($index = 0; $index -lt $document.PageCount; $index++) {
   $pageNumber = $index + 1
   $page = $document.GetPage([uint32] $index)
-  $fileName = "charlie-cook-cv-page-$pageNumber.png"
+  $fileName = "charlie-cook-cv-page-$pageNumber-20260927.png"
 
   try {
     $outputFile = Wait-WinRtOperation `

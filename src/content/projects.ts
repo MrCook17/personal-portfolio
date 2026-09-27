@@ -51,6 +51,7 @@ export const projects: Project[] = [
       "go b2b",
       "cms",
     ],
+    githubUrl: "https://github.com/MrCook17/cromartie-website-automation",
     caseStudyUrl:
       "/projects/automating-ecommerce-seo-product-management-cromartie",
     employerSafeNotes:

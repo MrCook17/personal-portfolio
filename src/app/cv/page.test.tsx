@@ -60,7 +60,7 @@ describe("CV page", () => {
     );
     expect(previewImages[0]).toHaveAttribute(
       "src",
-      expect.stringContaining("charlie-cook-cv-page-1.png"),
+      expect.stringContaining("charlie-cook-cv-page-1-20260927.png"),
     );
     expect(previewImages[0]).toHaveAttribute("width", "1588");
     expect(previewImages[0]).toHaveAttribute("height", "2245");

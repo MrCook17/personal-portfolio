@@ -66,7 +66,7 @@ const cvSummary = [
 const cvPreviewPages = [
   {
     pageNumber: 1,
-    src: "/cv/charlie-cook-cv-page-1.png",
+    src: "/cv/charlie-cook-cv-page-1-20260927.png",
     width: 1588,
     height: 2245,
     alt: "Page 1 of Charlie Cook's software developer CV",
