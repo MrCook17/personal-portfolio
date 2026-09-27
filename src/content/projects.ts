@@ -19,7 +19,7 @@ export const projects: Project[] = [
       ],
     },
     type: "Software",
-    status: "Ongoing",
+    status: "Finished",
     featured: true,
     launchCaseStudy: true,
     priority: 0,
@@ -57,7 +57,7 @@ export const projects: Project[] = [
       "Do not publish private CMS screens, credentials, customer data, internal prompts, logs, backups or supplier account information.",
     caseStudy: {
       role: "Sole developer and Web Operator",
-      timeline: "Ongoing production use",
+      timeline: "July 2025 – September 2026",
       problem:
         "Maintaining and optimising hundreds of ecommerce products involved repetitive transfers between GO b2b, ChatGPT and Windows tools, with additional complexity around images and matrix variants.",
       approach:
@@ -328,15 +328,15 @@ export const projects: Project[] = [
     title: "Cromartie Product Page SEO Optimisation",
     slug: "cromartie-product-page-seo-optimisation",
     summary:
-      "Ongoing ecommerce SEO work across product pages, including metadata, descriptions, image SEO, internal linking, and page content improvements.",
+      "Ecommerce SEO work across product pages, including metadata, descriptions, image SEO, internal linking, and page content improvements.",
     type: "Commercial SEO",
-    status: "Ongoing",
+    status: "Finished",
     featured: false,
     launchCaseStudy: false,
     priority: 5,
     techStack: ["SEO", "CMS", "GA4", "Search Console", "HTML", "Image SEO"],
     proofPoint:
-      "Ongoing commercial responsibility across a large ecommerce website with thousands of products.",
+      "Commercial responsibility across a large ecommerce website with thousands of products.",
     keywords: [
       "seo",
       "ecommerce",

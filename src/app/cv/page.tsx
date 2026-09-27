@@ -53,7 +53,7 @@ const cvSummary = [
   {
     title: "Web operations and SEO",
     description:
-      "Web Operator at Cromartie Hobbycraft Ltd, improving ecommerce pages, CMS content, analytics and search-focused page structure.",
+      "Former Web Operator at Cromartie Hobbycraft Ltd, where I improved ecommerce pages, CMS content, analytics and search-focused page structure.",
     icon: FolderKanban,
   },
   {
@@ -68,15 +68,8 @@ const cvPreviewPages = [
     pageNumber: 1,
     src: "/cv/charlie-cook-cv-page-1.png",
     width: 1588,
-    height: 2246,
+    height: 2245,
     alt: "Page 1 of Charlie Cook's software developer CV",
-  },
-  {
-    pageNumber: 2,
-    src: "/cv/charlie-cook-cv-page-2.png",
-    width: 1588,
-    height: 2246,
-    alt: "Page 2 of Charlie Cook's software developer CV",
   },
 ] as const;
 
